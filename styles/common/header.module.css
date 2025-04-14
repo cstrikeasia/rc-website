@@ -1,0 +1,229 @@
+/** Header **/
+.header {
+  height: 30px;
+  padding: 25px 0;
+}
+
+.wrapper {
+  width: auto;
+  margin: auto;
+  position: relative;
+}
+
+.logo {
+  float: left;
+  margin-left: 5rem;
+}
+
+.logo img {
+  height: 30px;
+}
+
+/* 漢堡選單 */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 30px;
+  height: 25px;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+}
+
+.mobileMenu {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 導覽按鈕 */
+.navBar .navBtn {
+  display: inline-block;
+  padding: 0 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #8e95a2;
+  text-decoration: none;
+}
+
+.navBar .navBtn:hover {
+  color: #2a2d30;
+}
+
+/* 功能按鈕 */
+.buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 30px;
+  margin-right: 5rem;
+}
+
+.pay {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.pay a {
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 20px;
+  color: #fff;
+  background: #5d84c3;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.pay a:hover {
+  text-decoration: none;
+}
+
+/* 登入區塊 */
+.loginGroup {
+  display: inline-block;
+}
+
+.loginGroup .loginBtns {
+  display: flex;
+  align-items: center;
+}
+
+.loginGroup .loginInfo {
+  display: none;
+}
+
+.loginGroup.logged .loginBtns {
+  display: none;
+}
+
+.loginGroup.logged .loginInfo {
+  display: block;
+}
+
+.loginGroup div a {
+  display: inline-block;
+  padding: 0 6px 0 5px;
+  color: #5d84c3;
+  background: url(../../images/line.png?v=0924d959) right center no-repeat;
+}
+
+.loginGroup div a:last-child {
+  background: none;
+}
+
+.loginGroup .loginInfo div,
+.loginGroup .loginInfo span {
+  vertical-align: middle;
+}
+
+.loginGroup .loginInfo span {
+  display: inline-block;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.loginGroup .loginInfo div {
+  display: inline-block;
+}
+
+.loginGroup .loginInfo div #linkShow {
+  display: none;
+}
+
+/** RWD **/
+@media screen and (max-width: 768px) {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #0000001c;
+    z-index: 999;
+    text-align: center;
+  }
+
+  .wrapper {
+    width: 100%;
+  }
+
+  .hamburger {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 3px;
+    right: 10px;
+  }
+
+  .logo {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .navBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .navBar .navBtn {
+    padding: 10px 0;
+  }
+
+  .buttons {
+    position: static;
+    margin-top: 10px;
+    margin-right: 0;
+    display: none;
+  }
+
+  .loginGroup .loginBtns,
+  .loginGroup .loginInfo div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .mobileMenu {
+    display: none;
+  }
+
+  .mobileMenu.open {
+    display: block;
+    background: #fff;
+    padding: 10px 0;
+    z-index: 1;
+    position: relative;
+    top: 0.7rem;
+    border-bottom: 1px solid #0000001c;
+  }
+
+  .mobileMenu .navBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mobileMenu .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}

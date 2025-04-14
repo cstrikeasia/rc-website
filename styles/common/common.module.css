@@ -1,0 +1,62 @@
+.clearFloat:after {
+  content: "\20";
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.table {
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 12px;
+  background: #f4f8fd;
+}
+
+.table th,
+.table td {
+  padding: 5px 10px;
+  border: 1px solid #dfebf6;
+}
+
+.table th {
+  color: #9ac6f3;
+  background: #b3dcf8;
+}
+
+.table td {
+  color: #666;
+}
+
+.table td.left {
+  text-align: left;
+}
+
+.radius2 {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.radius4 {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.radius6 {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+.radius8 {
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.radius10 {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}

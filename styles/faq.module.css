@@ -1,0 +1,243 @@
+/* === 背景與外層容器 === */
+
+/* .main {
+  padding: 50px 0 70px 0;
+  background: url(../images/bg2.jpg);
+} */
+
+.main {
+  background: url(../images/bg2.jpg);
+  padding-top: 1px;
+}
+
+.wrapper {
+  height: auto;
+  background: unset;
+  padding: 50px 0;
+}
+
+.main p {
+  display: unset;
+}
+
+/* === FAQ 內容區塊 === */
+.help-outer {
+  width: 100%;
+  margin: auto;
+  border: 1px solid #dfebf6;
+  background: url(../images/help-left-1.gif) left top repeat-y;
+  background-color: #fff;
+}
+
+.help-inner {
+  background: url(../images/help-left-2.gif) left bottom no-repeat;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.help-menu {
+  width: 202px !important;
+  padding: 30px 0 250px 45px !important;
+  float: left;
+}
+
+.help-menu li a {
+  display: block;
+  height: 41px;
+  line-height: 41px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #9ac6f3;
+  border-radius: 0;
+}
+
+.help-menu li a span {
+  display: block;
+  padding-left: 36px;
+  background: url(../images/help-nav.gif) 13px center no-repeat;
+}
+
+.help-menu li a:hover {
+  background: url(../images/help-menu.gif) left bottom no-repeat;
+  text-decoration: none;
+}
+
+.help-menu li a.current,
+.help-menu li a.current:hover {
+  background: url(../images/help-menu.gif) left top no-repeat;
+}
+
+/* === FAQ 主內容區塊 === */
+.help-content {
+  width: 635px;
+  padding: 20px 60px 60px 60px;
+  float: left;
+}
+
+.help-node h5 {
+  display: inline;
+  cursor: pointer;
+  font-size: 14px;
+  color: #9ac6f3;
+  font-weight: normal;
+  line-height: 2em;
+  padding-right: 15px;
+  background: url(../images/help-list.gif) right 2px no-repeat;
+}
+
+.help-content .closed h5 {
+  background: url(../images/help-list.gif) right -48px no-repeat;
+}
+
+.help-node div {
+  border: 1px solid #dfebf6;
+  padding: 15px 20px;
+  background: #f4f8fd;
+  border-radius: 4px;
+  position: relative;
+  width: 593px;
+  margin: 10px 0 20px 0;
+  line-height: 1.6em;
+}
+
+.help-content .closed div {
+  display: none;
+}
+
+.help-node .bg {
+  display: block;
+  background: url(../images/help-info.gif) no-repeat;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: 60px;
+  top: -11px;
+}
+
+.help-node div img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: baseline;
+}
+
+.help-node div h6 {
+  color: #9ac6f3;
+  font-size: 12px;
+  padding: 5px 0;
+}
+
+.help-node div p {
+  padding: 3px 0;
+}
+
+/* === FAQ 手機浮動按鈕與側欄 === */
+.faq-toggle-btn {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: 1001;
+  background-color: #9ac6f3;
+  color: #fff;
+  border-radius: 6px 0 0 6px;
+  padding: 10px;
+  cursor: pointer;
+  transform: translateY(-50%);
+  box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+}
+
+.faq-mobile-menu {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 200px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-left: 1px solid #ddd;
+  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.1);
+  padding: 16px 12px;
+  border-radius: 12px 0 0 12px;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+  transform: translateX(100%);
+  text-decoration: none;
+}
+
+.faq-mobile-menu.open {
+  transform: translateX(0);
+}
+
+.faq-mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.faq-mobile-menu li {
+  margin-bottom: 12px;
+}
+
+.faq-mobile-menu li a {
+  display: block;
+  padding: 10px;
+  border-radius: 8px;
+  background: #f4f8fd;
+  color: #9ac6f3;
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.faq-mobile-menu li a.current {
+  background-color: #9ac6f3;
+  color: white;
+}
+
+/* === RWD 手機樣式 === */
+@media screen and (max-width: 768px) {
+  .main {
+    background: unset;
+  }
+
+  .faq-toggle-btn {
+    display: block;
+  }
+
+  .faq-mobile-menu {
+    display: block;
+  }
+
+  .help-menu {
+    display: none !important;
+  }
+
+  .help-outer,
+  .help-inner {
+    background: unset;
+  }
+
+  .help-node div,
+  .help-outer {
+    width: auto;
+  }
+
+  .help-content {
+    padding: 20px 10px;
+    float: left;
+  }
+
+  .help-node {
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .faq-toggle-btn,
+  .faq-mobile-menu {
+    display: none;
+  }
+}

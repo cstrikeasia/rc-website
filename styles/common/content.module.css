@@ -1,0 +1,210 @@
+/** 主內容 **/
+.main {
+  background: #358bff url(../../images/bg.jpg?v=fa56a8da) center top no-repeat;
+  background-size: 100% 100%;
+  color: #fff;
+}
+
+.main a {
+  color: #5491cd;
+}
+
+.main a:hover {
+  text-decoration: none;
+}
+
+.main .wrapper {
+  min-height: 1080px;
+  padding-left: 3rem;
+}
+
+.bgImageBox {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  width: 50vw;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bgImageBox .bgImage {
+  max-height: 601px;
+  object-fit: revert-layer;
+  background: url(../../images/img.png) no-repeat;
+  height: 35vw;
+  width: 100%;
+  background-size: contain;
+}
+
+.main h1,
+.main h2,
+.main p,
+.main ul {
+  width: 360px;
+  text-align: center;
+}
+
+.main h1,
+.main h2 {
+  text-align: left;
+}
+
+.main h1 {
+  padding-top: 210px;
+  font-size: 28px;
+}
+
+.main h2 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.main p {
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.main p a,
+.main ul a {
+  display: inline-block;
+  height: 55px;
+  width: 165px;
+  line-height: 54px;
+  background: #fff;
+  border-radius: 30px;
+}
+
+.main p a {
+  display: block;
+  width: 100%;
+}
+
+.main p a i {
+  display: inline-block;
+  vertical-align: middle;
+  width: 26px;
+  height: 27px;
+  background: url(../../images/pt_window.png?v=94f4764f) no-repeat;
+}
+
+.main p a strong,
+.main ul a strong {
+  vertical-align: middle;
+  font-weight: 700;
+}
+
+.main p a strong {
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-left: 10px;
+}
+
+.main ul {
+  margin: 0;
+  padding: 0;
+}
+
+.main ul:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.main ul li {
+  float: left;
+  width: 50%;
+}
+
+.main ul img {
+  display: inline-block;
+  width: 163px;
+  height: 162px;
+  margin-bottom: 10px;
+}
+
+.main ul a i {
+  display: inline-block;
+  vertical-align: middle;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.main ul a i.apple {
+  width: 22px;
+  height: 27px;
+  background-image: url(../../images/pt_apple.png?v=d4a4593d);
+}
+
+.main ul a i.android {
+  width: 20px;
+  height: 24px;
+  background-image: url(../../images/pt_android.png?v=07e31856);
+}
+
+.main ul a strong {
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+.wrapper {
+  width: 1140px;
+  margin: auto;
+  position: relative;
+}
+
+/** RWD **/
+@media screen and (max-width: 768px) {
+  .main .wrapper {
+    height: auto;
+    padding: 55px 0;
+  }
+
+  .bgImageBox {
+    display: none;
+  }
+
+  .wrapper {
+    width: 100%;
+  }
+
+  .main h1,
+  .main h2,
+  .main p,
+  .main ul {
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  .main ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main ul li {
+    float: none;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .main p a {
+    margin: 10px;
+  }
+
+  .downloadLinks li {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
