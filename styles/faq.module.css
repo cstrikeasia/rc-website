@@ -48,7 +48,7 @@
   line-height: 41px;
   font-size: 14px;
   font-weight: bold;
-  color: #9ac6f3;
+  color: #73a4d5;
   border-radius: 0;
 }
 
@@ -78,8 +78,8 @@
 .help-node h5 {
   display: inline;
   cursor: pointer;
-  font-size: 14px;
-  color: #9ac6f3;
+  font-size: 15px;
+  color: #73a4d5;
   font-weight: normal;
   line-height: 2em;
   padding-right: 15px;
@@ -122,7 +122,7 @@
 }
 
 .help-node div h6 {
-  color: #9ac6f3;
+  color: #73a4d5;
   font-size: 12px;
   padding: 5px 0;
 }
@@ -137,7 +137,7 @@
   top: 50%;
   right: 0;
   z-index: 1001;
-  background-color: #9ac6f3;
+  background-color: #73a4d5;
   color: #fff;
   border-radius: 6px 0 0 6px;
   padding: 10px;
@@ -184,7 +184,7 @@
   padding: 10px;
   border-radius: 8px;
   background: #f4f8fd;
-  color: #9ac6f3;
+  color: #73a4d5;
   font-weight: bold;
   text-align: center;
   font-size: 14px;
@@ -193,16 +193,12 @@
 }
 
 .faq-mobile-menu li a.current {
-  background-color: #9ac6f3;
+  background-color: #73a4d5;
   color: white;
 }
 
 /* === RWD 手機樣式 === */
 @media screen and (max-width: 768px) {
-  .main {
-    background: unset;
-  }
-
   .faq-toggle-btn {
     display: block;
   }
