@@ -104,7 +104,7 @@ const faqs = {
       answer: [
         <span>
           如果你的電腦上已安裝其它舊版的RC語音客戶端，打開程式後，系統會自動更新為最新版本。如果你的電腦上沒有RC語音程式，請到
-          <Link href="/download">
+          <Link href="https://github.com/NerdyHomeReOpen/RiceCall/releases">
             <span>下載頁面</span>
           </Link>
           下載安裝最新版本。
@@ -114,20 +114,20 @@ const faqs = {
     {
       question: "怎麼獲取RC語音帳號？",
       answer: [
-        "◆ 如果你已經安裝好RC語音8.0程式，請打開程式，點擊登錄視窗左下方的‘註冊帳號’進入申請頁面；",
+        "◆ 如果你已經安裝好RC語音0.1.5程式，請打開程式，點擊登錄視窗左下方的‘註冊帳號’進入申請頁面；",
         <Image
           key="signup-img"
-          src={require("@/images/1-1.jpg")}
+          src={require("@/images/1-1.png")}
           width={610}
           alt={"RaidCall 註冊畫面"}
         />,
-        <span>
-          ◆ 你也可以直接訪問
-          <Link href="/signup">
-            <span>申請頁面</span>
-          </Link>
-          註冊帳號
-        </span>,
+        // <span>
+        //   ◆ 你也可以直接訪問
+        //   <Link href="/signup">
+        //     <span>申請頁面</span>
+        //   </Link>
+        //   註冊帳號
+        // </span>,
       ],
     },
     {
@@ -135,7 +135,7 @@ const faqs = {
       answer: [
         "打開程式，輸入你的RC帳號和密碼，然後點擊登入，即可來到屬於我們大家的RC語音世界！",
         <Image
-          src={require("@/images/1-2.jpg")}
+          src={require("@/images/1-2.png")}
           width={610}
           alt={"RaidCall"}
         />,
@@ -147,17 +147,17 @@ const faqs = {
         "如果您忘記密碼或希望重設一個新的密碼，可通過以下方式重設：",
         "◎ 打開RC程式，在登錄視窗的右下方點[忘記密碼]，進入找回密碼頁面後，根據提示重設密碼；",
         <Image
-          src={require("@/images/1-3.jpg")}
+          src={require("@/images/1-3.png")}
           width={610}
           alt={"RaidCall"}
         />,
-        <span>
-          ◎ 直接訪問
-          <Link href="/forget">
-            <span>找回密碼</span>
-          </Link>
-          連結，按照提示重設您的密碼。
-        </span>,
+        // <span>
+        //   ◎ 直接訪問
+        //   <Link href="/forget">
+        //     <span>找回密碼</span>
+        //   </Link>
+        //   連結，按照提示重設您的密碼。
+        // </span>,
       ],
     },
     {
@@ -184,30 +184,30 @@ const faqs = {
         "◎ 如網路無問題，請檢測電腦中是否安裝了防火牆，如果安裝了防火牆，請更改相應的阻擋設置或將防火牆關閉。根據大多數使用者的反應，主要問題是由於Nvidia主控台的防火牆Network Access Manager所引起的。 若電腦中有Network Access Manager這個程式的話，請將他移除掉，問題就可以解決了!! (打開控制台→新增/移除程式→NVIDIA ForceWare Network Access Manager→移除後再開啟RC語音即可!!)",
       ],
     },
-    {
-      question: "我需要重設密碼，但註冊信箱收不到系統發送的信件怎麼辦？",
-      answer: [
-        <span>
-          有些信箱系統會自動過濾一些未知的E-mail，如果垃圾信箱裡也沒有找到RC系統發送的密碼重設信件，請使用您注冊帳號時所填寫的信箱發送一封E-mail到
-          <Link href="mailto:jasper888@ricecall.com">
-            <span>jasper888@ricecall.com</span>
-          </Link>
-          ，並附上您的帳號、新的信箱地址和更改申請，我們會第一時間為你處理。
-        </span>,
-      ],
-    },
-    {
-      question: "如何禁用/開啟事件提示音？",
-      answer: [
-        "請點擊RC視窗左上方的 RC 語音—系統設定—聲音提醒。",
-        "如果您要禁用事件提示聲音，請勾選禁用所有音效提示即可。如果要開啟，取消勾選即可。",
-        <Image
-          src={require("@/images/1-4.jpg")}
-          width={610}
-          alt={"RaidCall"}
-        />,
-      ],
-    },
+    // {
+    //   question: "我需要重設密碼，但註冊信箱收不到系統發送的信件怎麼辦？",
+    //   answer: [
+    //     <span>
+    //       有些信箱系統會自動過濾一些未知的E-mail，如果垃圾信箱裡也沒有找到RC系統發送的密碼重設信件，請使用您注冊帳號時所填寫的信箱發送一封E-mail到
+    //       <Link href="mailto:jasper888@ricecall.com">
+    //         <span>jasper888@ricecall.com</span>
+    //       </Link>
+    //       ，並附上您的帳號、新的信箱地址和更改申請，我們會第一時間為你處理。
+    //     </span>,
+    //   ],
+    // },
+    // {
+    //   question: "如何禁用/開啟事件提示音？",
+    //   answer: [
+    //     "請點擊RC視窗左上方的 RC 語音—系統設定—聲音提醒。",
+    //     "如果您要禁用事件提示聲音，請勾選禁用所有音效提示即可。如果要開啟，取消勾選即可。",
+    //     <Image
+    //       src={require("@/images/1-4.jpg")}
+    //       width={610}
+    //       alt={"RaidCall"}
+    //     />,
+    //   ],
+    // },
     {
       question: "如何禁用/開啟事件提示音？",
       answer: [
@@ -244,20 +244,14 @@ const faqs = {
         "新增好友的方式有三種：",
         "◆ 如果你已知道好友的帳號，請打開RC視窗，選擇“好友”，點擊視窗下方的‘添加好友’，在彈出框中輸入好友帳號（如apple），點擊搜尋即可申請添加好友；",
         <Image
-          src={require("@/images/2-1.jpg")}
-          width={540}
+          src={require("@/images/2-1.png")}
+          width={640}
           alt={"RaidCall"}
         />,
         "◆ 在語音群的玩家列表中點選一個玩家，按右鍵點選‘添加好友’。",
         <Image
-          src={require("@/images/2-2.jpg")}
-          width={540}
-          alt={"RaidCall"}
-        />,
-        "◆ 在語音群中任意點擊一個用戶昵稱，再點公頻右上方的‘添加好友’。",
-        <Image
-          src={require("@/images/2-10.jpg")}
-          width={540}
+          src={require("@/images/2-2.png")}
+          width={640}
           alt={"RaidCall"}
         />,
       ],
@@ -400,7 +394,7 @@ const faqs = {
         </span>,
         "◎  語音群的創建方法：打開RC視窗，點擊右上方的‘創建語音群’，出現創建視窗後按步驟即可創建。",
         <Image
-          src={require("@/images/3-1.jpg")}
+          src={require("@/images/3-1.png")}
           width={540}
           alt={"RaidCall"}
         />,
@@ -523,7 +517,7 @@ const faqs = {
       answer: [
         "點選RC視窗右上方的‘搜尋語音群’，在彈出框中可選擇不同的搜尋條件進行搜尋，分別為按名稱搜尋，按ID搜尋，按類別搜尋。",
         <Image
-          src={require("@/images/3-2.jpg")}
+          src={require("@/images/3-2.png")}
           width={540}
           alt={"RaidCall"}
         />,
@@ -534,7 +528,7 @@ const faqs = {
       answer: [
         "1) 在當前語音的視窗左上角點擊“群操作設定”按鈕，出現菜單再點擊“申請會員”；",
         <Image
-          src={require("@/images/3-4.jpg")}
+          src={require("@/images/3-4.png")}
           width={540}
           alt={"RaidCall"}
         />,
@@ -602,7 +596,7 @@ const faqs = {
         "使用舊版本（5.2.8和5.3.0）去設定伺服器密碼後一樣無效。",
         "如果您不希望任何人都能訪問到自己的群或是某頻道，可以在群遊客限制選項中勾選該群只允許會員進入/語音子頻道只允許會員進入。",
         <Image
-          src={require("@/images/3-6.jpg")}
+          src={require("@/images/3-6.png")}
           width={540}
           alt={"RaidCall"}
         />,
@@ -620,17 +614,17 @@ const faqs = {
         "我的語音群中顯示的群是指我已加入的群（已成為群會員）及我創建的群。",
       ],
     },
-    {
-      question: "如何解鎖被封鎖的帳號或IP？",
-      answer: [
-        "在群資料的黑名單中右鍵點選一個被封鎖的帳號/IP，按刪除，即可解鎖被封鎖的帳號/IP。",
-        <Image
-          src={require("@/images/3-7.jpg")}
-          width={540}
-          alt={"RaidCall"}
-        />,
-      ],
-    },
+    // {
+    //   question: "如何解鎖被封鎖的帳號或IP？",
+    //   answer: [
+    //     "在群資料的黑名單中右鍵點選一個被封鎖的帳號/IP，按刪除，即可解鎖被封鎖的帳號/IP。",
+    //     <Image
+    //       src={require("@/images/3-7.jpg")}
+    //       width={540}
+    //       alt={"RaidCall"}
+    //     />,
+    //   ],
+    // },
     {
       question: "如何移除會員？",
       answer: [
