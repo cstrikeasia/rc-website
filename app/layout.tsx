@@ -2,8 +2,8 @@
 import "@/styles/global.css";
 
 export const metadata = {
-  title: "ricecall - 有趣的直播社區",
-  description: "ricecall - 有趣的直播社區",
+  title: "RiceCall - 有趣的語音聊天平台",
+  description: "RiceCall - 有趣的語音聊天平台",
 };
 export default function RootLayout({
   children,
