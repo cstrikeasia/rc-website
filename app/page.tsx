@@ -30,7 +30,7 @@ export default function HomePage() {
   }, []);
   const downloadUrl =
     data?.url || "https://github.com/NerdyHomeReOpen/RiceCall/releases";
-  const label = data?.url ? `立即下載 ${data?.version || ""}` : "載入中...";
+  const label = data?.url ? `立即下載 v${data?.version || ""}` : "載入中...";
   return (
     <>
       <Header />
