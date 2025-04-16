@@ -35,6 +35,9 @@ export default function HomePage() {
     <>
       <Header />
       <div className={content["main"]}>
+        <div className={content["bgImageBox"]}>
+          <div className={content["bgImage"]} />
+        </div>
         <div className={content["wrapper"]}>
           <h1>不僅是多人遊戲語音工具</h1>
           <h2>還是有趣的遊戲社區</h2>
