@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
         algorithm: 'SHA1',
         digits: 6,
         period: 30,
-        secret: OTPAuth.Secret.fromBase32(secret),
+        secret: OTPAuth.Secret.fromBase32(String(secret)),
     })
     const isValid = totp.validate({ token, window: 1 }) !== null
     if (isValid) {

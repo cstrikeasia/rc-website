@@ -4,7 +4,7 @@ import { getUserOtpSecret, setUserOtpSecret, markUserOtpEnabled, isUserOtpEnable
 
 export async function POST(req: NextRequest) {
     const { token, userId } = await req.json()
-    let base32Secret = getUserOtpSecret(userId)
+    let base32Secret = await getUserOtpSecret(userId)
     if (!base32Secret) {
         const secret = new OTPAuth.Secret({ size: 20 })
         base32Secret = secret.base32
@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
         algorithm: 'SHA1',
         digits: 6,
         period: 30,
-        secret: OTPAuth.Secret.fromBase32(base32Secret),
+        secret: OTPAuth.Secret.fromBase32(String(base32Secret)),
     })
     const isValid = totp.validate({ token, window: 1 }) !== null
     if (isValid && !isUserOtpEnabled(userId)) {
@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
         success: isValid,
         message: isValid
-            ? isUserOtpEnabled(userId)
+            ? await isUserOtpEnabled(userId)
                 ? 'OTP 綁定成功'
                 : 'OTP 驗證成功'
             : '驗證失敗',

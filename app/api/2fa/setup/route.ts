@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
     if (!userId) {
         return NextResponse.json({ error: 'Missing userId' }, { status: 400 })
     }
-    let base32Secret = getUserOtpSecret(userId)
+    let base32Secret = await getUserOtpSecret(userId)
     if (!base32Secret) {
         const secret = new OTPAuth.Secret({ size: 20 })
         base32Secret = secret.base32
@@ -21,7 +21,7 @@ export async function GET(req: NextRequest) {
         algorithm: 'SHA1',
         digits: 6,
         period: 30,
-        secret: OTPAuth.Secret.fromBase32(base32Secret),
+        secret: OTPAuth.Secret.fromBase32(String(base32Secret)),
     })
     const otpUrl = totp.toString()
     const qrCodeDataUrl = await QRCode.toDataURL(otpUrl)

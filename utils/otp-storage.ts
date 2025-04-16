@@ -1,37 +1,45 @@
-import Database from 'better-sqlite3';
+import sqlite3 from 'sqlite3'
+import { open } from 'sqlite'
 
-const db = new Database('otp.sqlite');
+let dbPromise = open({
+    filename: './otp.sqlite',
+    driver: sqlite3.Database
+})
 
-db.exec(`
-  CREATE TABLE IF NOT EXISTS users (
-    userId TEXT PRIMARY KEY,
-    secret TEXT NOT NULL,
-    isEnabled INTEGER DEFAULT 0
-  );
-`);
-
-export function getUserOtpSecret(userId: string): string | null {
-    const row = db
-        .prepare('SELECT secret FROM users WHERE userId = ?')
-        .get(userId);
-    return row?.secret || null;
+export async function initDb() {
+    const db = await dbPromise
+    await db.exec(`
+    CREATE TABLE IF NOT EXISTS users (
+        userId TEXT PRIMARY KEY,
+        secret TEXT NOT NULL,
+        isEnabled INTEGER DEFAULT 0
+    )
+    `);
 }
 
-export function setUserOtpSecret(userId: string, secret: string) {
-    db.prepare(`
-    INSERT INTO users (userId, secret)
-    VALUES (?, ?)
-    ON CONFLICT(userId) DO UPDATE SET secret = excluded.secret
-  `).run(userId, secret);
+export async function getUserOtpSecret(userId: string): Promise<string | null> {
+    const db = await dbPromise
+    const row = await db.get('SELECT secret FROM users WHERE userId = ?', userId)
+    return row?.secret || null
 }
 
-export function markUserOtpEnabled(userId: string) {
-    db.prepare('UPDATE users SET isEnabled = 1 WHERE userId = ?').run(userId);
+export async function setUserOtpSecret(userId: string, secret: string) {
+    const db = await dbPromise
+    await db.run(
+        'INSERT OR REPLACE INTO users (userId, secret, isEnabled) VALUES (?, ?, COALESCE((SELECT isEnabled FROM users WHERE userId = ?), 0))',
+        userId,
+        secret,
+        userId
+    )
 }
 
-export function isUserOtpEnabled(userId: string): boolean {
-    const row = db
-        .prepare('SELECT isEnabled FROM users WHERE userId = ?')
-        .get(userId);
-    return row?.isEnabled === 1;
+export async function markUserOtpEnabled(userId: string) {
+    const db = await dbPromise
+    await db.run('UPDATE users SET isEnabled = 1 WHERE userId = ?', userId)
+}
+
+export async function isUserOtpEnabled(userId: string): Promise<boolean> {
+    const db = await dbPromise
+    const row = await db.get('SELECT isEnabled FROM users WHERE userId = ?', userId)
+    return row?.isEnabled === 1
 }
