@@ -32,7 +32,7 @@
 }
 
 .enterServer {
-  padding: 60px 160px !important;
+  padding: 60px 10px !important;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -43,7 +43,7 @@
   font-size: 18px;
   color: #106bc8;
   text-align: center;
-  width: 360px;
+  width: 100%;
 }
 
 .enterServer h3 a {

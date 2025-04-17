@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, notFound } from "next/navigation";
 
 // Components
 import { Header } from "@/components/Header";
@@ -15,15 +15,23 @@ interface ReleaseData {
   version: string | null;
 }
 
+function checkIsMobile() {
+  if (typeof navigator === "undefined") return false;
+  const userAgent = navigator.userAgent || "";
+  return /Android|iPhone|iPad|iPod|Windows Phone/i.test(userAgent);
+}
+
 export default function JoinGroupPage() {
   const searchParams = useSearchParams();
   const serverId = searchParams.get("sid") || "";
   const [data, setData] = useState<ReleaseData | null>(null);
   const [isAppInstalled, setIsAppInstalled] = useState<boolean>(true);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const downloadUrl =
     data?.url || "https://github.com/NerdyHomeReOpen/RiceCall/releases";
   const label = data?.url ? `立即下載 v${data?.version || ""}` : "載入中...";
   useEffect(() => {
+    setIsMobile(checkIsMobile());
     if (!serverId) return;
     const checkInstalled = () => {
       let hidden = false;
@@ -63,6 +71,9 @@ export default function JoinGroupPage() {
     };
     fetchData();
   }, [serverId]);
+  if (isMobile) {
+    return notFound();
+  }
   return (
     <>
       <Header />
