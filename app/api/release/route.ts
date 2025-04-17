@@ -17,6 +17,7 @@ export async function GET() {
                     Accept: "application/vnd.github+json",
                     "User-Agent": "RiceCall-Agent",
                 },
+                cache: "no-store",
             }
         );
         if (!res.ok) throw new Error(`Github API 請求失敗：${res.status}`);
