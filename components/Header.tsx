@@ -5,9 +5,6 @@ import Link from "next/link";
 // CSS
 import header from "@/styles/common/header.module.css";
 
-// IMAGE
-import logo from "@/images/logo.png";
-
 export const Header = () => {
   const [open, setOpen] = useState(false);
   const navLinks = [
@@ -28,7 +25,7 @@ export const Header = () => {
       <div className={header["wrapper"]}>
         <div className={header["logo"]}>
           <Link href="/">
-            <img src={logo.src} alt="logo" />
+            <img src="/images/logo.png" alt="logo" />
           </Link>
         </div>
         <div className={header["hamburger"]} onClick={() => setOpen(!open)}>

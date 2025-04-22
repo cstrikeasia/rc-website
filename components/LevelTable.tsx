@@ -64,7 +64,7 @@ const LevelTable = () => {
   const levelImages = Object.fromEntries(
     Array.from({ length: 55 }, (_, i) => {
       const level = i + 1;
-      return [level, require(`@/images/level/${level}.png`)];
+      return [level, `/images/level/${level}.png`];
     })
   );
   return (

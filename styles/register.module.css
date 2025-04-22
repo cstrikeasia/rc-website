@@ -7,7 +7,7 @@
 }
 
 .main {
-  background: #358bff url(../images/bg2.jpg) center top no-repeat;
+  background: #358bff url(../public/images/bg2.jpg) center top no-repeat;
   background-size: 100% 100%;
   color: #fff;
   padding: 50px 0 70px 0;
@@ -150,7 +150,7 @@ span.error.tip {
 .btnSignup {
   display: inline-block;
   padding-left: 10px;
-  background: url(../images/signup/btn_reg.png) 0 0 no-repeat;
+  background: url(../public/images/signup/btn_reg.png) 0 0 no-repeat;
 }
 
 .btnSignup span {
@@ -159,7 +159,7 @@ span.error.tip {
   height: 42px;
   line-height: 41px;
   text-align: center;
-  background: url(../images/signup/btn_reg.png) right bottom no-repeat;
+  background: url(../public/images/signup/btn_reg.png) right bottom no-repeat;
   cursor: pointer;
   font-size: 14px;
   color: #fff;

@@ -7,7 +7,7 @@
 }
 
 .main {
-  background: #358bff url(../images/bg2.jpg) center top no-repeat;
+  background: #358bff url(../public/images/bg2.jpg) center top no-repeat;
   background-size: 100% 100%;
   color: #fff;
 }

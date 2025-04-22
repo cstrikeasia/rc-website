@@ -1,7 +1,4 @@
 
-// IMAGE
-import logo from "@/images/logo.png";
-
 interface MetaOptions {
     title: string;
     description: string;
@@ -12,7 +9,7 @@ interface MetaOptions {
 
 export function getMetaData(meta: MetaOptions) {
     const siteUrl = `${process.env.NEXT_PUBLIC_SITE_URL}${meta.url || ""}`;
-    const imageUrl = meta.image || logo.src;
+    const imageUrl = '/images/logo.png';
 
     const jsonLd = {
         "@context": "https://schema.org",

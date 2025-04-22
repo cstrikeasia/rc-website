@@ -66,7 +66,8 @@ export default function FAQClientPart() {
           "◆ 如果您聽不到聲音，請檢查輸出裝置：點擊RC視窗左上角的 RC語音--系統設定--音頻設定，更改輸出裝置。",
           "◆ 如果別人聽不到您的聲音，則需要更改輸入裝置。",
           <Image
-            src={require("@/images/5-9.jpg")}
+            src="/images/5-9.jpg"
+            height={500}
             width={610}
             alt={"RaidCall"}
           />,
@@ -130,7 +131,8 @@ export default function FAQClientPart() {
           "◆ 如果你已經安裝好RC語音0.1.5程式，請打開程式，點擊登錄視窗左下方的‘註冊帳號’進入申請頁面；",
           <Image
             key="signup-img"
-            src={require("@/images/1-1.png")}
+            src="/images/1-1.png"
+            height={500}
             width={610}
             alt={"RaidCall 註冊畫面"}
           />,
@@ -148,7 +150,8 @@ export default function FAQClientPart() {
         answer: [
           "打開程式，輸入你的RC帳號和密碼，然後點擊登入，即可來到屬於我們大家的RC語音世界！",
           <Image
-            src={require("@/images/1-2.png")}
+            src="/images/1-2.png"
+            height={450}
             width={610}
             alt={"RaidCall"}
           />,
@@ -160,7 +163,8 @@ export default function FAQClientPart() {
           "如果您忘記密碼或希望重設一個新的密碼，可通過以下方式重設：",
           "◎ 打開RC程式，在登錄視窗的右下方點[忘記密碼]，進入找回密碼頁面後，根據提示重設密碼；",
           <Image
-            src={require("@/images/1-3.png")}
+            src="/images/1-3.png"
+            height={450}
             width={610}
             alt={"RaidCall"}
           />,
@@ -215,7 +219,7 @@ export default function FAQClientPart() {
       //     "請點擊RC視窗左上方的 RC 語音—系統設定—聲音提醒。",
       //     "如果您要禁用事件提示聲音，請勾選禁用所有音效提示即可。如果要開啟，取消勾選即可。",
       //     <Image
-      //       src={require("@/images/1-4.jpg")}
+      //       src='/images/1-4.jpg'
       //       width={610}
       //       alt={"RaidCall"}
       //     />,
@@ -257,13 +261,15 @@ export default function FAQClientPart() {
           "新增好友的方式有三種：",
           "◆ 如果你已知道好友的帳號，請打開RC視窗，選擇“好友”，點擊視窗下方的‘添加好友’，在彈出框中輸入好友帳號（如apple），點擊搜尋即可申請添加好友；",
           <Image
-            src={require("@/images/2-1.png")}
+            src="/images/2-1.png"
+            height={500}
             width={640}
             alt={"RaidCall"}
           />,
           "◆ 在語音群的玩家列表中點選一個玩家，按右鍵點選‘添加好友’。",
           <Image
-            src={require("@/images/2-2.png")}
+            src="/images/2-2.png"
+            height={500}
             width={640}
             alt={"RaidCall"}
           />,
@@ -281,12 +287,14 @@ export default function FAQClientPart() {
         answer: [
           "◎ 打開RC視窗，用滑鼠點擊視窗左上角的RC語音，點選‘系統設定’— ‘隱私設定’。",
           <Image
-            src={require("@/images/2-3.jpg")}
+            src="/images/2-3.jpg"
+            height={500}
             width={610}
             alt={"RaidCall"}
           />,
           <Image
-            src={require("@/images/2-9.jpg")}
+            src="/images/2-9.jpg"
+            height={500}
             width={610}
             alt={"RaidCall"}
           />,
@@ -298,7 +306,8 @@ export default function FAQClientPart() {
         answer: [
           "在密語視窗中，若已互加好友，則可進行檔案傳送。點擊密語視察左上方的「檔案」，選取電腦中的檔案後點擊「開啟」，即可與好友實現檔案傳送。",
           <Image
-            src={require("@/images/2-5.jpg")}
+            src="/images/2-5.jpg"
+            height={500}
             width={610}
             alt={"RaidCall"}
           />,
@@ -309,18 +318,21 @@ export default function FAQClientPart() {
         answer: [
           "目前的訊息記錄保存僅限於密語聊天和會員群組聊天。查看方式有以下兩種：",
           <Image
-            src={require("@/images/2-6.jpg")}
+            src="/images/2-6.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
           "◎ 點擊好友密語視窗中的訊息記錄，可查看個人和群組訊息記錄。",
           <Image
-            src={require("@/images/2-7.jpg")}
+            src="/images/2-7.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
           <Image
-            src={require("@/images/2-8.jpg")}
+            src="/images/2-8.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -331,7 +343,8 @@ export default function FAQClientPart() {
         answer: [
           "通過視窗左上角的RC語音>系統設定>隱私設定，取消勾選[向好友共享我所在的群]。",
           <Image
-            src={require("@/images/2-9.jpg")}
+            src="/images/2-9.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -361,31 +374,36 @@ export default function FAQClientPart() {
           "h6:● 平臺徽章在哪裏顯示？",
           "頻道列表：",
           <Image
-            src={require("@/images/2-11.jpg")}
+            src="/images/2-11.jpg"
+            height={500}
             width={332}
             alt={"RaidCall"}
           />,
           "個人名片：",
           <Image
-            src={require("@/images/2-12.jpg")}
+            src="/images/2-12.jpg"
+            height={500}
             width={276}
             alt={"RaidCall"}
           />,
           "好友列表：",
           <Image
-            src={require("@/images/2-13.jpg")}
+            src="/images/2-13.jpg"
+            height={500}
             width={293}
             alt={"RaidCall"}
           />,
           "私人密語視窗：",
           <Image
-            src={require("@/images/2-14.jpg")}
+            src="/images/2-14.jpg"
+            height={500}
             width={532}
             alt={"RaidCall"}
           />,
           "徽章墻",
           <Image
-            src={require("@/images/2-15.jpg")}
+            src="/images/2-15.jpg"
+            height={500}
             width={610}
             alt={"RaidCall"}
           />,
@@ -407,7 +425,8 @@ export default function FAQClientPart() {
           </span>,
           "◎  語音群的創建方法：打開RC視窗，點擊右上方的‘創建語音群’，出現創建視窗後按步驟即可創建。",
           <Image
-            src={require("@/images/3-1.png")}
+            src="/images/3-1.png"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -419,12 +438,14 @@ export default function FAQClientPart() {
           "頭像顏色代表在語音群內的身份，不同顏色的頭像，所具備的權限不同。具體如下：",
           <h6>
             <Image
-              src={require("@/images/role/role1.png")}
+              src="/images/role/role1.png"
+              height={14}
               width={14}
               alt={"RaidCall"}
             />
             <Image
-              src={require("@/images/role/role2.png")}
+              src="/images/role/role2.png"
+              height={14}
               width={14}
               alt={"RaidCall"}
             />
@@ -433,12 +454,14 @@ export default function FAQClientPart() {
           "無任何管理權限，如果語音群只允許會員進入，普通遊客無法進入語音群。",
           <h6>
             <Image
-              src={require("@/images/role/role3.png")}
+              src="/images/role/role3.png"
+              height={14}
               width={14}
               alt={"RaidCall"}
             />
             <Image
-              src={require("@/images/role/role4.png")}
+              src="/images/role/role4.png"
+              height={14}
               width={14}
               alt={"RaidCall"}
             />
@@ -447,12 +470,14 @@ export default function FAQClientPart() {
           "可以參與會員群聊，但無任何管理權限，與普通遊客的區別在於如果語音群設定了‘頻道只允許會員進入’時，會員可以進入頻道但是遊客不允許。",
           <h6>
             <Image
-              src={require("@/images/role/role5.png")}
+              src="/images/role/role5.png"
+              height={14}
               width={14}
               alt={"RaidCall"}
             />
             <Image
-              src={require("@/images/role/role6.png")}
+              src="/images/role/role6.png"
+              height={14}
               width={14}
               alt={"RaidCall"}
             />
@@ -461,12 +486,14 @@ export default function FAQClientPart() {
           "由語音群創建者或者語音群管理員、區管理員授予權限。具備踢出房間、禁止用戶語音、禁止用戶發送訊息、發送頻道廣播的權限，這些權限僅限於其權限範圍內的房間。",
           <h6>
             <Image
-              src={require("@/images/role/role7.png")}
+              src="/images/role/role7.png"
+              height={14}
               width={14}
               alt={"RaidCall"}
             />
             <Image
-              src={require("@/images/role/role8.png")}
+              src="/images/role/role8.png"
+              height={14}
               width={14}
               alt={"RaidCall"}
             />
@@ -475,12 +502,14 @@ export default function FAQClientPart() {
           "由語音群創建者或者語音群管理員授予權限。具備踢出頻道、禁止用戶語音、禁止用戶發送訊息、發布頻道廣播的權限，但這些權限僅限於其權限範圍內的頻道。",
           <h6>
             <Image
-              src={require("@/images/role/role9.png")}
+              src="/images/role/role9.png"
+              height={14}
               width={14}
               alt={"RaidCall"}
             />
             <Image
-              src={require("@/images/role/role10.png")}
+              src="/images/role/role10.png"
+              height={14}
               width={14}
               alt={"RaidCall"}
             />
@@ -489,12 +518,14 @@ export default function FAQClientPart() {
           "由語音群創建者授予權限。具備創建刪除子頻道、設置子頻道管理員、踢出語音群、踢出頻道、禁止用戶語音、禁止用戶發送信息、封鎖用戶帳號、封鎖用戶IP、發布RC群廣播、會員管理的權限。",
           <h6>
             <Image
-              src={require("@/images/role/role11.png")}
+              src="/images/role/role11.png"
+              height={14}
               width={14}
               alt={"RaidCall"}
             />
             <Image
-              src={require("@/images/role/role12.png")}
+              src="/images/role/role12.png"
+              height={14}
               width={14}
               alt={"RaidCall"}
             />
@@ -503,12 +534,14 @@ export default function FAQClientPart() {
           "即語音群所有者，擁有此語音群的最高權限，具備語音群管理員的所有權限。區別在於只有語音群創建者可以設置語音群管理員。而語音群管理員只能設定子頻道管理員而無法設定語音群管理員。 ",
           <h6>
             <Image
-              src={require("@/images/role/role13.png")}
+              src="/images/role/role13.png"
+              height={14}
               width={14}
               alt={"RaidCall"}
             />
             <Image
-              src={require("@/images/role/role14.png")}
+              src="/images/role/role14.png"
+              height={14}
               width={14}
               alt={"RaidCall"}
             />
@@ -530,7 +563,8 @@ export default function FAQClientPart() {
         answer: [
           "點選RC視窗右上方的‘搜尋語音群’，在彈出框中可選擇不同的搜尋條件進行搜尋，分別為按名稱搜尋，按ID搜尋，按類別搜尋。",
           <Image
-            src={require("@/images/3-2.png")}
+            src="/images/3-2.png"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -541,7 +575,8 @@ export default function FAQClientPart() {
         answer: [
           "1) 在當前語音的視窗左上角點擊“群操作設定”按鈕，出現菜單再點擊“申請會員”；",
           <Image
-            src={require("@/images/3-4.png")}
+            src="/images/3-4.png"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -590,7 +625,8 @@ export default function FAQClientPart() {
         answer: [
           "個人可創建的語音群數目由使用者的RC等級決定。具體的關係如下：",
           <Image
-            src={require("@/images/server-count.jpg")}
+            src="/images/server-count.jpg"
+            height={500}
             width={301}
             alt={"RaidCall"}
           />,
@@ -609,7 +645,8 @@ export default function FAQClientPart() {
           "使用舊版本（5.2.8和5.3.0）去設定伺服器密碼後一樣無效。",
           "如果您不希望任何人都能訪問到自己的群或是某頻道，可以在群遊客限制選項中勾選該群只允許會員進入/語音子頻道只允許會員進入。",
           <Image
-            src={require("@/images/3-6.png")}
+            src="/images/3-6.png"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -632,7 +669,7 @@ export default function FAQClientPart() {
       //   answer: [
       //     "在群資料的黑名單中右鍵點選一個被封鎖的帳號/IP，按刪除，即可解鎖被封鎖的帳號/IP。",
       //     <Image
-      //       src={require("@/images/3-7.jpg")}
+      //       src='/images/3-7.jpg'
       //       width={540}
       //       alt={"RaidCall"}
       //     />,
@@ -643,13 +680,15 @@ export default function FAQClientPart() {
         answer: [
           "a) 若您是語音群管理員或創建者，可在語音群的群組中選擇一個頻道管理員或會員，右鍵點選 ‘移除會員’即可。",
           <Image
-            src={require("@/images/3-8.jpg")}
+            src="/images/3-8.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
           "b) 若您是語音群的會員，可在我的語音群中選擇你欲解除會員關係的語音群，右鍵點選‘解除會員關係’即可。",
           <Image
-            src={require("@/images/3-14.jpg")}
+            src="/images/3-14.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -668,13 +707,15 @@ export default function FAQClientPart() {
         answer: [
           "1）若您是群會員或群管理員，在語音群內的群組點擊自己的暱稱，右鍵點選「修改 群名片」進行更改。",
           <Image
-            src={require("@/images/3-9.jpg")}
+            src="/images/3-9.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
           "2）在語音群內的群組點擊自己的暱稱，右鍵點選「修改群名片」進行更改。若您是 群管理員，可點擊會員/頻道管理員的暱稱更改他們的群名片。",
           <Image
-            src={require("@/images/3-10.jpg")}
+            src="/images/3-10.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -686,7 +727,8 @@ export default function FAQClientPart() {
           "1) 先邀請或申請為會員。欲被設為區管理員的用戶需在母頻道下(與大廳平級的頻道)，點擊它的暱稱，右鍵點選設為[頻道管理員]。",
           "2) 設為區管後，該頻道以下的子頻道都將有相關的管理權限。此外，區管的頭像在母頻道下顯示為橘色，在子頻道下顯示為青橘色。",
           <Image
-            src={require("@/images/3-11.jpg")}
+            src="/images/3-11.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -722,12 +764,14 @@ export default function FAQClientPart() {
         answer: [
           "創建語音群后，創建者和群管理員可隨意在群內新建一級頻道。按右鍵選擇創建，輸入頻道名稱后點擊確定；你也可以在語音群內的‘頻道管理’創建一級頻道。",
           <Image
-            src={require("@/images/4-1.jpg")}
+            src="/images/4-1.jpg"
+            height={500}
             width={304}
             alt={"RaidCall"}
           />,
           <Image
-            src={require("@/images/4-2.jpg")}
+            src="/images/4-2.jpg"
+            height={500}
             width={304}
             alt={"RaidCall"}
           />,
@@ -738,7 +782,8 @@ export default function FAQClientPart() {
         answer: [
           "如果你想刪除頻道，可直接選擇需刪除的頻道，按右鍵選擇‘刪除’，或者在語音群內的‘頻道管理’選項進行刪除頻道的操作。",
           <Image
-            src={require("@/images/4-4.jpg")}
+            src="/images/4-4.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -749,7 +794,8 @@ export default function FAQClientPart() {
         answer: [
           "1) 如果你希望在創建好的一級頻道/二級頻道內設置一個密碼，可點擊頻道名，右鍵點選“檢視/編輯”，在基本資料中設置頻道密碼。",
           <Image
-            src={require("@/images/4-5.jpg")}
+            src="/images/4-5.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -760,7 +806,8 @@ export default function FAQClientPart() {
         answer: [
           "右鍵選擇頻道排序，在彈出窗口中使用‘上移’‘下移’功能進行頻道排序；也可以在左下角的‘頻道管理’通道進行排序操作。",
           <Image
-            src={require("@/images/4-6.jpg")}
+            src="/images/4-6.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -771,7 +818,8 @@ export default function FAQClientPart() {
         answer: [
           "點擊當前頻道名稱,按右鍵選擇頻道廣播，在彈出視窗中編輯廣播內容，進行廣播。",
           <Image
-            src={require("@/images/4-7.jpg")}
+            src="/images/4-7.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -782,7 +830,8 @@ export default function FAQClientPart() {
         answer: [
           "點擊頻道名稱，按右鍵點選'檢視/編輯'，在選項基本資料勾選'此頻道不許任何人進入（只用於信息顯示）。",
           <Image
-            src={require("@/images/4-9.jpg")}
+            src="/images/4-9.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -793,7 +842,8 @@ export default function FAQClientPart() {
         answer: [
           "在當前頻道點選一個會員，按滑鼠右鍵，勾選‘禁止此人語音’，可允許/禁止該會員說話，頻道內所有成員都將聽不到被禁止語音的會員的說話。",
           <Image
-            src={require("@/images/4-10.jpg")}
+            src="/images/4-10.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -811,7 +861,8 @@ export default function FAQClientPart() {
         answer: [
           "管理員對需要修改發言模式的頻道進行“檢視/編輯”，在頻道基本資料選定發言模式，最後按“保存”。",
           <Image
-            src={require("@/images/4-13.jpg")}
+            src="/images/4-13.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -822,7 +873,8 @@ export default function FAQClientPart() {
         answer: [
           "連麥是在排麥模式下實現多人同時上麥說話的目的，滿足主持人與嘉賓互動、朋友合唱、互動聊天，多人會談等場景需要。連麥功能主要針對社群管理員使用，管理員可以向麥序成員發起邀請，同時，也可以向語音中的其他成員進行邀請，被邀請的人即可直接被連麥，連麥成功後即可與其他連麥成員進行多人說。如下圖：",
           <Image
-            src={require("@/images/4-15.jpg")}
+            src="/images/4-15.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -833,18 +885,21 @@ export default function FAQClientPart() {
         answer: [
           "在排麥模式下，社群管理員，在麥序例表中，通過點擊受邀人的右鍵選單中的“邀請連麥”項，對受邀人發送連麥邀請。如下圖：",
           <Image
-            src={require("@/images/4-16.jpg")}
+            src="/images/4-16.jpg"
+            height={500}
             width={275}
             alt={"RaidCall"}
           />,
           <Image
-            src={require("@/images/4-17.jpg")}
+            src="/images/4-17.jpg"
+            height={500}
             width={271}
             alt={"RaidCall"}
           />,
           "點擊邀請連麥麥序中會出現連麥區，在連麥區中可以看到管理員所邀請的人，如果要管理操作連麥區中的人，可以通過滑鼠左鍵點擊大頭貼即會出現管理選項。",
           <Image
-            src={require("@/images/4-18.jpg")}
+            src="/images/4-18.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -857,7 +912,8 @@ export default function FAQClientPart() {
             <span>
               當移到連麥框中即會出現【
               <Image
-                src={require("@/images/4-19.jpg")}
+                src="/images/4-19.jpg"
+                height={500}
                 width={13}
                 alt={"RaidCall"}
               />
@@ -865,12 +921,14 @@ export default function FAQClientPart() {
             </span>
           </>,
           <Image
-            src={require("@/images/4-20.jpg")}
+            src="/images/4-20.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
           <Image
-            src={require("@/images/4-21.jpg")}
+            src="/images/4-21.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -881,7 +939,8 @@ export default function FAQClientPart() {
         answer: [
           "社群管理員在連麥框中通過滑鼠左鍵點擊大頭貼，即可彈出管理選項，在選項中可以對連麥成員進行管理。",
           <Image
-            src={require("@/images/4-22.jpg")}
+            src="/images/4-22.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -906,7 +965,8 @@ export default function FAQClientPart() {
         answer: [
           "頻道音質模式分為兩種，聊天模式和娛樂模式。如需更改，請點擊所在頻道的名稱，按右鍵點選‘檢視/編輯’，在選項‘基本資料’裡更改頻道模式。自由發言和管理員發言都是聊天模式，排麥發言則是娛樂模式(高音質)",
           <Image
-            src={require("@/images/5-4.jpg")}
+            src="/images/5-4.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -925,7 +985,8 @@ export default function FAQClientPart() {
         answer: [
           "如果你具備相應的管理權限，可在當前頻道視窗的左下方更改頻道發言模式，或者檢視/編輯該頻道的基本資料，選擇頻道模式進行更改。",
           <Image
-            src={require("@/images/5-5.jpg")}
+            src="/images/5-5.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -937,7 +998,8 @@ export default function FAQClientPart() {
           "您可以在當前頻道的聊天區域上方點擊“系統設定”，然后在彈出界面中的“語音設定”里進行設定。",
           "如果您選擇按鍵發話，說話時按住設定好的熱鍵，頻道內的成員就能聽到您的聲音。如果您覺得這種方式不方便，可以點擊切換為‘音量感應’，在您說話時我們的程式就會自動捕捉您的聲音。",
           <Image
-            src={require("@/images/5-6.jpg")}
+            src="/images/5-6.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -954,7 +1016,8 @@ export default function FAQClientPart() {
           "A) 如果您聽不到聲音，請檢查輸出裝置：點擊RC視窗左上角的 RC語音--系統設定--音頻設定，更改輸出裝置。",
           "B) 如果別人聽不到您的聲音，則需要更改輸入裝置。",
           <Image
-            src={require("@/images/5-9.jpg")}
+            src="/images/5-9.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -988,7 +1051,8 @@ export default function FAQClientPart() {
         answer: [
           "在頻道內用滑鼠點擊聊天視窗中的’錄音’，錄音即開始，如要結束錄音，只需再點一下‘錄音’，錄音結束的同時程式會自動開啟存放錄音檔案的資料夾。",
           <Image
-            src={require("@/images/5-7.jpg")}
+            src="/images/5-7.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -999,7 +1063,8 @@ export default function FAQClientPart() {
         answer: [
           "點擊RC視窗左上角的‘系統設定’，然後在‘更改錄音存放路徑’中進行更改。",
           <Image
-            src={require("@/images/5-8.jpg")}
+            src="/images/5-8.jpg"
+            height={500}
             width={540}
             alt={"RaidCall"}
           />,
@@ -1064,7 +1129,8 @@ export default function FAQClientPart() {
         question: "VIP成長與等級",
         answer: [
           <Image
-            src={require("@/images/8-1.png")}
+            src="/images/8-1.png"
+            height={500}
             width={513}
             alt={"RaidCall"}
           />,
@@ -1074,7 +1140,8 @@ export default function FAQClientPart() {
         question: "VIP特權",
         answer: [
           <Image
-            src={require("@/images/8-2.png")}
+            src="/images/8-2.png"
+            height={500}
             width={505}
             alt={"RaidCall"}
           />,

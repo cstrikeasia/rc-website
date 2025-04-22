@@ -9,6 +9,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="zh-Hant">
       <head>
+        <link rel="icon" href="/images/favicon.ico" sizes="any" />
         {/** Google Tag Manager **/}
         <Script id="gtm-script" strategy="afterInteractive">
           {`

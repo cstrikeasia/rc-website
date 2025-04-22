@@ -45,7 +45,7 @@
 
 .main {
   padding: 50px 0 70px 0;
-  background: url(../images/bg2.jpg) no-repeat;
+  background: url(../public/images/bg2.jpg) no-repeat;
   background-size: cover;
 }
 
