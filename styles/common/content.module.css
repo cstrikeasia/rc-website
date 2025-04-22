@@ -1,6 +1,7 @@
 /** 主內容 **/
 .main {
-  background: #358bff url(../../images/bg.jpg?v=fa56a8da) center top no-repeat;
+  background: #358bff url(../../public/images/bg.jpg?v=fa56a8da) center top
+    no-repeat;
   background-size: 100% 100%;
   color: #fff;
 }
@@ -38,7 +39,7 @@
 .bgImageBox .bgImage {
   max-height: 601px;
   object-fit: revert-layer;
-  background: url(../../images/rc-screenshot.png) no-repeat;
+  background: url(../../public/images/rc-screenshot.png) no-repeat;
   height: 35vw;
   width: 100%;
   background-size: contain;
@@ -93,7 +94,7 @@
   vertical-align: middle;
   width: 26px;
   height: 27px;
-  background: url(../../images/pt_window.png?v=94f4764f) no-repeat;
+  background: url(../../public/images/pt_window.png?v=94f4764f) no-repeat;
 }
 
 .main p a strong,
@@ -142,13 +143,13 @@
 .main ul a i.apple {
   width: 22px;
   height: 27px;
-  background-image: url(../../images/pt_apple.png?v=d4a4593d);
+  background-image: url(../../public/images/pt_apple.png?v=d4a4593d);
 }
 
 .main ul a i.android {
   width: 20px;
   height: 24px;
-  background-image: url(../../images/pt_android.png?v=07e31856);
+  background-image: url(../../public/images/pt_android.png?v=07e31856);
 }
 
 .main ul a strong {
@@ -174,7 +175,8 @@
 
   .bgImageBox .bgImage {
     width: 100%;
-    background: url(../../images/rc-screenshot.png) center center no-repeat;
+    background: url(../../public/images/rc-screenshot.png) center center
+      no-repeat;
     background-size: contain;
     height: 65vw;
     margin-top: 35rem;
