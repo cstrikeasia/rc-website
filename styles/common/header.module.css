@@ -113,7 +113,8 @@
   display: inline-block;
   padding: 0 6px 0 5px;
   color: #5d84c3;
-  background: url(../../images/line.png?v=0924d959) right center no-repeat;
+  background: url(../../public/images/line.png?v=0924d959) right center
+    no-repeat;
 }
 
 .loginGroup div a:last-child {
