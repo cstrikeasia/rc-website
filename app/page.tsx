@@ -1,54 +1,25 @@
-"use client";
-import React, { useEffect, useState } from "react";
-
 // Components
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import HomeClientPart from "@/components/client_part/HomeClientPart";
+import JsonLdInjector from "@/components/JsonLd";
 
-// CSS
-import content from "@/styles/common/content.module.css";
-
-interface ReleaseData {
-  url: string | null;
-  version: string | null;
-}
+// Lib
+import { getMetaData } from "@/lib/seoHelper";
+export const metadata = getMetaData({
+  title: "有趣的語音聊天平台",
+  description: "不僅僅是一個優秀的語音工具，還是一個有趣的遊戲社區。",
+  keywords:
+    "RiceCall,RC官網下載,RC語音,RC軟體,語音軟體,語音聊天,公會語音,團隊管理,團隊聊天,副本語音,多人語聊,語音聊天,團隊語音,遊戲語音,在線K歌,網路K歌,遊戲公會,網路教育",
+  url: "",
+});
 
 export default function HomePage() {
-  const [data, setData] = useState<ReleaseData | null>(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/api/release");
-        const json = await res.json();
-        setData(json);
-      } catch (err) {
-        console.error("❌ 無法取得版本資料：", err);
-        setData({ url: null, version: null });
-      }
-    };
-    fetchData();
-  }, []);
-  const downloadUrl =
-    data?.url || "https://github.com/NerdyHomeReOpen/RiceCall/releases";
-  const label = data?.url ? `立即下載 v${data?.version || ""}` : "載入中...";
   return (
     <>
       <Header />
-      <div className={content["main"]}>
-        <div className={content["bgImageBox"]}>
-          <div className={content["bgImage"]} />
-        </div>
-        <div className={content["wrapper"]}>
-          <h1>不僅是多人遊戲語音工具</h1>
-          <h2>還是有趣的遊戲社區</h2>
-          <p className={content["downloadPC"]}>
-            <a href={downloadUrl} target="_blank" rel="noreferrer">
-              <i></i>
-              <strong>{label}</strong>
-            </a>
-          </p>
-        </div>
-      </div>
+      <HomeClientPart />
+      <JsonLdInjector jsonLd={metadata.jsonLd} />
       <Footer />
     </>
   );

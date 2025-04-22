@@ -1,13 +1,18 @@
-"use client";
-import React from "react";
-
 // Components
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import ContactusClientPart from "@/components/client_part/ContactusClientPart";
 
-// CSS
-import content from "@/styles/common/content.module.css";
-import main from "@/styles/contactus.module.css";
+// Lib
+import { getMetaData } from "@/lib/seoHelper";
+import JsonLdInjector from "@/components/JsonLd";
+
+export const metadata = getMetaData({
+  title: "聯繫我們",
+  description: "聯絡 RC 語音開發團隊，快速解決您的問題！",
+  keywords: "RC客服, RiceCall, 聯繫RC, RC官方, 米飯語音",
+  url: "contactus",
+});
 
 export default function ContactUsPage() {
   const contacts = [
@@ -55,42 +60,8 @@ export default function ContactUsPage() {
   return (
     <>
       <Header />
-      <div className={`${content["main"]} ${main["main"]}`}>
-        <div className={`${content["wrapper"]} ${main["wrapper"]}`}>
-          <h2>聯絡我們</h2>
-          <div className={content["content"]}>
-            {contacts.map(({ title, contact, info }, idx) => (
-              <div key={idx} className={content["contactInfo"]}>
-                <h3>
-                  <strong>{title}</strong>
-                </h3>
-                <ul>
-                  {contact && (
-                    <li>
-                      <div className={content["title"]}>連絡人:</div>
-                      <div className={content["content"]}>{contact}</div>
-                    </li>
-                  )}
-                  {info.map((item, i) => (
-                    <li key={i}>
-                      <div className={content["title"]}>{item.label}:</div>
-                      <div className={content["content"]}>
-                        {/^https?:\/\//.test(item.value) ? (
-                          <a href={item.value} target="_blank" rel="noreferrer">
-                            {item.value}
-                          </a>
-                        ) : (
-                          item.value
-                        )}
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <ContactusClientPart />
+      <JsonLdInjector jsonLd={metadata.jsonLd} />
       <Footer />
     </>
   );
