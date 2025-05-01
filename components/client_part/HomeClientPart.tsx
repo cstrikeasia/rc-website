@@ -12,6 +12,8 @@ interface ReleaseData {
 export default function HomePage() {
   // State
   const [data, setData] = useState<ReleaseData | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,9 +28,24 @@ export default function HomePage() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const userAgent = navigator.userAgent || navigator.vendor;
+    if (
+      /android|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(
+        userAgent.toLowerCase(),
+      )
+    ) {
+      setIsMobile(true);
+    }
+  }, []);
+
   const downloadUrl =
     data?.url || "https://github.com/NerdyHomeReOpen/RiceCall/releases";
-  const label = data?.url ? `立即下載 v${data?.version || ""}` : "載入中...";
+  const label = isMobile
+    ? "僅支援電腦版"
+    : data?.url
+    ? `立即下載 v${data?.version || ""}`
+    : "載入中...";
   return (
     <>
       <div className={content["main"]}>
@@ -39,7 +56,22 @@ export default function HomePage() {
           <h1>不僅是多人遊戲語音工具</h1>
           <h2>還是有趣的遊戲社區</h2>
           <p className={content["downloadPC"]}>
-            <a href={downloadUrl} target="_blank" rel="noreferrer">
+            <a
+              href={!isMobile ? downloadUrl : undefined}
+              target="_blank"
+              rel="noreferrer"
+              onClick={(e) => {
+                if (isMobile) {
+                  e.preventDefault();
+                }
+              }}
+              aria-disabled={isMobile}
+              style={
+                isMobile
+                  ? { pointerEvents: "none", opacity: 0.6, cursor: "not-allowed" }
+                  : {}
+              }
+            >
               <i></i>
               <strong>{label}</strong>
             </a>
