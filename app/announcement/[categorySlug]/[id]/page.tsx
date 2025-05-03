@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
 import Link from 'next/link';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 // Lib
 import { getAnnouncementById } from '@/lib/data/announcements';
@@ -33,7 +35,7 @@ export async function generateMetadata(
     }
     return {
         title: `${announcement.title} - RC語音官方公告`,
-        description: announcement.content.substring(0, 150) + '...',
+        description: announcement.content.substring(0, 150).replace(/[`*_{}[\]()#+\-.!]/g, '') + '...',
     };
 }
 
@@ -57,10 +59,11 @@ export default async function AnnouncementDetailPage({ params }: Props) {
                                 <span className={detailStyles["detailDate"]}>發布日期：{announcement.date}</span>
                             </div>
                         </div>
-                        <div
-                            className={detailStyles["detailBody"]}
-                            dangerouslySetInnerHTML={{ __html: announcement.content }}
-                        />
+                        <div className={detailStyles["detailBody"]}>
+                            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                {announcement.content}
+                            </ReactMarkdown>
+                        </div>
                         <div className={detailStyles["backButtonContainer"]}>
                             <Link href="/announcement">返回公告列表</Link>
                         </div>
