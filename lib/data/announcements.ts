@@ -1,3 +1,5 @@
+import crypto from 'crypto';
+
 export interface Announcement {
     id: number;
     title: string;
@@ -6,31 +8,47 @@ export interface Announcement {
     content: string;
 }
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
-
-async function fetchAnnouncementsFromAPI(): Promise<Announcement[]> {
+const EXTERNAL_API_URL = process.env.API_URL || '';
+const API_SECRET = process.env.API_SECRET || '';
+if (!API_SECRET && process.env.NODE_ENV === 'production') {
+    console.error("ERROR: API_SECRET is not set in environment variables for production!");
+}
+if (!EXTERNAL_API_URL && process.env.NODE_ENV === 'production') {
+    console.error("ERROR: API_URL is not set in environment variables for production!");
+}
+async function fetchExternalAnnouncements(): Promise<Announcement[]> {
+    if (!API_SECRET || !EXTERNAL_API_URL) {
+        console.error("API Secret or URL is missing.");
+        return [];
+    }
     try {
-        const response = await fetch(`${API_BASE_URL}/api/announcement`, {
+        const token = crypto.createHash('md5').update(API_SECRET).digest('hex');
+        const response = await fetch(`${EXTERNAL_API_URL}/ann`, {
+            method: 'GET',
+            headers: {
+                'x-api-token': token,
+                'Content-Type': 'application/json',
+            },
             cache: 'no-store',
         });
         if (!response.ok) {
-            console.error(`API fetch error: ${response.status} ${response.statusText}`);
-            throw new Error(`取得公告失敗：${response.statusText}`);
+            console.error(`External API fetch error: ${response.status} ${response.statusText}`);
+            throw new Error(`取得外部公告失敗：${response.statusText}`);
         }
         const data = await response.json();
         if (!Array.isArray(data)) {
-            console.error("API returned non-array data:", data);
-            throw new Error("來自 API 的無效資料格式");
+            console.error("External API returned non-array data:", data);
+            throw new Error("來自外部 API 的無效資料格式");
         }
         return data as Announcement[];
     } catch (error) {
-        console.error("Error:", error);
+        console.error("Error fetching external announcements:", error);
         throw error;
     }
 }
 
 export async function getAllAnnouncements(): Promise<Announcement[]> {
-    const announcements = await fetchAnnouncementsFromAPI();
+    const announcements = await fetchExternalAnnouncements();
     return [...announcements].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
@@ -47,6 +65,6 @@ export async function getAnnouncementById(id: string | number): Promise<Announce
     if (isNaN(numericId)) {
         return undefined;
     }
-    const announcements = await fetchAnnouncementsFromAPI();
+    const announcements = await fetchExternalAnnouncements();
     return announcements.find(ann => ann.id === numericId);
 } 
