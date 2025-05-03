@@ -20,7 +20,8 @@ type Props = {
 const categorySlugMap: { [key: string]: string } = {
     'announcement': '公告',
     'update': '更新',
-    'system': '系統'
+    'system': '系統',
+    'event': '活動'
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

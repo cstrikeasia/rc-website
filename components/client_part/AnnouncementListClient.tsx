@@ -20,12 +20,14 @@ const categoryLinks = [
     { name: '公告', href: '/announcement/announcement' },
     { name: '更新', href: '/announcement/update' },
     { name: '系統', href: '/announcement/system' },
+    { name: '活動', href: '/announcement/event' },
 ];
 
 const categoryDisplayNameToSlugMap: { [key: string]: string } = {
     '公告': 'announcement',
     '更新': 'update',
     '系統': 'system',
+    '活動': 'event',
 };
 
 export default function AnnouncementListClient({ initialAnnouncements, currentCategory }: AnnouncementListProps) {
