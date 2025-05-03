@@ -10,6 +10,10 @@ export const Header = () => {
   const navLinks = [
     { label: "首頁", href: "/" },
     {
+      label: "公告",
+      href: "/announcement",
+    },
+    {
       label: "Discord",
       href: "https://discord.gg/adCWzv6wwS",
       target: "_blank",
