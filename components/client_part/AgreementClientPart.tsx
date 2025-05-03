@@ -2,7 +2,7 @@
 import React from "react";
 
 // Components
-import { parseLine } from "@/components/parseHtmlLine";
+import { parseLine } from "@/components/ParseHtmlLine";
 
 // CSS
 import content from "@/styles/common/content.module.css";

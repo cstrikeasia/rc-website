@@ -1,0 +1,272 @@
+.main {
+  padding: 50px 0 70px 0;
+}
+
+.main .wrapper {
+  padding-left: 0rem !important;
+}
+
+.content {
+  width: 100% !important;
+}
+
+.announcementWrapper {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryFilters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: #fff;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: auto;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 2rem;
+}
+
+.categoryButton {
+  background-color: transparent;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  color: #555;
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+
+.categoryButton:hover {
+  color: #000;
+}
+
+.categoryButton.active {
+  color: #d83f3f;
+  font-weight: bold;
+  border-bottom-color: #d83f3f;
+}
+
+.announcementList {
+  list-style: none;
+  width: auto !important;
+  background: #fff;
+  border-radius: 5px;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  margin: 5px !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.announcementItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-top: 1px solid #e8e8e8;
+  width: 100% !important;
+}
+
+.announcementItem:first-child {
+  border-top: none;
+}
+
+.itemTitleBlock {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  margin-right: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemCategory {
+  display: inline-block;
+  border: 1px solid #ccc;
+  color: #333;
+  background-color: #f8f8f8;
+  padding: 4px 11px;
+  margin-right: 10px;
+  border-radius: 4px;
+  font-size: 1em;
+  font-weight: normal;
+  flex-shrink: 0;
+  text-align: center;
+  min-width: 4em;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category公告 {
+  border-color: #aed6ff;
+  background-color: #e7f3ff;
+  color: #005cbf;
+}
+
+.category更新 {
+  border-color: #b7f0c8;
+  background-color: #e6ffed;
+  color: #1e7e34;
+}
+
+.category系統 {
+  border-color: #ffd9b3;
+  background-color: #fff0e6;
+  color: #c85a17;
+}
+
+.itemTitle {
+  color: #333;
+  font-size: 1em;
+  font-weight: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemTitle:hover {
+  color: #d83f3f;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.itemDate {
+  flex-shrink: 0;
+  color: #999;
+}
+
+.noResults {
+  padding: 20px;
+  text-align: center;
+  color: #777;
+  font-style: italic;
+  border-top: 1px solid #e8e8e8;
+}
+
+.noResults:first-child {
+  border-top: none;
+}
+
+.paginationControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  padding: 15px 0;
+  gap: 15px;
+}
+
+.pageButton {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  color: #333;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.pageButton:hover:not(:disabled) {
+  background-color: #e0e0e0;
+  border-color: #bbb;
+}
+
+.pageButton:disabled {
+  background-color: #f8f8f8;
+  color: #aaa;
+  cursor: not-allowed;
+  border-color: #ddd;
+}
+
+.paginationControls span {
+  color: #000;
+  font-size: 0.95em;
+}
+
+@media (max-width: 768px) {
+  .itemTitleBlock {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .itemTitle {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    font-size: 0.95em;
+  }
+
+  .itemDate {
+    font-size: 0.85em;
+  }
+
+  .itemCategory {
+    min-width: 3.5em;
+    padding: 3px 9px;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .main .wrapper {
+    display: block;
+    padding: 0;
+  }
+
+
+  .announcementItem {
+    padding: 12px 0;
+  }
+
+  .itemDate {
+    white-space: nowrap;
+  }
+
+  .paginationControls {
+    margin-top: 20px;
+    padding: 10px 0;
+    gap: 10px;
+  }
+
+  .pageButton {
+    padding: 6px 12px;
+    font-size: 1em;
+  }
+
+  .categoryFilters {
+    padding: 5px;
+  }
+
+  .categoryButton {
+    padding: 6px 10px;
+  }
+
+  .itemCategory {
+    font-size: 0.85em;
+    min-width: 3em;
+    padding: 2px 7px;
+  }
+}
+
+.itemLink {
+  text-decoration: none;
+  color: inherit;
+  display: contents;
+  width: 100% !important;
+}
+
+.itemLink:hover .itemTitle {
+  color: #d83f3f;
+  text-decoration: underline;
+  cursor: pointer;
+}

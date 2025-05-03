@@ -16,7 +16,7 @@ export const metadata = getMetaData({
   url: "specification",
 });
 
-export default function SpecificationPage() {
+export default function AnnouncementPage() {
   return (
     <>
       <Header />
