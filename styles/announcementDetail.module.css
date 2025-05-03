@@ -79,8 +79,8 @@
     font-size: 1em;
     line-height: 1.8;
     color: #333;
+    white-space: pre-line;
 }
-
 
 .detailBody>* {
     margin-bottom: 1.2em;

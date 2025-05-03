@@ -126,7 +126,7 @@ export default function FAQClientPart() {
         ],
       },
       {
-        question: "怎麼獲取RC語音帳號？",
+        question: "怎麼取得RC語音帳號？",
         answer: [
           "◆ 如果你已經安裝好RC語音0.1.5程式，請打開程式，點擊登錄視窗左下方的‘註冊帳號’進入申請頁面；",
           <Image
@@ -1237,9 +1237,8 @@ export default function FAQClientPart() {
                   <div
                     key={idx}
                     id={`faq-${idx + 1}`}
-                    className={`${main["help-node"]} ${
-                      openIndex !== idx ? main["closed"] : ""
-                    }`}
+                    className={`${main["help-node"]} ${openIndex !== idx ? main["closed"] : ""
+                      }`}
                   >
                     <h5
                       onClick={() => toggleItem(idx)}

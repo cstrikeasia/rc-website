@@ -3,6 +3,8 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
+import remarkBreaks from 'remark-breaks';
 
 // Lib
 import { getAnnouncementById } from '@/lib/data/announcements';
@@ -31,11 +33,13 @@ export async function generateMetadata(
     if (!announcement) {
         return {
             title: '找不到公告',
+            description: '您所查看的 RC語音 公告不存在或已被移除。請返回列表查看最新公告。',
         };
     }
+    const description = `深入了解 RC 語音 ${announcement.category} 分類的最新動態！閱讀官方公告：「${announcement.title}」，取得完整資訊。`;
     return {
         title: `${announcement.title} - RC語音官方公告`,
-        description: announcement.content.substring(0, 150).replace(/[`*_{}[\]()#+\-.!]/g, '') + '...',
+        description: description,
     };
 }
 
@@ -60,8 +64,11 @@ export default async function AnnouncementDetailPage({ params }: Props) {
                             </div>
                         </div>
                         <div className={detailStyles["detailBody"]}>
-                            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                                {announcement.content}
+                            <ReactMarkdown
+                                remarkPlugins={[remarkGfm, remarkBreaks]}
+                                rehypePlugins={[rehypeRaw]}
+                            >
+                                {announcement.content.replace(/\\n/g, '\n')}
                             </ReactMarkdown>
                         </div>
                         <div className={detailStyles["backButtonContainer"]}>
