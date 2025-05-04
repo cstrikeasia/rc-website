@@ -126,8 +126,8 @@
     align-items: start !important;
     text-align: start !important;
     padding: 0 !important;
-    display: inline;
-    width: auto;
+    display: inline !important;
+    width: auto !important;
 }
 
 .detailBody strong {
