@@ -4,7 +4,6 @@ import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import remarkBreaks from 'remark-breaks';
 
 // Lib
 import { getAnnouncementById } from '@/lib/data/announcements';
@@ -65,7 +64,7 @@ export default async function AnnouncementDetailPage({ params }: Props) {
                         </div>
                         <div className={detailStyles["detailBody"]}>
                             <ReactMarkdown
-                                remarkPlugins={[remarkGfm, remarkBreaks]}
+                                remarkPlugins={[remarkGfm]}
                                 rehypePlugins={[rehypeRaw]}
                             >
                                 {announcement.content.replace(/\\n/g, '\n')}
