@@ -1,7 +1,7 @@
 /** Header **/
 .header {
-  height: 25px;
-  padding: 25px 0;
+  height: auto;
+  padding: 10px 0;
 }
 
 .wrapper {

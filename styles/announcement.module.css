@@ -28,7 +28,7 @@
   border: none;
   padding: 8px 15px;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 1.2em;
   font-weight: bold;
   color: #555;
   border-bottom: 3px solid transparent;
@@ -124,7 +124,7 @@
 
 .itemTitle {
   color: #333;
-  font-size: 1em;
+  font-size: 1.2em;
   font-weight: normal;
   white-space: nowrap;
   overflow: hidden;
@@ -202,11 +202,6 @@
     white-space: normal;
     overflow: visible;
     text-overflow: clip;
-    font-size: 0.95em;
-  }
-
-  .itemDate {
-    font-size: 0.85em;
   }
 
   .itemCategory {
@@ -258,7 +253,6 @@
   }
 
   .itemCategory {
-    font-size: 0.85em;
     min-width: 3em;
     padding: 2px 7px;
   }

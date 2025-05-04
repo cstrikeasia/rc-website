@@ -19,7 +19,7 @@ interface AnnouncementContentProps {
 
 export default function AnnouncementContentClientPart({ announcement }: AnnouncementContentProps) {
     return (
-        <div className={`${content["main"]} ${main["detailMain"]}`}>
+        <div className={`${content["main"]} ${main["main"]}`}>
             <div className={`${content["wrapper"]} ${main["detailWrapper"]}`}>
                 <div className={main["detailContentContainer"]}>
                     <div className={main["detailHeader"]}>
