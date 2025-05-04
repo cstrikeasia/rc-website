@@ -37,6 +37,11 @@ function convertDiscordMarkdown(content: string): string {
         const timestamp = parseInt(timestampStr, 10);
         return isNaN(timestamp) ? match : formatDiscordTimestamp(timestamp);
     });
+    const serverId = "1095489701902831616";
+    convertedContent = convertedContent.replace(
+        /<#(\d+)>/g,
+        `<a href="https://discord.com/channels/${serverId}/$1" target="_blank" rel="noopener noreferrer">「頻道連結」</a>`
+    );
     return convertedContent;
 }
 
