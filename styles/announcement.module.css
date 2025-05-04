@@ -1,5 +1,5 @@
 .content {
-  height: 60rem !important;
+  height: 60dvh !important;
   width: 100%;
   overflow: hidden !important;
 }
