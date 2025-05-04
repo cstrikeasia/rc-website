@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 
 interface MetaOptions {
     title: string;
@@ -5,37 +6,67 @@ interface MetaOptions {
     keywords?: string;
     url?: string;
     image?: string;
+    pageType?: 'WebSite' | 'WebPage' | 'Article' | 'CollectionPage';
 }
 
-export function getMetaData(meta: MetaOptions) {
-    const siteUrl = `${process.env.NEXT_PUBLIC_SITE_URL}${meta.url || ""}`;
-    const imageUrl = '/images/logo.png';
+interface MetaDataResult {
+    metadata: Metadata;
+    jsonLd: object;
+}
 
-    const jsonLd = {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        url: siteUrl,
-        name: `RiceCall - ${meta.title}`,
-        description: meta.description,
-        image: imageUrl,
-    };
-
-    return {
+export function getMetaData(meta: MetaOptions): MetaDataResult {
+    const siteUrl = `${process.env.NEXT_PUBLIC_SITE_URL || ''}${meta.url || ''}`;
+    const imageUrl = meta.image || `${process.env.NEXT_PUBLIC_SITE_URL || ''}images/logo.png`;
+    const metadataResult: Metadata = {
+        metadataBase: process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL) : undefined,
         title: `RiceCall - ${meta.title}`,
         description: meta.description,
-        keywords: meta.keywords || "RiceCall, RC語音, 語音群組, 米飯語音",
+        alternates: {
+            canonical: siteUrl,
+        },
         openGraph: {
             title: `RiceCall - ${meta.title}`,
             description: meta.description,
             url: siteUrl,
-            type: "website",
-            images: [imageUrl],
+            siteName: 'RiceCall',
+            images: [
+                {
+                    url: imageUrl,
+                    width: 1200,
+                    height: 630,
+                    alt: `RiceCall - ${meta.title}`,
+                },
+            ],
+            locale: 'zh_TW',
+            type: meta.pageType === 'Article' ? 'article' : 'website',
         },
         twitter: {
-            card: "summary_large_image",
+            card: 'summary_large_image',
             title: `RiceCall - ${meta.title}`,
             description: meta.description,
+            images: [imageUrl],
         },
-        jsonLd,
+    };
+    if (meta.keywords) {
+        metadataResult.keywords = meta.keywords.split(',').map(k => k.trim());
+    } else {
+        metadataResult.keywords = ["RiceCall", "RC語音", "語音群組", "米飯語音"];
+    }
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": meta.pageType || "WebSite",
+        url: siteUrl,
+        name: `RiceCall - ${meta.title}`,
+        description: meta.description,
+        ...((meta.pageType || "WebSite") === "WebSite" && {
+            logo: `${process.env.NEXT_PUBLIC_SITE_URL || ''}/images/logo.png`
+        }),
+        ...(meta.pageType === "Article" && {
+            image: imageUrl,
+        }),
+    };
+    return {
+        metadata: metadataResult,
+        jsonLd: jsonLd,
     };
 }

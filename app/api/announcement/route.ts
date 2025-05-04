@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getAllAnnouncements } from '@/lib/data/announcements';
+import { getAllAnnouncements } from '@/lib/announcements/apiFetch';
 
 export async function GET(request: Request) {
     try {
