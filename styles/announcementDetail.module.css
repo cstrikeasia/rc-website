@@ -79,6 +79,8 @@
     font-size: 1em;
     line-height: 1.7;
     color: #333;
+    display: flex;
+    flex-direction: column;
 }
 
 .detailBody h1,
@@ -123,6 +125,7 @@
     text-align: start !important;
     padding: 0 !important;
     display: inline;
+    width: auto;
 }
 
 .detailBody strong {
