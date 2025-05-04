@@ -211,7 +211,7 @@
     padding: 10px 0;
     z-index: 1;
     position: relative;
-    top: 0.7rem;
+    top: 0.3dvh;
     border-bottom: 1px solid #0000001c;
   }
 

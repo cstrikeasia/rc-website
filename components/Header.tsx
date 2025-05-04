@@ -19,6 +19,16 @@ export const Header = () => {
       target: "_blank",
     },
     {
+      label: "Facebook",
+      href: "https://www.facebook.com/profile.php?id=61575681189756",
+      target: "_blank",
+    },
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/ricecall.com.tw/",
+      target: "_blank",
+    },
+    {
       label: "Github",
       href: "https://github.com/NerdyHomeReOpen/RiceCall/tree/main",
       target: "_blank",
