@@ -114,6 +114,7 @@
     justify-content: start !important;
     align-items: start !important;
     text-align: start !important;
+    padding: 0;
 }
 
 .detailBody strong {
