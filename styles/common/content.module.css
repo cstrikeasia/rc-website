@@ -1,7 +1,6 @@
 /** 主內容 **/
 .main {
-  background: #358bff url(../../public/images/bg.jpg?v=fa56a8da) center top
-    no-repeat;
+  background: #358bff url(../../public/images/bg.jpg?v=fa56a8da) center top no-repeat;
   background-size: 100% 100%;
   color: #fff;
 }
@@ -26,23 +25,24 @@
   bottom: 0;
   z-index: 0;
   pointer-events: none;
-
   display: flex;
   justify-content: flex-end;
   align-items: center;
-
   width: 50vw;
   height: 100%;
   overflow: hidden;
 }
 
 .bgImageBox .bgImage {
-  max-height: 601px;
-  object-fit: revert-layer;
-  background: url(../../public/images/rc-screenshot.png) no-repeat;
-  height: 35vw;
   width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  aspect-ratio: 16 / 10;
   background-size: contain;
+  background-image: url(../../public/images/rc-screenshot.png);
+  background-repeat: no-repeat;
+  height: 35vw;
 }
 
 .main h1,
@@ -175,8 +175,7 @@
 
   .bgImageBox .bgImage {
     width: 100%;
-    background: url(../../public/images/rc-screenshot.png) center center
-      no-repeat;
+    background: url(../../public/images/rc-screenshot.png) center center no-repeat;
     background-size: contain;
     height: 65vw;
     margin-top: 35rem;
@@ -219,5 +218,11 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+  }
+}
+
+@media (min-width: 1920px) {
+  .bgImageBox .bgImage {
+    height: 500px;
   }
 }
