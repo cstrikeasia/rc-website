@@ -119,11 +119,10 @@
 }
 
 .detailBody p {
-    width: auto !important;
-    justify-content: start !important;
     align-items: start !important;
     text-align: start !important;
     padding: 0 !important;
+    display: inline;
 }
 
 .detailBody strong {
@@ -212,10 +211,12 @@
 }
 
 .detailBody a {
+    display: inline !important;
     color: #007bff;
-    text-decoration: none;
-    word-wrap: break-word;
-    line-height: normal !important;
+    text-decoration: underline;
+    word-break: break-word;
+    white-space: normal;
+    line-height: inherit !important;
     margin: 0 !important;
 }
 
