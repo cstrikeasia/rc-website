@@ -81,7 +81,7 @@
   display: inline;
   cursor: pointer;
   font-size: 15px;
-  color: #1173d5;
+  color: #ffffff;
   font-weight: normal;
   line-height: 2em;
   padding-right: 15px;
@@ -236,6 +236,7 @@
 }
 
 @media screen and (min-width: 769px) {
+
   .faq-toggle-btn,
   .faq-mobile-menu {
     display: none;
