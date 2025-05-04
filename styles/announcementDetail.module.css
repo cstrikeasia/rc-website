@@ -148,6 +148,7 @@
 .detailBody li {
     margin-bottom: 0.3em;
     list-style-type: disc;
+    width: auto !important;
 }
 
 .detailBody blockquote {
