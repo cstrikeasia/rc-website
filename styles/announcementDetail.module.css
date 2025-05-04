@@ -96,6 +96,7 @@
     font-weight: bold;
     line-height: 1.3;
     text-align: start !important;
+    width: auto !important;
 }
 
 .detailBody h1 {
