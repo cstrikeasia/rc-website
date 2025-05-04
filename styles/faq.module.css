@@ -232,6 +232,7 @@
 
   .help-node {
     margin-bottom: 1rem;
+    border: unset;
   }
 }
 
