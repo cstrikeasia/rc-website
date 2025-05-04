@@ -47,7 +47,7 @@
   background: #fff;
   border-radius: 5px;
   padding: 10px !important;
-  height: 35rem;
+  height: 35dvh;
   overflow-y: scroll;
 }
 
