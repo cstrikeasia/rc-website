@@ -33,7 +33,7 @@ function formatDiscordTimestamp(timestamp: number): string {
 function convertDiscordMarkdown(content: string): string {
     let convertedContent = content;
     convertedContent = convertedContent.replace(/__\*\*(.*?)\*\*__/g, '**$1**');
-    convertedContent = convertedContent.replace(/<t:(\d+):F>/g, (match, timestampStr) => {
+    convertedContent = convertedContent.replace(/<t:(\d+):.>/g, (match, timestampStr) => {
         const timestamp = parseInt(timestampStr, 10);
         return isNaN(timestamp) ? match : formatDiscordTimestamp(timestamp);
     });
