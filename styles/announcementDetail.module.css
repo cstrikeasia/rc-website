@@ -1,7 +1,3 @@
-.detailMain {
-    padding: 40px 0 60px 0;
-}
-
 .detailWrapper {
     padding-right: 3rem;
 }
@@ -20,14 +16,44 @@
     margin-bottom: 25px;
 }
 
+.detailTitle,
+.detailBody h1,
+.detailBody h2,
+.detailBody h3,
+.detailBody h4,
+.detailBody h5,
+.detailBody h6 {
+    padding-top: 0 !important;
+    line-height: 1.3;
+    font-weight: bold;
+    width: auto !important;
+}
+
+.detailBody h1,
+.detailBody h2,
+.detailBody h3,
+.detailBody h4,
+.detailBody h5,
+.detailBody h6,
+.detailBody p,
+.detailBody ul,
+.detailBody ol {
+    text-align: start !important;
+}
+
+.detailBody p,
+.detailBody a {
+    display: inline !important;
+}
+
+.detailBody li { 
+    width: auto !important;
+}
+
 .detailTitle {
     font-size: 2em;
-    font-weight: bold;
     margin-bottom: 15px;
     color: #222;
-    line-height: 1.3;
-    padding-top: 0 !important;
-    width: auto !important;
 }
 
 .detailMeta {
@@ -92,11 +118,6 @@
 .detailBody h6 {
     margin-top: 1.5em;
     margin-bottom: 0.6em;
-    padding-top: 0 !important;
-    font-weight: bold;
-    line-height: 1.3;
-    text-align: start !important;
-    width: auto !important;
 }
 
 .detailBody h1 {
@@ -123,11 +144,7 @@
 }
 
 .detailBody p {
-    align-items: start !important;
-    text-align: start !important;
     padding: 0 !important;
-    display: inline !important;
-    width: auto !important;
 }
 
 .detailBody strong {
@@ -147,13 +164,11 @@
 .detailBody ul,
 .detailBody ol {
     padding-left: 1.5em !important;
-    text-align: start !important;
 }
 
 .detailBody li {
     margin-bottom: 0.3em;
     list-style-type: disc;
-    width: auto !important;
 }
 
 .detailBody blockquote {
@@ -217,7 +232,6 @@
 }
 
 .detailBody a {
-    display: inline !important;
     color: #007bff;
     text-decoration: underline;
     word-break: break-word;
@@ -254,11 +268,6 @@
 }
 
 @media (max-width: 768px) {
-    .detailWrapper {
-        padding: 10rem 10px !important;
-        width: auto !important;
-    }
-
     .detailContentContainer {
         padding: 15px 10px !important;
         margin: 5px !important;

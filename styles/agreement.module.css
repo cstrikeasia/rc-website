@@ -7,7 +7,7 @@
 }
 
 .main {
-  background: #358bff url(../public/images/bg2.jpg) center top no-repeat;
+  background: #358bff url(../public/images/agreement_bg.png) center top no-repeat;
   background-size: 100% 100%;
   color: #fff;
 }
@@ -39,16 +39,6 @@
   line-height: 0;
   background: unset;
   border-radius: unset;
-}
-
-.main {
-  padding: 50px 0 70px 0;
-}
-
-.main h2 {
-  font-size: 20px;
-  color: #73a4d5;
-  padding-bottom: 20px;
 }
 
 .main h4 {

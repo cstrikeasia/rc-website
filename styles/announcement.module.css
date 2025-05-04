@@ -1,13 +1,7 @@
-.main {
-  padding: 50px 0 70px 0;
-}
-
-.main .wrapper {
-  padding-left: 0rem !important;
-}
-
 .content {
-  width: 100% !important;
+  height: 60rem !important;
+  width: 100%;
+  overflow: hidden !important;
 }
 
 .announcementWrapper {
@@ -18,15 +12,11 @@
 
 .categoryFilters {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
   background: #fff;
   border-radius: 5px;
   padding-left: 10px;
   padding-right: 10px;
   width: auto;
-  margin-left: 5px;
-  margin-right: 5px;
   margin-top: 2rem;
 }
 
@@ -53,15 +43,12 @@
 }
 
 .announcementList {
-  list-style: none;
   width: auto !important;
   background: #fff;
   border-radius: 5px;
-  padding-left: 10px !important;
-  padding-right: 10px !important;
-  margin: 5px !important;
-  display: flex;
-  flex-direction: column;
+  padding: 10px !important;
+  height: 35rem;
+  overflow-y: scroll;
 }
 
 .announcementItem {
@@ -71,6 +58,7 @@
   padding: 15px 0;
   border-top: 1px solid #e8e8e8;
   width: 100% !important;
+  margin-bottom: 0!important;
 }
 
 .announcementItem:first-child {
@@ -223,11 +211,18 @@
 }
 
 @media (max-width: 576px) {
-
   .main .wrapper {
     display: block;
     padding: 0;
   }
+
+  .main ul li {
+    margin-bottom: 0px !important;
+  }
+
+  .content {
+    height: 63rem !important;
+}
 
 
   .announcementItem {
@@ -261,6 +256,10 @@
     font-size: 0.85em;
     min-width: 3em;
     padding: 2px 7px;
+  }
+
+  .announcementList {
+    overflow: scroll;
   }
 }
 

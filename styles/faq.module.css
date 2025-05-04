@@ -1,31 +1,20 @@
-/* === 背景與外層容器 === */
-
-/* .main {
-  padding: 50px 0 70px 0;
-  background: url(../public/images/bg2.jpg) no-repeat;
-  background-size: cover;
-} */
-
 .main {
-  background: url(../public/images/bg2.jpg) no-repeat;
-  background-size: cover;
-  padding-top: 1px;
-}
-
-.wrapper {
-  height: auto;
-  background: unset;
-  padding: 50px 0;
+  width: auto;
 }
 
 .main p {
   display: unset;
 }
 
+.content li {
+  float: unset!important;
+  width: auto!important;
+}
+
 /* === FAQ 內容區塊 === */
 .help-outer {
   width: 100%;
-  margin: auto;
+  margin-top: 3rem;
   border: 1px solid #dfebf6;
   background: url(../public/images/help-left-1.gif) left top repeat-y;
   background-color: #fff;
@@ -35,7 +24,8 @@
   background: url(../public/images/help-left-2.gif) left bottom no-repeat;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  height: 55dvh;
+  overflow-y: scroll;
 }
 
 .help-menu {
@@ -45,29 +35,31 @@
 }
 
 .help-menu li a {
-  display: block;
-  height: 41px;
-  line-height: 41px;
+  display: block !important;
+  height: 41px !important;
+  line-height: 41px !important;
   font-size: 14px;
   font-weight: bold;
   color: #73a4d5;
-  border-radius: 0;
+  border-radius: 0 !important;
+  width: 100% !important;
+  background: unset !important;
 }
 
 .help-menu li a span {
   display: block;
   padding-left: 36px;
-  background: url(../public/images/help-nav.gif) 13px center no-repeat;
+  background: url(../public/images/help-nav.gif) 13px center no-repeat!important;
 }
 
 .help-menu li a:hover {
-  background: url(../public/images/help-menu.gif) left bottom no-repeat;
+  background: url(../public/images/help-menu.gif) left bottom no-repeat!important;
   text-decoration: none;
 }
 
 .help-menu li a.current,
 .help-menu li a.current:hover {
-  background: url(../public/images/help-menu.gif) left top no-repeat;
+  background: url(../public/images/help-menu.gif) left top no-repeat!important;
 }
 
 /* === FAQ 主內容區塊 === */
@@ -75,6 +67,10 @@
   width: 635px;
   padding: 20px 60px 60px 60px;
   float: left;
+}
+
+.help-node {
+  padding: .2rem;
 }
 
 .help-node h5 {
@@ -101,6 +97,7 @@
   width: 593px;
   margin: 10px 0 20px 0;
   line-height: 1.6em;
+  color: #000;text-align: start;
 }
 
 .help-content .closed div {
@@ -217,11 +214,10 @@
 
   .help-outer,
   .help-inner {
-    background: unset;
+    background: #fff;
   }
 
-  .help-node div,
-  .help-outer {
+  .help-node div {
     width: auto;
   }
 
@@ -233,10 +229,6 @@
   .help-node {
     margin-bottom: 1rem;
     border: unset;
-  }
-
-  .help-node h5 {
-    color: #ffffff;
   }
 }
 

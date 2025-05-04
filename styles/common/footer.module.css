@@ -1,7 +1,7 @@
 /** 頁尾 **/
 .footer .wrapper {
   padding: 25px 0;
-  color: #4b4b4b;
+  color: #4b4b4b;z-index: 1;
 }
 
 .footer .wrapper div {
