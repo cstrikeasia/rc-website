@@ -81,7 +81,7 @@
   display: inline;
   cursor: pointer;
   font-size: 15px;
-  color: #ffffff;
+  color: #1173d5;
   font-weight: normal;
   line-height: 2em;
   padding-right: 15px;
@@ -233,6 +233,10 @@
   .help-node {
     margin-bottom: 1rem;
     border: unset;
+  }
+
+  .help-node h5 {
+    color: #ffffff;
   }
 }
 
