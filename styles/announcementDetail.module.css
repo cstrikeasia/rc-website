@@ -215,6 +215,9 @@
 .detailBody a {
     color: #007bff;
     text-decoration: none;
+    word-wrap: break-word;
+    line-height: normal;
+    margin: 0;
 }
 
 .detailBody a:hover {
