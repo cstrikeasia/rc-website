@@ -2,12 +2,15 @@
   height: 60dvh !important;
   width: 100%;
   overflow: hidden !important;
+  display: flex;
+  flex-direction: column;
 }
 
 .announcementWrapper {
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 .categoryFilters {
@@ -49,6 +52,7 @@
   padding: 10px !important;
   height: 35dvh;
   overflow-y: scroll;
+  min-height: 0;
 }
 
 .announcementItem {
@@ -58,7 +62,7 @@
   padding: 15px 0;
   border-top: 1px solid #e8e8e8;
   width: 100% !important;
-  margin-bottom: 0!important;
+  margin-bottom: 0 !important;
 }
 
 .announcementItem:first-child {
@@ -157,6 +161,7 @@
   margin-top: 30px;
   padding: 15px 0;
   gap: 15px;
+  flex: 1;
 }
 
 .pageButton {
@@ -222,7 +227,7 @@
 
   .content {
     height: 70dvh !important;
-}
+  }
 
 
   .announcementItem {
