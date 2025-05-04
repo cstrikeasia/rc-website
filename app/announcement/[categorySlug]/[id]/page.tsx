@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
 
 // Lib
-import { getAnnouncementById } from '@/lib/announcements/apiFetch';
+import { getAnnouncementById, type Announcement } from '@/lib/announcements/apiFetch';
 import { getMetaData } from '@/lib/seoHelper';
 import { announcementBaseOptions } from '@/lib/announcements/metadataConfig';
 
@@ -11,6 +11,34 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import JsonLdInjector from '@/components/JsonLd';
 import AnnouncementContentClientPart from '@/components/client_part/AnnouncementContentClientPart';
+
+function formatDiscordTimestamp(timestamp: number): string {
+    try {
+        const date = new Date(timestamp * 1000);
+        return date.toLocaleString('zh-TW', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false,
+        });
+    } catch (e) {
+        console.error("Error formatting timestamp:", e);
+        return `(時間戳: ${timestamp})`;
+    }
+}
+
+function convertDiscordMarkdown(content: string): string {
+    let convertedContent = content;
+    convertedContent = convertedContent.replace(/__\*\*(.*?)\*\*__/g, '**$1**');
+    convertedContent = convertedContent.replace(/<t:(\d+):F>/g, (match, timestampStr) => {
+        const timestamp = parseInt(timestampStr, 10);
+        return isNaN(timestamp) ? match : formatDiscordTimestamp(timestamp);
+    });
+    return convertedContent;
+}
 
 type Props = {
     params: {
@@ -51,10 +79,15 @@ export async function generateMetadata(
 }
 
 export default async function AnnouncementDetailPage({ params }: Props) {
-    const announcement = await getAnnouncementById(params.id);
+    let announcement = await getAnnouncementById(params.id);
     if (!announcement) {
         return notFound();
     }
+    const processedContent = convertDiscordMarkdown(announcement.content);
+    const processedAnnouncement: Announcement = {
+        ...announcement,
+        content: processedContent,
+    };
     const categorySlug = params.categorySlug;
     const id = params.id;
     const currentUrl = `${announcementBaseOptions.baseUrlSegment}/${categorySlug}/${id}`;
@@ -67,11 +100,10 @@ export default async function AnnouncementDetailPage({ params }: Props) {
         pageType: 'Article' as const,
     };
     const { jsonLd } = getMetaData(pageMetaOptionsForJsonLd);
-
     return (
         <>
             <Header />
-            <AnnouncementContentClientPart announcement={announcement} />
+            <AnnouncementContentClientPart announcement={processedAnnouncement} />
             <JsonLdInjector jsonLd={jsonLd} />
             <Footer />
         </>
