@@ -112,6 +112,7 @@
     width: auto !important;
     justify-content: start !important;
     align-items: start !important;
+    text-align: start !important;
 }
 
 .detailBody strong {
