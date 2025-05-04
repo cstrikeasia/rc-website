@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Link from 'next/link';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 
@@ -30,7 +30,7 @@ const categoryDisplayNameToSlugMap: { [key: string]: string } = {
     '活動': 'event',
 };
 
-export default function AnnouncementListClient({ initialAnnouncements, currentCategory }: AnnouncementListProps) {
+export default function AnnouncementListClientPart({ initialAnnouncements, currentCategory }: AnnouncementListProps) {
     // Router
     const router = useRouter();
     const pathname = usePathname();
@@ -42,7 +42,7 @@ export default function AnnouncementListClient({ initialAnnouncements, currentCa
 
     const itemsPerPage = 10;
 
-    // Total Pages  
+    // Total Pages
     const totalPages = Math.ceil(initialAnnouncements.length / itemsPerPage);
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -60,81 +60,74 @@ export default function AnnouncementListClient({ initialAnnouncements, currentCa
 
     return (
         <>
-            <div className={`${content["main"]} ${main["main"]}`}>
-                <div className={`${content["wrapper"]} ${main["wrapper"]}`}>
-                    <div className={`${content["content"]} ${main["content"]}`}>
+            <h2>官方公告</h2>
 
-                        <h2>官方公告</h2>
-
-                        {/** 上方按鈕 **/}
-                        <div className={main["categoryFilters"]}>
-                            {categoryLinks.map((cat) => (
-                                <Link
-                                    key={cat.name}
-                                    href={cat.href}
-                                    className={`${main["categoryButton"]} ${currentCategory === cat.name ? main["active"] : ''}`}
-                                >
-                                    {cat.name}
-                                </Link>
-                            ))}
-                        </div>
-
-                        {/** 公告列表 **/}
-                        <div className={main["announcementWrapper"]}>
-                            <ul className={main["announcementList"]}>
-                                {currentAnnouncementsToDisplay.length > 0 ? (
-                                    currentAnnouncementsToDisplay.map((announcement) => {
-                                        const categorySlug = categoryDisplayNameToSlugMap[announcement.category] || 'unknown';
-                                        return (
-                                            <li key={`${announcement.id}-${announcement.date}`} className={main["announcementItem"]}>
-                                                <Link href={`/announcement/${categorySlug}/${announcement.id}`} className={main["itemLink"]}>
-                                                    <div className={main["itemTitleBlock"]}>
-                                                        <span className={`${main["itemCategory"]} ${main[`category${announcement.category}`] || ''}`}>
-                                                            {announcement.category}
-                                                        </span>
-                                                        <span className={main["itemTitle"]}>{announcement.title}</span>
-                                                    </div>
-                                                </Link>
-                                                <span className={main["itemDate"]}>{announcement.date}</span>
-                                            </li>
-                                        );
-                                    })
-                                ) : (
-                                    <li className={main["noResults"]}>此分類目前沒有公告。</li>
-                                )}
-                            </ul>
-                        </div>
-
-                        {/** 分頁 **/}
-                        {totalPages > 1 && initialAnnouncements.length > 0 && (
-                            <div className={main["paginationControls"]}>
-                                <button
-                                    onClick={handlePrevPage}
-                                    disabled={currentPage === 1}
-                                    className={main["pageButton"]}
-                                    aria-label="上一頁"
-                                >
-                                    ◀
-                                </button>
-                                <span>
-                                    第 {currentPage} / {totalPages} 頁
-                                </span>
-                                <button
-                                    onClick={handleNextPage}
-                                    disabled={currentPage === totalPages}
-                                    className={main["pageButton"]}
-                                    aria-label="下一頁"
-                                >
-                                    ▶
-                                </button>
-                            </div>
-                        )}
-                        {initialAnnouncements.length === 0 && !currentCategory && (
-                            <p>讀取中或目前沒有公告...</p>
-                        )}
-                    </div>
-                </div>
+            {/** 上方按鈕 **/}
+            <div className={main["categoryFilters"]}>
+                {categoryLinks.map((cat) => (
+                    <Link
+                        key={cat.name}
+                        href={cat.href}
+                        className={`${main["categoryButton"]} ${currentCategory === cat.name ? main["active"] : ''}`}
+                    >
+                        {cat.name}
+                    </Link>
+                ))}
             </div>
+
+            {/** 公告列表 **/}
+            <div className={main["announcementWrapper"]}>
+                <ul className={main["announcementList"]}>
+                    {currentAnnouncementsToDisplay.length > 0 ? (
+                        currentAnnouncementsToDisplay.map((announcement) => {
+                            const categorySlug = categoryDisplayNameToSlugMap[announcement.category] || 'unknown';
+                            return (
+                                <li key={`${announcement.id}-${announcement.date}`} className={main["announcementItem"]}>
+                                    <Link href={`/announcement/${categorySlug}/${announcement.id}`} className={main["itemLink"]}>
+                                        <div className={main["itemTitleBlock"]}>
+                                            <span className={`${main["itemCategory"]} ${main[`category${announcement.category}`] || ''}`}>
+                                                {announcement.category}
+                                            </span>
+                                            <span className={main["itemTitle"]}>{announcement.title}</span>
+                                        </div>
+                                    </Link>
+                                    <span className={main["itemDate"]}>{announcement.date}</span>
+                                </li>
+                            );
+                        })
+                    ) : (
+                        <li className={main["noResults"]}>此分類目前沒有公告。</li>
+                    )}
+                </ul>
+            </div>
+
+            {/** 分頁 **/}
+            {totalPages > 1 && initialAnnouncements.length > 0 && (
+                <div className={main["paginationControls"]}>
+                    <button
+                        onClick={handlePrevPage}
+                        disabled={currentPage === 1}
+                        className={main["pageButton"]}
+                        aria-label="上一頁"
+                    >
+                        ◀
+                    </button>
+                    <span>
+                        第 {currentPage} / {totalPages} 頁
+                    </span>
+                    <button
+                        onClick={handleNextPage}
+                        disabled={currentPage === totalPages}
+                        className={main["pageButton"]}
+                        aria-label="下一頁"
+                    >
+                        ▶
+                    </button>
+                </div>
+            )}
+            {initialAnnouncements.length === 0 && !currentCategory && (
+                <p>讀取中或目前沒有公告...</p>
+            )}
         </>
     );
 } 

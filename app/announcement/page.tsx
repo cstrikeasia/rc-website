@@ -8,6 +8,8 @@ import JsonLdInjector from "@/components/JsonLd";
 // Lib
 import { getMetaData } from "@/lib/seoHelper";
 import { announcementBaseOptions } from '@/lib/announcements/metadataConfig';
+import commonContent from "@/styles/common/content.module.css";
+import mainStyles from "@/styles/announcement.module.css";
 
 const pageMetaOptions = {
   title: announcementBaseOptions.baseTitle,
@@ -25,10 +27,16 @@ export default async function AnnouncementPage() {
   return (
     <>
       <Header />
-      <AnnouncementListClientPart
-        initialAnnouncements={initialAnnouncements}
-        currentCategory="綜合"
-      />
+      <div className={`${commonContent["main"]} ${mainStyles["main"]}`}>
+        <div className={`${commonContent["wrapper"]} ${mainStyles["wrapper"]}`}>
+          <div className={`${commonContent["content"]} ${mainStyles["content"]}`}>
+            <AnnouncementListClientPart
+              initialAnnouncements={initialAnnouncements}
+              currentCategory="綜合"
+            />
+          </div>
+        </div>
+      </div>
       <JsonLdInjector jsonLd={pageJsonLd} />
       <Footer />
     </>
