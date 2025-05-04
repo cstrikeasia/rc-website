@@ -257,10 +257,6 @@
     min-width: 3em;
     padding: 2px 7px;
   }
-
-  .announcementList {
-    overflow: scroll;
-  }
 }
 
 .itemLink {
