@@ -110,6 +110,7 @@
     margin-top: 0;
     margin-bottom: 1em;
     width: auto !important;
+    justify-content: start !important;
 }
 
 .detailBody strong {
