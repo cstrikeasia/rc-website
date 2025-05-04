@@ -59,7 +59,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  padding: 0;
   border-top: 1px solid #e8e8e8;
   width: 100% !important;
   margin-bottom: 0 !important;
@@ -129,6 +129,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 27dvh;
 }
 
 .itemTitle:hover {
@@ -199,9 +200,10 @@
   }
 
   .itemTitle {
-    white-space: normal;
-    overflow: visible;
-    text-overflow: clip;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: start;
   }
 
   .itemCategory {
@@ -222,11 +224,6 @@
 
   .content {
     height: 70dvh !important;
-  }
-
-
-  .announcementItem {
-    padding: 12px 0;
   }
 
   .itemDate {
