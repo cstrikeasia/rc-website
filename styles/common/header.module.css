@@ -1,6 +1,6 @@
 /** Header **/
 .header {
-  height: auto;
+  height: 50px;
   padding: 10px 0;
 }
 
@@ -12,13 +12,12 @@
 
 .logo {
   float: left;
-  margin-left: 5rem;
+  margin-left: 2rem;
 }
 
 .logo img {
   height: 30px;
   width: 100%;
-  object-fit: contain;
 }
 
 /* 漢堡選單 */
@@ -47,7 +46,7 @@
 /* 導覽按鈕 */
 .navBar .navBtn {
   display: inline-block;
-  padding: 0 30px;
+  padding: 0 13px;
   height: 30px;
   line-height: 30px;
   font-size: 16px;
@@ -115,7 +114,8 @@
   display: inline-block;
   padding: 0 6px 0 5px;
   color: #5d84c3;
-  background: url(../../public/images/line.png?v=0924d959) right center no-repeat;
+  background: url(../../public/images/line.png?v=0924d959) right center
+    no-repeat;
 }
 
 .loginGroup div a:last-child {
@@ -145,7 +145,7 @@
 
 /** RWD **/
 @media screen and (max-width: 768px) {
-  .header {
+  /* .header {
     position: fixed;
     top: 0;
     left: 0;
@@ -156,7 +156,7 @@
     border-bottom: 1px solid #0000001c;
     z-index: 999;
     text-align: center;
-  }
+  } */
 
   .wrapper {
     width: 100%;
@@ -169,12 +169,6 @@
     position: absolute;
     top: 3px;
     right: 10px;
-  }
-
-  .logo {
-    float: none;
-    display: block;
-    margin: 0 auto;
   }
 
   .navBar {
@@ -207,13 +201,17 @@
   }
 
   .mobileMenu.open {
-    display: block;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
     background: #fff;
     padding: 10px 0;
-    z-index: 1;
-    position: relative;
-    top: 0.3dvh;
+    z-index: 999;
     border-bottom: 1px solid #0000001c;
+    top: 0;
+    left: 0;
   }
 
   .mobileMenu .navBar {
