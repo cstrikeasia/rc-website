@@ -3,7 +3,8 @@
 }
 
 .main {
-  background: #358bff url(../public/images/agreement_bg.png) center top no-repeat !important;
+  background: #358bff url(../public/images/agreement_bg.png) center top
+    no-repeat !important;
   background-size: 100% 100% !important;
 }
 
@@ -15,14 +16,10 @@
 .main .wrapper .content {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
   align-content: flex-start;
-}
-
-.main .wrapper .content {
-  display: flex;
-  flex-wrap: wrap;
   gap: 25px;
+  padding: 5px;
+  margin-top: 24px;
 }
 
 .main p {
@@ -115,13 +112,13 @@
 }
 
 .title主開發 {
-  background-color: rgba(216, 63, 63, 0.8); 
+  background-color: rgba(216, 63, 63, 0.8);
 }
 .title後端開發 {
   background-color: rgba(63, 136, 216, 0.8);
 }
 .title前端開發 {
-  background-color: rgba(136, 63, 216, 0.8); 
+  background-color: rgba(136, 63, 216, 0.8);
 }
 .title伺服器架設 {
   background-color: rgb(77 173 147 / 80%);
