@@ -18,19 +18,14 @@
 }
 
 .main .wrapper {
-  height: auto;
   display: flex;
   flex-direction: column;
-  width: auto;
-  max-width: 1150px;
-  width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding: 5px;
 }
 
 .content {
-  height: 65dvh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -51,8 +46,8 @@
 }
 
 .bgImage {
-  width: 60vw;
-  max-height: 100%;
+  width: 40vw;
+  max-width: 1000px;
   aspect-ratio: 16 / 10;
   background-size: contain;
   background-image: url(../../public/images/rc-screenshot.png);
@@ -190,11 +185,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .bgImageBox,
-  .wrapper {
-    width: 100%;
   }
 
   .main h1,

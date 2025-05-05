@@ -12,13 +12,12 @@
 
 .logo {
   float: left;
-  margin-left: 5rem;
+  margin-left: 2rem;
 }
 
 .logo img {
   height: 30px;
   width: 100%;
-  object-fit: contain;
 }
 
 /* 漢堡選單 */
@@ -47,7 +46,7 @@
 /* 導覽按鈕 */
 .navBar .navBtn {
   display: inline-block;
-  padding: 0 30px;
+  padding: 0 13px;
   height: 30px;
   line-height: 30px;
   font-size: 16px;
@@ -115,7 +114,8 @@
   display: inline-block;
   padding: 0 6px 0 5px;
   color: #5d84c3;
-  background: url(../../public/images/line.png?v=0924d959) right center no-repeat;
+  background: url(../../public/images/line.png?v=0924d959) right center
+    no-repeat;
 }
 
 .loginGroup div a:last-child {
@@ -169,12 +169,6 @@
     position: absolute;
     top: 3px;
     right: 10px;
-  }
-
-  .logo {
-    float: none;
-    display: block;
-    margin: 0 auto;
   }
 
   .navBar {
