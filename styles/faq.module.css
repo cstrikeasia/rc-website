@@ -1,5 +1,6 @@
 .main {
-  background: #358bff url(../public/images/agreement_bg.png) center top no-repeat !important;
+  background: #358bff url(../public/images/agreement_bg.png) center top
+    no-repeat !important;
   background-size: 100% 100% !important;
 }
 
@@ -43,7 +44,7 @@
   font-weight: bold;
   color: #1173d5;
   border-radius: 0 !important;
-  width: 100% !important;
+  width: 202px !important;
   background: unset !important;
 }
 
@@ -77,7 +78,7 @@
 }
 
 .help-node {
-  padding: .2rem;
+  padding: 0.2rem;
 }
 
 .help-node h5 {
@@ -105,8 +106,7 @@
   line-height: 1.6em;
   color: #000;
   text-align: start;
-  display: flex
-;
+  display: flex;
   flex-direction: column;
 }
 
@@ -247,7 +247,6 @@
 }
 
 @media screen and (min-width: 769px) {
-
   .faq-toggle-btn,
   .faq-mobile-menu {
     display: none;
