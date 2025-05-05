@@ -33,6 +33,7 @@
   overflow-y: scroll;
   overflow-x: hidden;
   gap: 20px;
+  width: 100%;
 }
 
 .bgImageBox {
@@ -180,6 +181,7 @@
   .main .wrapper {
     flex: 1;
     align-items: center;
+    max-width: none;
   }
 
   .bgImage {
