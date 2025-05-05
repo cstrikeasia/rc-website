@@ -189,6 +189,7 @@
     align-items: center;
     flex-direction: column;
     width: auto;
+    min-height: 0dvh;
   }
 
   .bgImage {
