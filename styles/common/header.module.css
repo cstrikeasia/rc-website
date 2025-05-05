@@ -1,6 +1,6 @@
 /** Header **/
 .header {
-  height: auto;
+  height: 50px;
   padding: 10px 0;
 }
 
@@ -145,7 +145,7 @@
 
 /** RWD **/
 @media screen and (max-width: 768px) {
-  .header {
+  /* .header {
     position: fixed;
     top: 0;
     left: 0;
@@ -156,7 +156,7 @@
     border-bottom: 1px solid #0000001c;
     z-index: 999;
     text-align: center;
-  }
+  } */
 
   .wrapper {
     width: 100%;
@@ -207,13 +207,17 @@
   }
 
   .mobileMenu.open {
-    display: block;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
     background: #fff;
     padding: 10px 0;
-    z-index: 1;
-    position: relative;
-    top: 0.3dvh;
+    z-index: 999;
     border-bottom: 1px solid #0000001c;
+    top: 0;
+    left: 0;
   }
 
   .mobileMenu .navBar {
