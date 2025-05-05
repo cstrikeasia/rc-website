@@ -10,14 +10,27 @@
   align-items: center;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 30dvh;
+}
+
 @media screen and (max-width: 768px) {
   .main .wrapper {
-    min-height: 30dvh;
+    min-height: auto;
+    height: auto;
+    margin: 0;
   }
 
   .main {
     display: flex !important;
     flex-direction: column;
+  }
+
+  .content {
+    height: 25dvh;
   }
 
   .main p {

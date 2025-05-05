@@ -45,35 +45,37 @@ export default function HomePage() {
   const label = isMobile
     ? "僅支援電腦版"
     : data?.url
-    ? `立即下載 v${data?.version || ""}`
-    : "載入中...";
+      ? `立即下載 v${data?.version || ""}`
+      : "載入中...";
   return (
     <>
       <div className={`${content["main"]} ${home["main"]}`}>
         <div className={`${content["wrapper"]} ${home["wrapper"]}`}>
-          <h1>不僅是多人遊戲語音工具</h1>
-          <h2>還是有趣的遊戲社區</h2>
-          <p className={content["downloadPC"]}>
-            <a
-              href={!isMobile ? downloadUrl : undefined}
-              target="_blank"
-              rel="noreferrer"
-              onClick={(e) => {
-                if (isMobile) {
-                  e.preventDefault();
+          <div className={`${content["content"]} ${home["content"]}`}>
+            <h1>不僅是多人遊戲語音工具</h1>
+            <h2>還是有趣的遊戲社區</h2>
+            <p className={content["downloadPC"]}>
+              <a
+                href={!isMobile ? downloadUrl : undefined}
+                target="_blank"
+                rel="noreferrer"
+                onClick={(e) => {
+                  if (isMobile) {
+                    e.preventDefault();
+                  }
+                }}
+                aria-disabled={isMobile}
+                style={
+                  isMobile
+                    ? { pointerEvents: "none", opacity: 0.6, cursor: "not-allowed" }
+                    : {}
                 }
-              }}
-              aria-disabled={isMobile}
-              style={
-                isMobile
-                  ? { pointerEvents: "none", opacity: 0.6, cursor: "not-allowed" }
-                  : {}
-              }
-            >
-              <i></i>
-              <strong>{label}</strong>
-            </a>
-          </p>
+              >
+                <i></i>
+                <strong>{label}</strong>
+              </a>
+            </p>
+          </div>
         </div>
         <div className={content["bgImage"]} />
       </div>

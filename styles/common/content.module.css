@@ -1,8 +1,7 @@
 /** 主內容 **/
 .main {
   flex: 1;
-  background: #358bff url(../../public/images/bg.jpg?v=fa56a8da) center top
-    no-repeat;
+  background: #358bff url(../../public/images/bg.jpg?v=fa56a8da) center top no-repeat;
   background-size: 100% 100%;
   color: #fff;
   padding: 1rem 0px;
@@ -82,7 +81,7 @@
 }
 
 .main h2 {
-  font-size: 40px;
+  font-size: 35px;
   font-weight: 700;
 }
 
@@ -192,10 +191,9 @@
 
   .bgImage {
     width: 100%;
-    background: url(../../public/images/rc-screenshot.png) center center
-      no-repeat;
+    background: url(../../public/images/rc-screenshot.png) center center no-repeat;
     background-size: contain;
-    height: 65vw;
+    height: 43dvh;
     display: flex;
     justify-content: center;
     align-items: center;
