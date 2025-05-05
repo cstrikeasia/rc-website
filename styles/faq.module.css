@@ -105,6 +105,9 @@
   line-height: 1.6em;
   color: #000;
   text-align: start;
+  display: flex
+;
+  flex-direction: column;
 }
 
 .help-content .closed div {
@@ -137,6 +140,7 @@
   padding: 3px 0;
   word-break: break-all;
   display: inline-block;
+  width: auto;
 }
 
 /* === FAQ 手機浮動按鈕與側欄 === */
