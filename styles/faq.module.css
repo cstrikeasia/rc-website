@@ -68,6 +68,12 @@
   width: 635px;
   padding: 20px 60px 60px 60px;
   float: left;
+  color: #2a2d30;
+}
+
+.help-content div,
+.help-content p {
+  text-align: start !important;
 }
 
 .help-node {
@@ -227,6 +233,7 @@
   .help-content {
     padding: 20px 10px;
     float: left;
+    color: #fff;
   }
 
   .help-node {
