@@ -17,10 +17,6 @@
   background: unset !important;
 }
 
-.main .wrapper {
-  min-height: 68dvh;
-}
-
 .main h2,
 .main h4 {
   font-size: 20px;

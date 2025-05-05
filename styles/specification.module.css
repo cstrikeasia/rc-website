@@ -1,34 +1,34 @@
-.main,
-.wrapper,
-.main p,
-.main h1,
-.main h2 {
-  color: #ffffff !important;
-}
-
-.main {
-  background: #358bff url(../public/images/bg2.jpg) center top no-repeat;
-  background-size: 100% 100%;
-  color: #fff;
-}
-
 .wrapper {
   background: unset !important;
 }
 
-.main .wrapper {
-  min-height: 68dvh;
+.main {
+  background: #358bff url(../public/images/agreement_bg.png) center top no-repeat !important;
+  background-size: 100% 100% !important;
 }
 
-.main .wrapper div {
-  padding: 15px;
+.main .wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.main .wrapper .content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-content: flex-start;
+}
+
+.main .wrapper .content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
 }
 
 .main p {
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  text-align: start;
 }
 
 .main p a,
@@ -41,23 +41,12 @@
   border-radius: unset;
 }
 
-.main h2 {
-  font-size: 20px;
-  color: #73a4d5;
-  padding-bottom: 20px;
-}
-
-.main h4 {
-  font-size: 14px;
-  color: #73a4d5;
-  padding: 8px 0;
-}
-
 .main p {
   font-size: 13px;
-  color: #555;
   line-height: 1.6em;
   padding: 6px 0;
+  text-align: left!important;
+  display: block!important;
 }
 
 .main p strong {
@@ -65,17 +54,18 @@
 }
 
 .main a {
-  color: #4591dd;
+  color: #73a4d5;
   text-decoration: underline;
 }
 
 .main a:hover {
-  color: #2e90f3;
+  color: #03559e;
 }
 
 /** RWD **/
 @media screen and (max-width: 768px) {
-  .main p {
-    display: unset;
+  .content {
+    padding: 5px;
+    height: 70dvh !important;
   }
 }

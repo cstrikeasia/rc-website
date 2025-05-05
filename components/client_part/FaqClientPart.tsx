@@ -1212,7 +1212,7 @@ export default function FAQClientPart() {
       {/* FAQ 主內容 */}
       <div className={`${content["main"]} ${main["main"]}`}>
         <div className={`${content["wrapper"]} ${main["wrapper"]}`}>
-          <h2>常見問題</h2>
+          <h1>常見問題</h1>
           <div className={`${main["help-outer"]} ${common["radius4"]}`}>
             <div className={`${main["help-inner"]} ${common["clearFloat"]}`}>
               <ul className={`${main["content"]} ${main["help-menu"]}`}>

@@ -22,8 +22,8 @@ export default function SpecificationPage() {
     <>
       <div className={`${content["main"]} ${main["main"]}`}>
         <div className={`${content["wrapper"]} ${main["wrapper"]}`}>
-          <div className={content["content"]}>
-            <h2>「RC語音」平台使用規範</h2>
+          <h1>平台使用規範</h1>
+          <div className={`${content["content"]} ${main["content"]}`}>
             <p>
               為營造健康清新有意義的網路平台環境和保障使用者使用本公司提供之「RC
               語音軟體」線上語音服務及旗下產品的相關權益，請於註冊帳號及使用本服務前，詳細閱讀以下規範。
@@ -44,8 +44,8 @@ export default function SpecificationPage() {
             </p>
             <p>
               「RC語音」歡迎使用者發現違規行為進行舉報，舉報證據請使用電子信箱發送至：
-              <a href="mailto:support.tw@ricecall.com">
-                support.tw@ricecall.com
+              <a href="mailto:support@ricecall.com.tw">
+                support@ricecall.com.tw
               </a>
             </p>
             <p>RC官方保留所有規範的解釋權，以上規範將不定期更新</p>

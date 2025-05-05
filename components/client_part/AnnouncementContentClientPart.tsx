@@ -21,16 +21,16 @@ export default function AnnouncementContentClientPart({ announcement }: Announce
     return (
         <div className={`${content["main"]} ${main["main"]}`}>
             <div className={`${content["wrapper"]} ${main["detailWrapper"]}`}>
-                <div className={main["detailContentContainer"]}>
-                    <div className={main["detailHeader"]}>
-                        <h1 className={main["detailTitle"]}>{announcement.title}</h1>
-                        <div className={main["detailMeta"]}>
-                            <span className={`${main["detailCategory"]} ${main[`category${announcement.category}`] || ''}`}>
-                                {announcement.category}
-                            </span>
-                            <span className={main["detailDate"]}>發布日期：{announcement.date}</span>
-                        </div>
+                <h1>{announcement.title}</h1>
+                <div className={main["detailHeader"]}>
+                    <div className={main["detailMeta"]}>
+                        <span className={`${main["detailCategory"]} ${main[`category${announcement.category}`] || ''}`}>
+                            {announcement.category}
+                        </span>
+                        <span className={main["detailDate"]}>發布日期：{announcement.date}</span>
                     </div>
+                </div>
+                <div className={main["detailContentContainer"]}>
                     <div className={main["detailBody"]}>
                         <ReactMarkdown
                             remarkPlugins={[remarkGfm]}

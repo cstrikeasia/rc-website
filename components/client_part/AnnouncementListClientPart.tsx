@@ -36,32 +36,8 @@ export default function AnnouncementListClientPart({ initialAnnouncements, curre
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    // Page
-    const pageQuery = searchParams.get('page');
-    const currentPage = Math.max(1, parseInt(pageQuery || '1', 10) || 1);
-
-    const itemsPerPage = 10;
-
-    // Total Pages
-    const totalPages = Math.ceil(initialAnnouncements.length / itemsPerPage);
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const currentAnnouncementsToDisplay = initialAnnouncements.slice(startIndex, endIndex);
-
-    // Handle
-    const handlePrevPage = () => {
-        const newPage = Math.max(currentPage - 1, 1);
-        router.push(`${pathname}?page=${newPage}`);
-    };
-    const handleNextPage = () => {
-        const newPage = Math.min(currentPage + 1, totalPages);
-        router.push(`${pathname}?page=${newPage}`);
-    };
-
     return (
         <>
-            <h2>官方公告</h2>
-
             {/** 上方按鈕 **/}
             <div className={main["categoryFilters"]}>
                 {categoryLinks.map((cat) => (
@@ -78,8 +54,8 @@ export default function AnnouncementListClientPart({ initialAnnouncements, curre
             {/** 公告列表 **/}
             <div className={main["announcementWrapper"]}>
                 <ul className={main["announcementList"]}>
-                    {currentAnnouncementsToDisplay.length > 0 ? (
-                        currentAnnouncementsToDisplay.map((announcement) => {
+                    {initialAnnouncements.length > 0 ? (
+                        initialAnnouncements.map((announcement) => {
                             const categorySlug = categoryDisplayNameToSlugMap[announcement.category] || 'unknown';
                             return (
                                 <li key={`${announcement.id}-${announcement.date}`} className={main["announcementItem"]}>
@@ -101,30 +77,6 @@ export default function AnnouncementListClientPart({ initialAnnouncements, curre
                 </ul>
             </div>
 
-            {/** 分頁 **/}
-            {totalPages > 1 && initialAnnouncements.length > 0 && (
-                <div className={main["paginationControls"]}>
-                    <button
-                        onClick={handlePrevPage}
-                        disabled={currentPage === 1}
-                        className={main["pageButton"]}
-                        aria-label="上一頁"
-                    >
-                        ◀
-                    </button>
-                    <span>
-                        第 {currentPage} / {totalPages} 頁
-                    </span>
-                    <button
-                        onClick={handleNextPage}
-                        disabled={currentPage === totalPages}
-                        className={main["pageButton"]}
-                        aria-label="下一頁"
-                    >
-                        ▶
-                    </button>
-                </div>
-            )}
             {initialAnnouncements.length === 0 && !currentCategory && (
                 <p>讀取中或目前沒有公告...</p>
             )}

@@ -7,7 +7,6 @@
 }
 
 .main .wrapper {
-  min-height: 580px;
   position: relative;
   z-index: 2;
 }
@@ -39,11 +38,6 @@
   line-height: 0;
   background: unset;
   border-radius: unset;
-}
-
-.main {
-  background: url(../public/images/bg2.jpg) no-repeat;
-  background-size: cover;
 }
 
 .main p {

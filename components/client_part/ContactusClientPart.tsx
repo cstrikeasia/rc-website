@@ -73,7 +73,7 @@ export default function ContactUsPage() {
     <>
       <div className={`${content["main"]} ${main["main"]}`}>
         <div className={`${content["wrapper"]} ${main["wrapper"]}`}>
-          <h2>聯絡我們</h2>
+          <h1>聯絡我們</h1>
           <div className={`${content["content"]} ${main["content"]}`}>
             {contacts.map(({ title, contact, info }, idx) => (
               <div key={idx} className={`${main.contactCard}`}>

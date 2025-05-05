@@ -17,10 +17,6 @@
   width: auto;
 }
 
-.main .wrapper {
-  min-height: 68dvh;
-}
-
 .main .wrapper div {
   padding: 15px;
 }

@@ -1,0 +1,26 @@
+.main {
+  display: flex !important;
+  align-items: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .main .wrapper {
+    min-height: 30dvh;
+  }
+
+  .main {
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .main p {
+    padding: 0;
+  }
+}

@@ -1,9 +1,58 @@
-.content {
-  height: 60dvh !important;
-  width: 100%;
-  overflow: hidden !important;
+.wrapper {
+  background: unset !important;
+}
+
+.main {
+  background: #358bff url(../public/images/agreement_bg.png) center top no-repeat !important;
+  background-size: 100% 100% !important;
+}
+
+.main .wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.main .wrapper .content {
   display: flex;
+  gap: 20px;
+  align-content: flex-start;
+  width: 95%;
   flex-direction: column;
+}
+
+.main .wrapper .content {
+  gap: 25px;
+}
+
+.main p {
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.main p strong {
+  color: #333;
+}
+
+.main a {
+  color: #73a4d5;
+}
+
+.main a:hover {
+  color: #03559e;
+}
+
+.main h4 {
+  color: #73a4d5;
+  font-size: 1.4rem;
+}
+
+/** RWD **/
+@media screen and (max-width: 768px) {
+  .content {
+    padding: 5px;
+    height: 70dvh !important;
+  }
 }
 
 .announcementWrapper {
@@ -155,43 +204,6 @@
   border-top: none;
 }
 
-.paginationControls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 30px;
-  padding: 15px 0;
-  gap: 15px;
-  flex: 1;
-}
-
-.pageButton {
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  color: #333;
-  padding: 8px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.pageButton:hover:not(:disabled) {
-  background-color: #e0e0e0;
-  border-color: #bbb;
-}
-
-.pageButton:disabled {
-  background-color: #f8f8f8;
-  color: #aaa;
-  cursor: not-allowed;
-  border-color: #ddd;
-}
-
-.paginationControls span {
-  color: #000;
-  font-size: 0.95em;
-}
-
 @media (max-width: 768px) {
   .itemTitleBlock {
     white-space: normal;
@@ -229,17 +241,6 @@
 
   .itemDate {
     white-space: nowrap;
-  }
-
-  .paginationControls {
-    margin-top: 20px;
-    padding: 10px 0;
-    gap: 10px;
-  }
-
-  .pageButton {
-    padding: 6px 12px;
-    font-size: 1em;
   }
 
   .categoryFilters {

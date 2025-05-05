@@ -216,8 +216,8 @@ export default function AgreementPage() {
     <>
       <div className={`${content["main"]} ${main["main"]}`}>
         <div className={`${content["wrapper"]} ${main["wrapper"]}`}>
+          <h1>服務條款</h1>
           <div className={`${content["content"]} ${main["content"]}`}>
-            <h2>「RC」服務條款</h2>
             {rules.map((rule, index) => (
               <div key={index}>
                 <h4>{rule.title}</h4>

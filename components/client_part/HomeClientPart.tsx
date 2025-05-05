@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 
 // CSS
 import content from "@/styles/common/content.module.css";
+import home from "@/styles/home.module.css";
 
 interface ReleaseData {
   url: string | null;
@@ -48,11 +49,8 @@ export default function HomePage() {
     : "載入中...";
   return (
     <>
-      <div className={content["main"]}>
-        <div className={content["bgImageBox"]}>
-          <div className={content["bgImage"]} />
-        </div>
-        <div className={content["wrapper"]}>
+      <div className={`${content["main"]} ${home["main"]}`}>
+        <div className={`${content["wrapper"]} ${home["wrapper"]}`}>
           <h1>不僅是多人遊戲語音工具</h1>
           <h2>還是有趣的遊戲社區</h2>
           <p className={content["downloadPC"]}>
@@ -77,6 +75,7 @@ export default function HomePage() {
             </a>
           </p>
         </div>
+        <div className={content["bgImage"]} />
       </div>
     </>
   );

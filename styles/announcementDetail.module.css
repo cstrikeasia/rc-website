@@ -1,10 +1,54 @@
-.main {
-    font-size: 1.2rem;
+.wrapper {
+    background: unset !important;
 }
+
+.main {
+    background: #358bff url(../public/images/agreement_bg.png) center top no-repeat !important;
+    background-size: 100% 100% !important;
+}
+
+.main .wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.main .wrapper .content {
+  display: flex;
+  gap: 20px;
+  align-content: flex-start;
+  width: 95%;
+  flex-direction: column;
+}
+
+.main .wrapper .content {
+  gap: 25px;
+}
+
+.main p {
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.main p strong {
+  color: #333;
+}
+
+.main a {
+  color: #73a4d5;
+}
+
+.main a:hover {
+  color: #03559e;
+}
+
+.main h1 {
+    font-size: 2.3rem;
+}
+
 .detailContentContainer {
     background-color: #fff;
     padding: 30px 40px;
-    border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
     min-height: 60dvh;
     height: 60dvh;
@@ -12,9 +56,7 @@
 }
 
 .detailHeader {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 20px;
-    margin-bottom: 25px;
+    padding: 20px 0;
 }
 
 .detailTitle,
@@ -47,7 +89,7 @@
     display: inline !important;
 }
 
-.detailBody li { 
+.detailBody li {
     width: auto !important;
 }
 
@@ -99,10 +141,6 @@
     color: #5a189a;
 }
 
-.detailDate {
-    color: #777;
-}
-
 .detailBody {
     font-size: 1em;
     line-height: 1.7;
@@ -117,7 +155,6 @@
 .detailBody h4,
 .detailBody h5,
 .detailBody h6 {
-    margin-top: 1.5em;
     margin-bottom: 0.6em;
 }
 
@@ -246,7 +283,6 @@
 }
 
 .backButtonContainer {
-    margin-top: 40px;
     padding-top: 20px;
     border-top: 1px solid #eee;
     text-align: center;
@@ -271,7 +307,6 @@
 @media (max-width: 768px) {
     .detailContentContainer {
         padding: 15px 10px !important;
-        margin: 5px !important;
         width: 95%;
     }
 
@@ -280,11 +315,10 @@
     }
 
     .detailBody {
-        line-height: 1.7;
+        gap: 10px;
     }
 
     .backButtonContainer {
-        margin-top: 30px;
         padding-top: 15px;
     }
 

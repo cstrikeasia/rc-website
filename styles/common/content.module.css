@@ -3,8 +3,7 @@
   background: #358bff url(../../public/images/bg.jpg?v=fa56a8da) center top no-repeat;
   background-size: 100% 100%;
   color: #fff;
-  padding: 0rem 1rem 1rem;
-  margin-top: 4.5rem;
+  padding: 1rem 0px;
   max-height: 100dvh;
 }
 
@@ -45,7 +44,7 @@
   overflow: hidden;
 }
 
-.bgImageBox .bgImage {
+.bgImage {
   width: 100%;
   max-width: 100%;
   height: auto;
@@ -176,20 +175,22 @@
 
 /** RWD **/
 @media screen and (max-width: 768px) {
+  .main {
+    margin-top: 4.5rem;
+  }
+
   .main .wrapper {
     height: auto;
-    padding: 0 0;
     display: flex;
     align-items: center;
     flex-direction: column;
   }
 
-  .bgImageBox .bgImage {
+  .bgImage {
     width: 100%;
     background: url(../../public/images/rc-screenshot.png) center center no-repeat;
     background-size: contain;
     height: 65vw;
-    margin-top: 35rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -232,7 +233,7 @@
 }
 
 @media (min-width: 1920px) {
-  .bgImageBox .bgImage {
+  .bgImage {
     height: 500px;
   }
 }

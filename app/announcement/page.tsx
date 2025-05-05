@@ -29,6 +29,7 @@ export default async function AnnouncementPage() {
       <Header />
       <div className={`${commonContent["main"]} ${mainStyles["main"]}`}>
         <div className={`${commonContent["wrapper"]} ${mainStyles["wrapper"]}`}>
+          <h1>官方公告</h1>
           <div className={`${commonContent["content"]} ${mainStyles["content"]}`}>
             <AnnouncementListClientPart
               initialAnnouncements={initialAnnouncements}
