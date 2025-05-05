@@ -3,7 +3,8 @@
 }
 
 .main {
-  background: #358bff url(../public/images/bg2.jpg) center top no-repeat !important;
+  background: #358bff url(../public/images/agreement_bg.png) center top no-repeat !important;
+  background-size: 100% 100% !important;
 }
 
 .main .wrapper {
@@ -123,7 +124,7 @@
   background-color: rgba(136, 63, 216, 0.8); 
 }
 .title伺服器架設 {
-  background-color: rgba(160, 160, 160, 0.8); 
+  background-color: rgb(77 173 147 / 80%);
 }
 .title技術指導 {
   background-color: rgba(216, 166, 63, 0.8);
