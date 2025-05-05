@@ -8,42 +8,43 @@
 }
 
 .main .wrapper {
-  position: relative;
-  z-index: 2;
+    position: relative;
+    z-index: 2;
 }
 
 .main .wrapper .content {
-  display: flex;
-  gap: 20px;
-  align-content: flex-start;
-  width: 95%;
-  flex-direction: column;
+    display: flex;
+    gap: 20px;
+    align-content: flex-start;
+    width: 95%;
+    flex-direction: column;
 }
 
 .main .wrapper .content {
-  gap: 25px;
+    gap: 25px;
 }
 
 .main p {
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
 }
 
 .main p strong {
-  color: #333;
+    color: #333;
 }
 
 .main a {
-  color: #73a4d5;
+    color: #73a4d5;
 }
 
 .main a:hover {
-  color: #03559e;
+    color: #03559e;
 }
 
 .main h1 {
     font-size: 2.3rem;
+    width: 100%;
 }
 
 .detailContentContainer {
