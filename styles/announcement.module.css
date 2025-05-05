@@ -50,8 +50,9 @@
   background: #fff;
   border-radius: 5px;
   padding: 10px !important;
-  height: 35dvh;
+  height: 100%;
   overflow-y: scroll;
+  overflow-x: hidden;
   min-height: 0;
 }
 
