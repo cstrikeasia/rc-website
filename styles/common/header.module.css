@@ -13,6 +13,7 @@
 .logo {
   float: left;
   margin-left: 2rem;
+  padding-right: 20px;
 }
 
 .logo img {

@@ -3,32 +3,15 @@
 }
 
 .main {
-  background: #358bff url(../public/images/agreement_bg.png) center top no-repeat !important;
+  background: #358bff url(../public/images/agreement_bg.png) center top
+    no-repeat !important;
   background-size: 100% 100% !important;
 }
 
-.main .wrapper {
-  position: relative;
-  z-index: 2;
-}
-
-.main .wrapper .content {
+.main div {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  align-content: flex-start;
-}
-
-.main .wrapper .content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-}
-
-.main .wrapper .content div {
+  flex-direction: column;
   gap: 10px;
-  display: grid;
-  font-size: 1.2rem;
 }
 
 .main p {
@@ -70,12 +53,4 @@
 .main h4 {
   color: #73a4d5;
   font-size: 1.4rem;
-}
-
-/** RWD **/
-@media screen and (max-width: 768px) {
-  .content {
-    padding: 5px;
-    height: 70dvh !important;
-  }
 }
