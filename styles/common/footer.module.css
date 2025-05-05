@@ -1,17 +1,7 @@
 /** 頁尾 **/
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background-color: #fff;
-  max-height: max-content;
-}
-
 .footer .wrapper {
-  padding: 10px 0;
-  color: #4b4b4b;
-  z-index: 1;
-  text-align: center;
+  padding: 25px 0;
+  color: #4b4b4b;z-index: 1;
 }
 
 .footer .wrapper div {
@@ -28,7 +18,7 @@
   position: relative;
   max-width: 100%;
   padding: 4px 24px;
-  font-size: 13px;
+  font-size: 15px;
   color: rgba(0, 0, 0, 0.6);
   transition: color 0.2s;
 }
@@ -47,13 +37,20 @@
   align-items: center;
   justify-content: center;
   padding: 10px 0 20px;
-  text-align: center;
+  text-align: left;
 }
 
 /** RWD **/
 @media screen and (max-width: 768px) {
+  .footer .wrapper {
+    padding: 10px 0;
+    text-align: center;
+  }
+
   .footer .wrapper div a {
-    padding: 4px 12px;
+    padding: 0 0.625rem;
+    font-size: 13px;
+    line-height: 1.768;
   }
 
   .footer span {

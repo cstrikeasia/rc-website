@@ -28,10 +28,6 @@ ul {
   -webkit-font-smoothing: antialiased;
 }
 
-html {
-  height: 100vh;
-}
-
 li {
   list-style: none;
 }
@@ -49,20 +45,14 @@ a:hover {
 }
 
 body {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
   color: #2c3c4c;
   font-family: "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
   overflow-x: hidden;
 }
 
-* {
-  box-sizing: border-box;
-}
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-button {
