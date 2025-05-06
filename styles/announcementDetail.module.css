@@ -55,10 +55,6 @@
     overflow: scroll;
 }
 
-.detailHeader {
-    padding: 20px 0;
-}
-
 .detailTitle,
 .detailBody h1,
 .detailBody h2,
@@ -307,9 +303,6 @@
 @media (max-width: 768px) {
     .detailContentContainer {
         padding: 15px 10px !important;
-        width: 95%;
-        min-height: unset;
-        height: unset;
     }
 
     .detailTitle {
