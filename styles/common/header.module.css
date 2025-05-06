@@ -115,8 +115,7 @@
   display: inline-block;
   padding: 0 6px 0 5px;
   color: #5d84c3;
-  background: url(../../public/images/line.png?v=0924d959) right center
-    no-repeat;
+  background: url(../../public/images/line.png?v=0924d959) right center no-repeat;
 }
 
 .loginGroup div a:last-child {
@@ -146,21 +145,10 @@
 
 /** RWD **/
 @media screen and (max-width: 768px) {
-  /* .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px 0;
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid #0000001c;
-    z-index: 999;
-    text-align: center;
-  } */
-
   .wrapper {
-    width: 100%;
+    display: flex;
+    width: auto;
+    justify-content: center;
   }
 
   .hamburger {

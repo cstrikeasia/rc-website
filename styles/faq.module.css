@@ -1,6 +1,5 @@
 .main {
-  background: #358bff url(../public/images/agreement_bg.png) center top
-    no-repeat !important;
+  background: #358bff url(../public/images/agreement_bg.png) center top no-repeat !important;
   background-size: 100% 100% !important;
 }
 
@@ -228,6 +227,7 @@
   .help-inner {
     border: unset;
     background: unset;
+    margin-top: 0;
   }
 
   .help-node div {
@@ -247,6 +247,7 @@
 }
 
 @media screen and (min-width: 769px) {
+
   .faq-toggle-btn,
   .faq-mobile-menu {
     display: none;

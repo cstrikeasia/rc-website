@@ -51,8 +51,7 @@
     background-color: #fff;
     padding: 20px 40px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
-    min-height: 60dvh;
-    height: 60dvh;
+    height: 100%;
     overflow: scroll;
 }
 
@@ -309,6 +308,8 @@
     .detailContentContainer {
         padding: 15px 10px !important;
         width: 95%;
+        min-height: unset;
+        height: unset;
     }
 
     .detailTitle {
