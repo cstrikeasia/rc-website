@@ -1,7 +1,7 @@
 "use client";
-import React from "react";
+import React, { memo, useState, useEffect } from "react";
 import Link from 'next/link';
-import { useRouter, useSearchParams, usePathname } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 // Lib
 import type { Announcement } from '@/lib/announcements/apiFetch';
@@ -30,32 +30,71 @@ const categoryDisplayNameToSlugMap: { [key: string]: string } = {
     '活動': 'event',
 };
 
-export default function AnnouncementListClientPart({ initialAnnouncements, currentCategory }: AnnouncementListProps) {
+const AnnouncementListClient = memo(function AnnouncementListClient({ 
+    initialAnnouncements, 
+    currentCategory 
+}: AnnouncementListProps) {
     // Router
     const router = useRouter();
     const pathname = usePathname();
-    const searchParams = useSearchParams();
+    // State
+    const [announcements, setAnnouncements] = useState(initialAnnouncements);
+    const [isLoading, setIsLoading] = useState(false);
+    const [activeCategory, setActiveCategory] = useState(currentCategory);
+    const [cachedData, setCachedData] = useState<{[key: string]: Announcement[]}>({
+        [currentCategory]: initialAnnouncements
+    });
+    // Handles
+    const handleCategoryChange = async (category: string, href: string) => {
+        setActiveCategory(category);
+        setIsLoading(true);
+
+        try {
+            const response = await fetch(`/api/announcements?category=${encodeURIComponent(category)}`, {
+                headers: {
+                    'Accept': 'application/json',
+                }
+            });
+            const data = await response.json();
+            setAnnouncements(data);
+            setCachedData(prev => ({
+                ...prev,
+                [category]: data
+            }));
+            window.history.pushState({}, '', href);
+        } catch (error) {
+            console.error('Error fetching announcements:', error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+    // Effect
+    useEffect(() => {
+        setActiveCategory(currentCategory);
+    }, [currentCategory]);
 
     return (
         <>
             {/** 上方按鈕 **/}
             <div className={main["categoryFilters"]}>
                 {categoryLinks.map((cat) => (
-                    <Link
+                    <button
                         key={cat.name}
-                        href={cat.href}
-                        className={`${main["categoryButton"]} ${currentCategory === cat.name ? main["active"] : ''}`}
+                        onClick={() => handleCategoryChange(cat.name, cat.href)}
+                        className={`${main["categoryButton"]} ${activeCategory === cat.name ? main["active"] : ''}`}
                     >
                         {cat.name}
-                    </Link>
+                    </button>
                 ))}
             </div>
 
             {/** 公告列表 **/}
             <div className={main["announcementWrapper"]}>
                 <ul className={main["announcementList"]}>
-                    {initialAnnouncements.length > 0 ? (
-                        initialAnnouncements.map((announcement) => {
+                    {isLoading ? (
+                        <li className={main["noResults"]}>載入中...</li>
+                    ) : announcements.length > 0 ? (
+                        announcements.map((announcement) => {
                             const categorySlug = categoryDisplayNameToSlugMap[announcement.category] || 'unknown';
                             return (
                                 <li key={`${announcement.id}-${announcement.date}`} className={main["announcementItem"]}>
@@ -76,10 +115,8 @@ export default function AnnouncementListClientPart({ initialAnnouncements, curre
                     )}
                 </ul>
             </div>
-
-            {initialAnnouncements.length === 0 && !currentCategory && (
-                <p>讀取中或目前沒有公告...</p>
-            )}
         </>
     );
-} 
+});
+
+export default AnnouncementListClient; 

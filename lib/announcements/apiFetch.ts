@@ -52,12 +52,26 @@ export async function getAllAnnouncements(): Promise<Announcement[]> {
     return [...announcements].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
+const CACHE_TIME = 5 * 60 * 1000;
+const cache = new Map();
+
 export async function getAnnouncementsByCategory(category: string): Promise<Announcement[]> {
+    const cacheKey = `announcements-${category}`;
+    const cached = cache.get(cacheKey);
+    if (cached && Date.now() - cached.timestamp < CACHE_TIME) {
+        return cached.data;
+    }
     const allAnnouncements = await getAllAnnouncements();
     if (category === '綜合') {
         return allAnnouncements;
     }
-    return allAnnouncements.filter(ann => ann.category === category);
+    const data = allAnnouncements.filter(ann => ann.category === category);
+    
+    cache.set(cacheKey, {
+        data,
+        timestamp: Date.now()
+    });
+    return data;
 }
 
 export async function getAnnouncementById(id: string | number): Promise<Announcement | undefined> {
