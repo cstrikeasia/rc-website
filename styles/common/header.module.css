@@ -190,7 +190,7 @@
   }
 
   .mobileMenu.open {
-    position: relative;
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -199,8 +199,8 @@
     padding: 10px 0;
     z-index: 999;
     border-bottom: 1px solid #0000001c;
-    top: 0;
-    left: 0;
+    top: 8vw;
+    border-top: 1px solid #0000001c;
   }
 
   .mobileMenu .navBar {
