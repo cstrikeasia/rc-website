@@ -8,6 +8,13 @@ export interface Announcement {
     content: string;
 }
 
+export interface Tag {
+    tag_id: string;
+    name: string;
+    text_color: string;
+    bg_color: string;
+}
+
 const EXTERNAL_API_URL = process.env.API_URL || '';
 const API_SECRET = process.env.API_SECRET || '';
 if (!API_SECRET && process.env.NODE_ENV === 'production') {
@@ -66,7 +73,7 @@ export async function getAnnouncementsByCategory(category: string): Promise<Anno
         return allAnnouncements;
     }
     const data = allAnnouncements.filter(ann => ann.category === category);
-    
+
     cache.set(cacheKey, {
         data,
         timestamp: Date.now()
@@ -81,4 +88,40 @@ export async function getAnnouncementById(id: string | number): Promise<Announce
     }
     const announcements = await fetchExternalAnnouncements();
     return announcements.find(ann => ann.id === numericId);
+}
+
+async function fetchTagById(id: string): Promise<Tag | undefined> {
+    if (!API_SECRET || !EXTERNAL_API_URL) {
+        console.error("API Secret or URL is missing for fetching tag by ID.");
+        return undefined;
+    }
+    try {
+        const token = crypto.createHash('md5').update(API_SECRET).digest('hex');
+        const response = await fetch(`${EXTERNAL_API_URL}/tag/${id}`, {
+            method: 'GET',
+            headers: {
+                'x-api-token': token,
+                'Content-Type': 'application/json',
+            },
+            cache: 'no-store',
+        });
+
+        if (!response.ok) {
+            if (response.status === 404) {
+                console.log(`Tag with ID ${id} not found (API returned 404).`);
+                return undefined;
+            }
+            console.error(`External API fetch error (tag by ID ${id}): ${response.status} ${response.statusText}`);
+            return undefined;
+        }
+        const data = await response.json();
+        return data as Tag;
+    } catch (error) {
+        console.error(`Error fetching external tag by ID ${id}:`, error);
+        return undefined;
+    }
+}
+
+export async function getTagById(id: string): Promise<Tag | undefined> {
+    return await fetchTagById(id);
 } 

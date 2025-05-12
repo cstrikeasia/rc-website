@@ -179,11 +179,11 @@
 
 .detailBody p {
     padding: 0 !important;
+    width: 100% !important;
 }
 
 .detailBody strong {
     font-weight: bold;
-    font-size: 20px;
 }
 
 .detailBody em {
