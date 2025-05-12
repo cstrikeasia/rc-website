@@ -8,6 +8,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@iconscout/react-unicons": "^2.2.4",
     "@otplib/core": "^12.0.1",
     "base32-decode": "^1.0.0",
@@ -37,6 +41,7 @@
     "@types/node": "^22.14.1",
     "@types/qrcode": "^1.5.5",
     "@types/react": "19.1.1",
-    "typescript": "5.8.3"
+    "typescript": "5.8.3",
+    "user-agent-data-types": "^0.4.2"
   }
 }
