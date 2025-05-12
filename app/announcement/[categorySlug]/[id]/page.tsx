@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
 
 // Lib
-import { getAnnouncementById, getTagById, type Tag, type Announcement } from '@/lib/announcements/apiFetch';
+import { getAnnouncementById, getTagById, type Tag, type Announcement, getChannelById, type Channel } from '@/lib/announcements/apiFetch';
 import { getMetaData } from '@/lib/seoHelper';
 import { announcementBaseOptions } from '@/lib/announcements/metadataConfig';
 
@@ -31,31 +31,36 @@ function formatDiscordTimestamp(timestamp: number): string {
     }
 }
 
-function convertDiscordMarkdown(content: string): string {
+async function convertDiscordMarkdown(content: string): Promise<string> {
     let convertedContent = content;
     convertedContent = convertedContent.replace(/__\*\*(.*?)\*\*__/g, '**$1**');
     convertedContent = convertedContent.replace(/<t:(\d+):.>/g, (match, timestampStr) => {
         const timestamp = parseInt(timestampStr, 10);
         return isNaN(timestamp) ? match : formatDiscordTimestamp(timestamp);
     });
-    const serverId = "1095489701902831616";
-    convertedContent = convertedContent.replace(
-        /<#(\d+)>/g,
-        `<a href="https://discord.com/channels/${serverId}/$1" target="_blank" rel="noopener noreferrer">「頻道連結」</a>`
-    );
+    const channelMatches = Array.from(convertedContent.matchAll(/<#(\d+)>/g));
+    for (let i = 0; i < channelMatches.length; i++) {
+        const match = channelMatches[i];
+        const channelId = match[1];
+        const channelInfo: Channel | undefined = await getChannelById(channelId);
+        if (channelInfo) {
+            const html = `
+            <a href="https://discord.com/channels/${channelInfo.guild_id}/${channelInfo.channel_id}" target="_blank" rel="noopener noreferrer" class="channel-link">
+                <span class="channel-name">
+                    ${channelInfo.name}
+                </span>
+            </a>`;
+            convertedContent = convertedContent.replace(match[0], html);
+        }
+    }
     return convertedContent;
 }
 
 function applyTagStyling(content: string, tagInfo: Tag): string {
     if (!tagInfo) return content;
     const tagMentionRegex = new RegExp(`(\\|\\|\\s*)?(@everyone|<@&${tagInfo.tag_id}>)(\\s*\\|\\|)?`, 'g');
-    return content.replace(tagMentionRegex, (match, spoilerStart, mention, spoilerEnd) => {
-        const isSpoiler = spoilerStart && spoilerEnd;
-        if (isSpoiler) {
-            return `<div><span style="background: #9A9BA11F;"><p style="background: ${tagInfo.bg_color}; border-radius: 3px; color: ${tagInfo.text_color}; font-weight: 600; padding: 0 2px!important; font-size: 14px;">@${tagInfo.name}</p></span></div>`;
-        } else {
-            return `<div><p style="background: ${tagInfo.bg_color}; border-radius: 3px; color: ${tagInfo.text_color}; font-weight: 600; padding: 0 2px!important; font-size: 14px;">@${tagInfo.name}</p></div>`;
-        }
+    return content.replace(tagMentionRegex, () => {
+        return `<div><p class="tag-name" style="background: ${tagInfo.bg_color};color: ${tagInfo.text_color};">@${tagInfo.name}</p></div>`;
     });
 }
 
@@ -128,7 +133,7 @@ export default async function AnnouncementDetailPage({ params }: Props) {
     if (!announcement) {
         return notFound();
     }
-    let processedContent = convertDiscordMarkdown(announcement.content);
+    let processedContent = await convertDiscordMarkdown(announcement.content);
     const foundTagInfo = await getTag(announcement.content);
     if (foundTagInfo) {
         processedContent = applyTagStyling(processedContent, foundTagInfo);

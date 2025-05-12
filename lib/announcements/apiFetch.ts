@@ -15,6 +15,15 @@ export interface Tag {
     bg_color: string;
 }
 
+export interface Channel {
+    channel_id: string;
+    name: string;
+    type: string;
+    icon: string;
+    is_private: boolean;
+    guild_id: string;
+}
+
 const EXTERNAL_API_URL = process.env.API_URL || '';
 const API_SECRET = process.env.API_SECRET || '';
 if (!API_SECRET && process.env.NODE_ENV === 'production') {
@@ -124,4 +133,40 @@ async function fetchTagById(id: string): Promise<Tag | undefined> {
 
 export async function getTagById(id: string): Promise<Tag | undefined> {
     return await fetchTagById(id);
+}
+
+async function fetchChannelById(id: string): Promise<Channel | undefined> {
+    if (!API_SECRET || !EXTERNAL_API_URL) {
+        console.error("API Secret or URL is missing for fetching channel by ID.");
+        return undefined;
+    }
+    try {
+        const token = crypto.createHash('md5').update(API_SECRET).digest('hex');
+        const response = await fetch(`${EXTERNAL_API_URL}/channel/${id}`, {
+            method: 'GET',
+            headers: {
+                'x-api-token': token,
+                'Content-Type': 'application/json',
+            },
+            cache: 'no-store',
+        });
+
+        if (!response.ok) {
+            if (response.status === 404) {
+                console.log(`Channel with ID ${id} not found (API returned 404).`);
+                return undefined;
+            }
+            console.error(`External API fetch error (channel by ID ${id}): ${response.status} ${response.statusText}`);
+            return undefined;
+        }
+        const data = await response.json();
+        return data as Channel;
+    } catch (error) {
+        console.error(`Error fetching external channel by ID ${id}:`, error);
+        return undefined;
+    }
+}
+
+export async function getChannelById(id: string): Promise<Channel | undefined> {
+    return await fetchChannelById(id);
 } 

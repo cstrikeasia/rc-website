@@ -81,3 +81,25 @@ body {
   background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid #393939;
 }
+
+.channel-link .channel-name {
+  background: rgba(113, 133, 255, 0.3);
+  border-radius: 3px;
+  color: rgb(57, 76, 177);
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-block;
+  padding: 0 2px;
+}
+
+.channel-link .channel-name:hover {
+  background: #5865f2;
+  color: #ffffff;
+}
+
+.tag-name {
+  border-radius: 3px;
+  font-weight: 600;
+  padding: 0 2px !important;
+  font-size: 14px;
+}

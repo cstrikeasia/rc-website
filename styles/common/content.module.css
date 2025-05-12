@@ -1,16 +1,11 @@
 /** 主內容 **/
 .main {
   flex: 1;
-  background: #358bff url(../../public/images/bg.jpg?v=fa56a8da) center top
-    no-repeat;
+  background: #358bff url(../../public/images/bg.jpg?v=fa56a8da) center top no-repeat;
   background-size: 100% 100%;
   color: #fff;
   padding: 30px 10px 180px 10px;
   height: calc(100% - 50px);
-}
-
-.main a {
-  color: #5491cd;
 }
 
 .main a:hover {
@@ -100,6 +95,7 @@
 .main p a {
   display: block;
   width: 80%;
+  text-decoration: none !important;
 }
 
 .main p a i {
@@ -186,8 +182,7 @@
 
   .bgImage {
     flex: 1;
-    background: url(../../public/images/rc-screenshot.png) center center
-      no-repeat;
+    background: url(../../public/images/rc-screenshot.png) center center no-repeat;
     background-size: contain;
     display: flex;
     justify-content: center;
