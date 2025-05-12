@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
 
 // Lib
-import { getAnnouncementById, type Announcement } from '@/lib/announcements/apiFetch';
+import { getAnnouncementById, getTagById, type Tag, type Announcement } from '@/lib/announcements/apiFetch';
 import { getMetaData } from '@/lib/seoHelper';
 import { announcementBaseOptions } from '@/lib/announcements/metadataConfig';
 
@@ -23,6 +23,7 @@ function formatDiscordTimestamp(timestamp: number): string {
             minute: '2-digit',
             second: '2-digit',
             hour12: false,
+            timeZone: 'Asia/Taipei'
         });
     } catch (e) {
         console.error("Error formatting timestamp:", e);
@@ -43,6 +44,45 @@ function convertDiscordMarkdown(content: string): string {
         `<a href="https://discord.com/channels/${serverId}/$1" target="_blank" rel="noopener noreferrer">「頻道連結」</a>`
     );
     return convertedContent;
+}
+
+function applyTagStyling(content: string, tagInfo: Tag): string {
+    if (!tagInfo) return content;
+    const tagMentionRegex = new RegExp(`(\\|\\|\\s*)?(@everyone|<@&${tagInfo.tag_id}>)(\\s*\\|\\|)?`, 'g');
+    return content.replace(tagMentionRegex, (match, spoilerStart, mention, spoilerEnd) => {
+        const isSpoiler = spoilerStart && spoilerEnd;
+        if (isSpoiler) {
+            return `<div><span style="background: #9A9BA11F;"><p style="background: ${tagInfo.bg_color}; border-radius: 3px; color: ${tagInfo.text_color}; font-weight: 600; padding: 0 2px!important; font-size: 14px;">@${tagInfo.name}</p></span></div>`;
+        } else {
+            return `<div><p style="background: ${tagInfo.bg_color}; border-radius: 3px; color: ${tagInfo.text_color}; font-weight: 600; padding: 0 2px!important; font-size: 14px;">@${tagInfo.name}</p></div>`;
+        }
+    });
+}
+
+async function getTag(content: string): Promise<Tag | undefined> {
+    let tagInfo: Tag | undefined = undefined;
+    const mentions = content.match(/@everyone|<@&(\d+)>/g);
+    if (mentions && mentions.length > 0) {
+        const firstMention = mentions[0];
+        if (firstMention === '@everyone') {
+            tagInfo = {
+                tag_id: '@everyone',
+                name: 'everyone',
+                text_color: '#394cb1',
+                bg_color: 'rgb(113 133 255 / 30%)'
+            };
+        } else {
+            const roleMentionMatch = /<@&(\d+)>/.exec(firstMention);
+            if (roleMentionMatch && roleMentionMatch[1]) {
+                const roleIdString = roleMentionMatch[1];
+                const tagData = await getTagById(roleIdString);
+                if (tagData) {
+                    tagInfo = tagData;
+                }
+            }
+        }
+    }
+    return tagInfo;
 }
 
 type Props = {
@@ -88,7 +128,11 @@ export default async function AnnouncementDetailPage({ params }: Props) {
     if (!announcement) {
         return notFound();
     }
-    const processedContent = convertDiscordMarkdown(announcement.content);
+    let processedContent = convertDiscordMarkdown(announcement.content);
+    const foundTagInfo = await getTag(announcement.content);
+    if (foundTagInfo) {
+        processedContent = applyTagStyling(processedContent, foundTagInfo);
+    }
     const processedAnnouncement: Announcement = {
         ...announcement,
         content: processedContent,

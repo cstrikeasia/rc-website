@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 
 // Lib
 import { getAnnouncementsByCategory } from '@/lib/announcements/apiFetch';
@@ -51,6 +52,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { metadata } = getMetaData(pageMetaOptions);
     return metadata;
 }
+
+export const dynamic = 'force-dynamic';
 
 export default async function CategoryAnnouncementPage({ params }: Props) {
     const categorySlug = params.categorySlug;

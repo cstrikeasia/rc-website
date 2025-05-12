@@ -1,6 +1,5 @@
 .main {
-  background: #358bff url(../public/images/agreement_bg.png) center top
-    no-repeat !important;
+  background: #358bff url(../public/images/agreement_bg.png) center top no-repeat !important;
   background-size: 100% 100% !important;
 }
 
@@ -20,14 +19,16 @@
   border: 1px solid #dfebf6;
   background: url(../public/images/help-left-1.gif) left top repeat-y;
   background-color: #fff;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  gap: 20px;
+  width: 100%;
 }
 
 .help-inner {
   background: url(../public/images/help-left-2.gif) left bottom no-repeat;
   display: flex;
   flex-direction: row;
-  height: 55dvh;
-  overflow-y: scroll;
 }
 
 .help-menu {
@@ -228,6 +229,7 @@
   .help-inner {
     border: unset;
     background: unset;
+    margin-top: 0;
   }
 
   .help-node div {
@@ -247,6 +249,7 @@
 }
 
 @media screen and (min-width: 769px) {
+
   .faq-toggle-btn,
   .faq-mobile-menu {
     display: none;
