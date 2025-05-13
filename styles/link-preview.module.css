@@ -36,7 +36,7 @@
 .previewTitle {
     font-size: 15px;
     font-weight: 500;
-    color: #7289da;
+    color: #4c97f0;
     margin: 0 0 4px 0;
     white-space: nowrap;
     overflow: hidden;
@@ -45,7 +45,7 @@
 
 .previewDescription {
     font-size: 13px;
-    color: #b9bbbe;
+    color: #fff;
     line-height: 1.4;
     margin: 0;
     -webkit-box-orient: vertical;
