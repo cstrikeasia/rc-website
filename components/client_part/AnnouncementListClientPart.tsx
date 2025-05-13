@@ -107,7 +107,15 @@ const AnnouncementListClient = memo(function AnnouncementListClient({
                                         </div>
                                     </Link>
                                     <span className={main["itemDate"]}>
-                                        {new Date(announcement.date).toISOString().slice(0, 10)}
+                                        {new Date(announcement.date).toLocaleString('zh-TW', {
+                                            year: 'numeric',
+                                            month: '2-digit',
+                                            day: '2-digit',
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                            hour12: false,
+                                            timeZone: 'Asia/Taipei'
+                                        }).replace(/\//g, '-').slice(0, 10)}
                                     </span>
                                 </li>
                             );
