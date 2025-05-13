@@ -14,6 +14,16 @@ export const Header = () => {
       href: "/announcement",
     },
     {
+      label: "問題回報",
+      href: "https://github.com/NerdyHomeReOpen/RiceCall/issues",
+      target: "_blank",
+    },
+    {
+      label: "伺服器狀態",
+      href: "https://status.ricecall.com.tw/",
+      target: "_blank",
+    },
+    {
       label: "Discord",
       href: "https://discord.gg/adCWzv6wwS",
       target: "_blank",
