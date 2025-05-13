@@ -5,6 +5,7 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import { getAnnouncementById, getTagById, type Tag, type Announcement, getChannelById, type Channel } from '@/lib/announcements/apiFetch';
 import { getMetaData } from '@/lib/seoHelper';
 import { announcementBaseOptions } from '@/lib/announcements/metadataConfig';
+import { extractUrls, getLinkPreview, type LinkPreviewData } from '@/lib/linkPreview';
 
 // Components
 import { Header } from "@/components/Header";
@@ -133,15 +134,27 @@ export default async function AnnouncementDetailPage({ params }: Props) {
     if (!announcement) {
         return notFound();
     }
+
     let processedContent = await convertDiscordMarkdown(announcement.content);
     const foundTagInfo = await getTag(announcement.content);
+
     if (foundTagInfo) {
         processedContent = applyTagStyling(processedContent, foundTagInfo);
     }
+
+    const urlsToPreview = extractUrls(announcement.content);
+    let linkPreviews: LinkPreviewData[] = [];
+    if (urlsToPreview.length > 0) {
+        linkPreviews = (await Promise.all(
+            urlsToPreview.map(url => getLinkPreview(url))
+        )).filter(preview => preview !== null) as LinkPreviewData[];
+    }
+
     const processedAnnouncement: Announcement = {
         ...announcement,
         content: processedContent,
     };
+
     const categorySlug = params.categorySlug;
     const id = params.id;
     const currentUrl = `${announcementBaseOptions.baseUrlSegment}/${categorySlug}/${id}`;
@@ -157,7 +170,10 @@ export default async function AnnouncementDetailPage({ params }: Props) {
     return (
         <>
             <Header />
-            <AnnouncementContentClientPart announcement={processedAnnouncement} />
+            <AnnouncementContentClientPart
+                announcement={processedAnnouncement}
+                linkPreviews={linkPreviews}
+            />
             <JsonLdInjector jsonLd={jsonLd} />
             <Footer />
         </>

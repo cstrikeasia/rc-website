@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, memo } from "react";
 import Link from 'next/link';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
@@ -8,16 +8,22 @@ import rehypeRaw from 'rehype-raw';
 
 // Lib
 import type { Announcement } from '@/lib/announcements/apiFetch';
+import type { LinkPreviewData } from '@/lib/linkPreview';
 
 // CSS
 import content from '@/styles/common/content.module.css';
 import main from '@/styles/announcementDetail.module.css';
+import previewStyles from "@/styles/link-preview.module.css";
 
-interface AnnouncementContentProps {
+interface AnnouncementContentClientPartProps {
     announcement: Announcement;
+    linkPreviews?: LinkPreviewData[];
 }
 
-export default function AnnouncementContentClientPart({ announcement }: AnnouncementContentProps) {
+const AnnouncementContentClientPart = memo(function AnnouncementContentClientPart({
+    announcement,
+    linkPreviews
+}: AnnouncementContentClientPartProps) {
     return (
         <div className={`${content["main"]} ${main["main"]}`}>
             <div className={`${content["wrapper"]} ${main["detailWrapper"]}`}>
@@ -39,6 +45,37 @@ export default function AnnouncementContentClientPart({ announcement }: Announce
                             {announcement.content.replace(/\\n/g, '\n')}
                         </ReactMarkdown>
                     </div>
+
+                    {linkPreviews && linkPreviews.length > 0 && (
+                        <div className={previewStyles.linkPreviewsContainer}>
+                            {linkPreviews.map((preview, index) => (
+                                <a
+                                    key={index}
+                                    href={preview.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={previewStyles.previewCard}
+                                    aria-label={`預覽：${preview.title || preview.url}`}
+                                >
+                                    <div className={previewStyles.previewContent}>
+                                        <h4 className={previewStyles.previewTitle}>
+                                            {preview.title || preview.url}
+                                        </h4>
+                                        {preview.description && (
+                                            <p className={previewStyles.previewDescription}>
+                                                {preview.description}
+                                            </p>
+                                        )}
+                                    </div>
+                                    {preview.imageUrl && (
+                                        <div className={previewStyles.previewImageContainer}>
+                                            <img src={preview.imageUrl} alt={preview.title || '連結圖片'} className={previewStyles.previewImage} />
+                                        </div>
+                                    )}
+                                </a>
+                            ))}
+                        </div>
+                    )}
                     <div className={main["backButtonContainer"]}>
                         <Link href="/announcement">返回公告列表</Link>
                     </div>
@@ -46,4 +83,6 @@ export default function AnnouncementContentClientPart({ announcement }: Announce
             </div>
         </div>
     );
-} 
+});
+
+export default AnnouncementContentClientPart; 
