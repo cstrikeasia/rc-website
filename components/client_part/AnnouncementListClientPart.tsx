@@ -30,9 +30,9 @@ const categoryDisplayNameToSlugMap: { [key: string]: string } = {
     '活動': 'event',
 };
 
-const AnnouncementListClient = memo(function AnnouncementListClient({ 
-    initialAnnouncements, 
-    currentCategory 
+const AnnouncementListClient = memo(function AnnouncementListClient({
+    initialAnnouncements,
+    currentCategory
 }: AnnouncementListProps) {
     // Router
     const router = useRouter();
@@ -41,7 +41,7 @@ const AnnouncementListClient = memo(function AnnouncementListClient({
     const [announcements, setAnnouncements] = useState(initialAnnouncements);
     const [isLoading, setIsLoading] = useState(false);
     const [activeCategory, setActiveCategory] = useState(currentCategory);
-    const [cachedData, setCachedData] = useState<{[key: string]: Announcement[]}>({
+    const [cachedData, setCachedData] = useState<{ [key: string]: Announcement[] }>({
         [currentCategory]: initialAnnouncements
     });
     // Handles
@@ -106,7 +106,9 @@ const AnnouncementListClient = memo(function AnnouncementListClient({
                                             <span className={main["itemTitle"]}>{announcement.title}</span>
                                         </div>
                                     </Link>
-                                    <span className={main["itemDate"]}>{announcement.date}</span>
+                                    <span className={main["itemDate"]}>
+                                        {new Date(announcement.date).toISOString().slice(0, 10)}
+                                    </span>
                                 </li>
                             );
                         })
