@@ -49,18 +49,22 @@ const AnnouncementContentClientPart = memo(function AnnouncementContentClientPar
                     {linkPreviews && linkPreviews.length > 0 && (
                         <div className={previewStyles.linkPreviewsContainer}>
                             {linkPreviews.map((preview, index) => (
-                                <a
+                                <div
                                     key={index}
-                                    href={preview.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
                                     className={previewStyles.previewCard}
-                                    aria-label={`預覽：${preview.title || preview.url}`}
                                 >
                                     <div className={previewStyles.previewContent}>
-                                        <h4 className={previewStyles.previewTitle}>
-                                            {preview.title || preview.url}
-                                        </h4>
+                                        <a
+                                            key={index}
+                                            href={preview.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={`預覽：${preview.title || preview.url}`}
+                                        >
+                                            <h4 className={previewStyles.previewTitle}>
+                                                {preview.title || preview.url}
+                                            </h4>
+                                        </a>
                                         {preview.description && (
                                             <p className={previewStyles.previewDescription}>
                                                 {preview.description}
@@ -72,7 +76,7 @@ const AnnouncementContentClientPart = memo(function AnnouncementContentClientPar
                                             <img src={preview.imageUrl} alt={preview.title || '連結圖片'} className={previewStyles.previewImage} />
                                         </div>
                                     )}
-                                </a>
+                                </div>
                             ))}
                         </div>
                     )}
