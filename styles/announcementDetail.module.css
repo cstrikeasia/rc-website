@@ -304,6 +304,7 @@
 @media (max-width: 768px) {
     .detailContentContainer {
         padding: 15px 10px !important;
+        width: 100% !important;
     }
 
     .detailTitle {
