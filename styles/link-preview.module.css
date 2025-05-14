@@ -65,7 +65,7 @@
 
 .previewImageContainer {
     flex-shrink: 0;
-    width: 80px;
+    width: auto;
     height: 80px;
     margin: 10px;
     margin-left: 0;
