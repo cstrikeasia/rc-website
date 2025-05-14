@@ -88,8 +88,7 @@ body {
   color: rgb(57, 76, 177);
   font-weight: 600;
   font-size: 14px;
-  display: inline-block;
-  padding: 0 2px;
+  padding: 0 4px;
   display: inline-flex;
   align-items: center;
 }

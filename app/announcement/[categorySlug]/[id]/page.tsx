@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
 
 // Lib
@@ -47,7 +47,7 @@ async function convertDiscordMarkdown(content: string): Promise<string> {
         const channelInfo: Channel | undefined = await getChannelById(channelId);
         console.log(channelInfo);
         if (channelInfo) {
-            const htmlString = getDiscordChannelSvg(channelInfo.guild_id, channelInfo.channel_id, channelInfo.name, channelInfo.type);
+            const htmlString = getDiscordChannelSvg(channelInfo.guild_id, channelInfo.channel_id, channelInfo.name, channelInfo.type, channelInfo.is_private);
             convertedContent = convertedContent.replace(match[0], htmlString);
         }
     }
@@ -129,7 +129,7 @@ export async function generateMetadata(
 export default async function AnnouncementDetailPage({ params }: Props) {
     let announcement = await getAnnouncementById(params.id);
     if (!announcement) {
-        return notFound();
+        redirect('/announcement');
     }
 
     let processedContent = await convertDiscordMarkdown(announcement.content);
