@@ -6,6 +6,7 @@ import { getAnnouncementById, getTagById, type Tag, type Announcement, getChanne
 import { getMetaData } from '@/lib/seoHelper';
 import { announcementBaseOptions } from '@/lib/announcements/metadataConfig';
 import { extractUrls, getLinkPreview, type LinkPreviewData } from '@/lib/linkPreview';
+import { getDiscordChannelSvg } from '@/utils/discordChannelSvg';
 
 // Components
 import { Header } from "@/components/Header";
@@ -44,14 +45,10 @@ async function convertDiscordMarkdown(content: string): Promise<string> {
         const match = channelMatches[i];
         const channelId = match[1];
         const channelInfo: Channel | undefined = await getChannelById(channelId);
+        console.log(channelInfo);
         if (channelInfo) {
-            const html = `
-            <a href="https://discord.com/channels/${channelInfo.guild_id}/${channelInfo.channel_id}" target="_blank" rel="noopener noreferrer" class="channel-link">
-                <span class="channel-name">
-                    ${channelInfo.name}
-                </span>
-            </a>`;
-            convertedContent = convertedContent.replace(match[0], html);
+            const htmlString = getDiscordChannelSvg(channelInfo.guild_id, channelInfo.channel_id, channelInfo.name, channelInfo.type);
+            convertedContent = convertedContent.replace(match[0], htmlString);
         }
     }
     return convertedContent;
