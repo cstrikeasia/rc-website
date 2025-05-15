@@ -47,13 +47,13 @@ const AnnouncementContentClientPart = memo(function AnnouncementContentClientPar
                     </div>
 
                     {linkPreviews && linkPreviews.length > 0 && (
-                        <div className={previewStyles.linkPreviewsContainer}>
+                        <div className={previewStyles['linkPreviewsContainer']}>
                             {linkPreviews.map((preview, index) => (
                                 <div
                                     key={index}
-                                    className={previewStyles.previewCard}
+                                    className={previewStyles['previewCard']}
                                 >
-                                    <div className={previewStyles.previewContent}>
+                                    <div className={previewStyles['previewContent']}>
                                         <a
                                             key={index}
                                             href={preview.url}
@@ -61,19 +61,19 @@ const AnnouncementContentClientPart = memo(function AnnouncementContentClientPar
                                             rel="noopener noreferrer"
                                             aria-label={`預覽：${preview.title || preview.url}`}
                                         >
-                                            <h4 className={previewStyles.previewTitle}>
+                                            <h4 className={previewStyles['previewTitle']}>
                                                 {preview.title || preview.url}
                                             </h4>
                                         </a>
                                         {preview.description && (
-                                            <p className={previewStyles.previewDescription}>
+                                            <p className={previewStyles['previewDescription']}>
                                                 {preview.description}
                                             </p>
                                         )}
                                     </div>
                                     {preview.imageUrl && (
-                                        <div className={previewStyles.previewImageContainer}>
-                                            <img src={preview.imageUrl} alt={preview.title || '連結圖片'} className={previewStyles.previewImage} />
+                                        <div className={previewStyles['previewImageContainer']}>
+                                            <img src={preview.imageUrl} alt={preview.title || '連結圖片'} className={previewStyles['previewImage']} />
                                         </div>
                                     )}
                                 </div>

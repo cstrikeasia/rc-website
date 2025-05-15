@@ -55,7 +55,24 @@ export async function getLinkPreview(url: string): Promise<LinkPreviewData | nul
 }
 
 export function extractUrls(text: string): string[] {
-    const urlRegex = /(https?:\/\/[^\s]+)/g;
-    const urls = text.match(urlRegex);
-    return urls ? Array.from(new Set(urls)) : [];
+    const urlRegex = /https?:\/\/[^\s()<>"]+(?<![.,!?;:'"()<>\]\\])/g;
+    const matches: RegExpMatchArray | null = text.match(urlRegex);
+    if (matches) {
+        const cleanedUrls: string[] = matches.map(url => {
+            let cleanedUrl = url.replace(/[.,!?;:'"()<>\]\\]+$/, '');
+
+            if (cleanedUrl.endsWith(')') && !cleanedUrl.includes('(')) {
+                cleanedUrl = cleanedUrl.slice(0, -1);
+            }
+            if (cleanedUrl.startsWith('(') && cleanedUrl.endsWith(')')) {
+                const coreUrl = cleanedUrl.slice(1, -1);
+                if (coreUrl.match(/^https?:\/\//)) {
+                    cleanedUrl = coreUrl;
+                }
+            }
+            return cleanedUrl;
+        });
+        return Array.from(new Set(cleanedUrls));
+    }
+    return [];
 } 
