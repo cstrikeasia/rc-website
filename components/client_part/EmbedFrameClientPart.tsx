@@ -8,44 +8,95 @@ export default function EmbedFrameClientPart() {
     const searchParams = useSearchParams();
     const [embedUrl, setEmbedUrl] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        setIsLoading(true);
         const targetUrl = searchParams.get('target');
 
         if (targetUrl) {
             try {
                 const decodedUrl = decodeURIComponent(targetUrl);
                 new URL(decodedUrl);
+
+                if (decodedUrl.includes("twitch.tv/") && !decodedUrl.includes("/embed/")) {
+                    setError("嵌入 Twitch 內容時，請確認您提供的是 Twitch 的官方嵌入網址 (通常包含 /embed/)，而不是頻道主頁。");
+                    setEmbedUrl(null);
+                    setIsLoading(false);
+                    return;
+                }
+                if (decodedUrl.includes("youtube.com/") && decodedUrl.includes("/watch?v=") && !decodedUrl.includes("/embed/")) {
+                    setError("嵌入 YouTube 影片時，建議使用官方的嵌入網址 (通常格式為 youtube.com/embed/VIDEO_ID)。");
+                }
+
                 setEmbedUrl(decodedUrl);
                 setError(null);
             } catch (e) {
                 console.error("Invalid target URL:", e);
-                setError("提供的目標網址無效。");
+                setError("提供的目標網址無效或格式不正確。請檢查後重試。");
                 setEmbedUrl(null);
             }
         } else {
-            setError("請在網址中提供 'target' 參數以指定要嵌入的內容，例如：/translate?target=ENCODED_URL");
+            setError("請在網址中提供 'target' 參數以指定要嵌入的內容。");
             setEmbedUrl(null);
         }
+        setIsLoading(false);
     }, [searchParams]);
 
+    if (isLoading) {
+        return (
+            <div className={styles.container}>
+                <p>正在處理請求...</p>
+            </div>
+        );
+    }
+
     if (error) {
-        const exampleTwitchChannel = "yourchannel";
-        const encodedParentDomain = encodeURIComponent("ricecall.com.tw");
-        const exampleTargetUrl = `https://www.twitch.tv/embed/${exampleTwitchChannel}/chat?parent=${encodedParentDomain}`;
-        const encodedExampleTargetUrl = encodeURIComponent(exampleTargetUrl);
-        const currentOrigin = typeof window !== 'undefined' ? window.location.origin : 'https://ricecall.com';
+        const yourDomain = "ricecall.com.tw";
+        const currentOrigin = typeof window !== 'undefined' ? window.location.origin : `https://${yourDomain}`;
+
+        const exampleTwitchChannel = "yourtwitchchannel";
+        const twitchParentDomain = encodeURIComponent(yourDomain);
+        const rawTwitchChatUrl = `https://www.twitch.tv/embed/${exampleTwitchChannel}/chat?parent=${twitchParentDomain}`;
+        const encodedTwitchChatUrlForTarget = encodeURIComponent(rawTwitchChatUrl);
+        const fullTwitchExampleLink = `${currentOrigin}/translate?target=${encodedTwitchChatUrlForTarget}`;
+
+        const exampleYouTubeVideoId = "YOUR_YOUTUBE_VIDEO_ID";
+        const rawYouTubeEmbedUrl = `https://www.youtube.com/embed/${exampleYouTubeVideoId}?autoplay=1`;
+        const encodedYouTubeEmbedUrlForTarget = encodeURIComponent(rawYouTubeEmbedUrl);
+        const fullYouTubeExampleLink = `${currentOrigin}/translate?target=${encodedYouTubeEmbedUrlForTarget}`;
 
         return (
             <div className={styles.container}>
                 <p className={styles.errorText}>{error}</p>
                 <div className={styles.usageExample}>
-                    <h4>使用範例：</h4>
-                    <p>嵌入 Twitch 聊天室 (請將 `{exampleTwitchChannel}` 替換為實際頻道名稱):</p>
-                    <code>
-                        {`${currentOrigin}/translate?target=${encodedExampleTargetUrl}`}
-                    </code>
-                    <p><strong>重要：</strong>上述範例中的 `parent` 參數已設定為 `ricecall.com.tw`。如果您嵌入的服務需要 `parent` 參數，請確保它指向允許嵌入的域名。</p>
+                    <h4>使用說明：</h4>
+                    <ol>
+                        <li>從目標服務 (如 Twitch, YouTube) 取得其官方的 **嵌入網址 (Embed URL)**。</li>
+                        <li>對該嵌入網址進行完整的 URL 編碼 (URL Encode)。可以搜尋「URL Encoder」線上工具。</li>
+                        <li>將編碼後的網址作為 `target` 參數附加到本頁面網址後方。</li>
+                    </ol>
+
+                    <h5>Twitch 聊天室範例：</h5>
+                    <p>(將 `{exampleTwitchChannel}` 替換為您的 Twitch 頻道名稱)</p>
+                    <p>您的 Twitch 聊天室嵌入連結 (原始，未編碼):</p>
+                    <code>{rawTwitchChatUrl}</code>
+                    <p>對上述連結進行 URL 編碼後，組合成完整的嵌入請求連結：</p>
+                    <code>{fullTwitchExampleLink}</code>
+                    <hr />
+                    <h5>YouTube 直播/影片範例 (嵌入播放器)：</h5>
+                    <p>(將 `{exampleYouTubeVideoId}` 替換為您的 YouTube 影片 ID)</p>
+                    <p>您的 YouTube 影片嵌入連結 (原始，未編碼):</p>
+                    <code>{rawYouTubeEmbedUrl}</code>
+                    <p>對上述連結進行 URL 編碼後，組合成完整的嵌入請求連結：</p>
+                    <code>{fullYouTubeExampleLink}</code>
+
+                    <p style={{ marginTop: "15px" }}><strong>重要提醒：</strong></p>
+                    <ul>
+                        <li>許多服務 (如 Twitch) 要求在其嵌入網址中包含 `parent` (或其他類似名稱的) 參數，該參數值必須是您的網站域名 (本站為 `{yourDomain}`)。</li>
+                        <li>如果目標網站設定了 `X-Frame-Options` 或 `Content-Security-Policy` 阻止跨域嵌入，則無法在此處顯示其內容，這並非本服務可以控制。</li>
+                        <li>請務必使用目標服務提供的 **官方嵌入方式與網址**。</li>
+                    </ul>
                 </div>
             </div>
         );
@@ -54,7 +105,7 @@ export default function EmbedFrameClientPart() {
     if (!embedUrl) {
         return (
             <div className={styles.container}>
-                <p>正在載入嵌入內容...</p>
+                <p>發生未知錯誤，無法確定嵌入網址。</p>
             </div>
         );
     }
@@ -62,6 +113,7 @@ export default function EmbedFrameClientPart() {
     return (
         <div className={styles.container}>
             <iframe
+                id="embed-iframe"
                 src={embedUrl}
                 className={styles.embedFrame}
                 allowFullScreen
