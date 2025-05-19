@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 20px;
+    text-align: center;
+}
+
+.embedFrame {
+    width: 80vw;
+    max-width: 1200px;
+    height: 70vh;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.errorText {
+    color: red;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.usageExample {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px dashed #ddd;
+    background-color: #f9f9f9;
+    text-align: left;
+    max-width: 800px;
+}
+
+.usageExample h4 {
+    margin-top: 0;
+}
+
+.usageExample code {
+    display: block;
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 4px;
+    word-break: break-all;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
