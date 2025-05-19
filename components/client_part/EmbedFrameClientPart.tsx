@@ -55,11 +55,16 @@ export default function EmbedFrameClientPart() {
         const yourDomain = "ricecall.com.tw";
         const currentOrigin = typeof window !== 'undefined' ? window.location.origin : `https://${yourDomain}`;
 
-        const exampleTwitchChannel = "yourtwitchchannel";
+        const exampleTwitchChannelForChat = "yourtwitchchannel";
         const twitchParentDomain = encodeURIComponent(yourDomain);
-        const rawTwitchChatUrl = `https://www.twitch.tv/embed/${exampleTwitchChannel}/chat?parent=${twitchParentDomain}`;
+        const rawTwitchChatUrl = `https://www.twitch.tv/embed/${exampleTwitchChannelForChat}/chat?parent=${twitchParentDomain}`;
         const encodedTwitchChatUrlForTarget = encodeURIComponent(rawTwitchChatUrl);
-        const fullTwitchExampleLink = `${currentOrigin}/translate?target=${encodedTwitchChatUrlForTarget}`;
+        const fullTwitchChatExampleLink = `${currentOrigin}/translate?target=${encodedTwitchChatUrlForTarget}`;
+
+        const exampleTwitchChannelForPlayer = "anotherchannel";
+        const rawTwitchPlayerUrl = `https://player.twitch.tv/?channel=${exampleTwitchChannelForPlayer}&parent=${twitchParentDomain}&autoplay=true&muted=true`; // Added autoplay and muted
+        const encodedTwitchPlayerUrlForTarget = encodeURIComponent(rawTwitchPlayerUrl);
+        const fullTwitchPlayerExampleLink = `${currentOrigin}/translate?target=${encodedTwitchPlayerUrlForTarget}`;
 
         const exampleYouTubeVideoId = "YOUR_YOUTUBE_VIDEO_ID";
         const rawYouTubeEmbedUrl = `https://www.youtube.com/embed/${exampleYouTubeVideoId}?autoplay=1`;
@@ -78,15 +83,24 @@ export default function EmbedFrameClientPart() {
                     </ol>
 
                     <h5>Twitch 聊天室範例：</h5>
-                    <p>(將 `{exampleTwitchChannel}` 替換為您的 Twitch 頻道名稱)</p>
-                    <p>您的 Twitch 聊天室嵌入連結 (原始，未編碼):</p>
+                    <p>(將 `{exampleTwitchChannelForChat}` 替換為您的 Twitch 頻道名稱)</p>
+                    <p>Twitch 聊天室嵌入連結 (原始，未編碼):</p>
                     <code>{rawTwitchChatUrl}</code>
                     <p>對上述連結進行 URL 編碼後，組合成完整的嵌入請求連結：</p>
-                    <code>{fullTwitchExampleLink}</code>
+                    <code>{fullTwitchChatExampleLink}</code>
                     <hr />
-                    <h5>YouTube 直播/影片範例 (嵌入播放器)：</h5>
+
+                    <h5>Twitch 直播播放器範例：</h5>
+                    <p>(將 `{exampleTwitchChannelForPlayer}` 替換為您的 Twitch 頻道名稱)</p>
+                    <p>Twitch 直播播放器嵌入連結 (原始，未編碼):</p>
+                    <code>{rawTwitchPlayerUrl}</code>
+                    <p>對上述連結進行 URL 編碼後，組合成完整的嵌入請求連結：</p>
+                    <code>{fullTwitchPlayerExampleLink}</code>
+                    <hr />
+
+                    <h5>YouTube 直播/影片播放器範例：</h5>
                     <p>(將 `{exampleYouTubeVideoId}` 替換為您的 YouTube 影片 ID)</p>
-                    <p>您的 YouTube 影片嵌入連結 (原始，未編碼):</p>
+                    <p>YouTube 影片嵌入連結 (原始，未編碼):</p>
                     <code>{rawYouTubeEmbedUrl}</code>
                     <p>對上述連結進行 URL 編碼後，組合成完整的嵌入請求連結：</p>
                     <code>{fullYouTubeExampleLink}</code>
