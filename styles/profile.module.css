@@ -1,0 +1,377 @@
+.main {
+  margin-top: 15px;
+  border: 1px solid #dfebf6;
+  color: #000000;
+  background: url(../public/images/user/img_f4.png);
+  background-color: #fff;
+  background-size: auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.main p {
+  display: unset;
+  width: auto;
+}
+
+.content {
+  padding: 30px 0px 60px 0px;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #aaafb0;
+}
+
+.main ul a {
+  display: inline-block;
+  color: #5d6160;
+  text-decoration: none;
+  background: unset;
+  border-radius: unset;
+  height: unset;
+  line-height: unset;
+  font-size: 14px;
+}
+
+.content li {
+  float: unset !important;
+  width: auto !important;
+}
+
+.main .wrapper {
+  width: 100%;
+}
+
+.main p {
+  padding: 0;
+}
+
+.clearFloat:after {
+  content: "\20";
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.wrapper {
+  width: auto;
+  margin: 0 auto;
+}
+
+.Maincontent {
+  display: flex;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  gap: 20px;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.mainIn {
+  min-height: 480px;
+  _height: 480px;
+  background: url(../public/images/user/btn_menu.gif) 0 0 repeat-y;
+}
+
+.sidebars {
+  width: 30dvh;
+  float: left;
+}
+
+.img {
+  border: none;
+  vertical-align: middle;
+}
+
+.btn {
+  display: inline-block;
+  height: 38px;
+  line-height: 38px;
+  background: #faa821 url(../public/images/user/btn.gif) 0 0 no-repeat;
+  padding-left: 10px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.menuTree {
+  padding: 30px 11px;
+  background: #f8fbff;
+  border: 1px solid #aaafb0;
+  margin-top: 1.1rem;
+}
+
+.menuTree h5 {
+  font-size: 14px;
+  height: 25px;
+  line-height: 25px;
+  color: #44484c;
+  font-weight: bold;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menuTree ul {
+  margin-bottom: 0px;
+}
+
+.menuTree li {
+  padding: 3px 0;
+  text-align: start;
+  margin: 0.5rem 1.9rem;
+}
+
+.link {
+  color: #666;
+  text-decoration: none;
+  outline: 0;
+}
+
+.cTitle {
+  font-size: 12px;
+  color: #737373;
+  font-weight: normal;
+  border-bottom: 1px solid #d5d5d5;
+  padding: 3px 6px;
+  margin: 0 3rem;
+}
+
+.cTitle strong {
+  font-size: 14px;
+  color: #333;
+  padding-right: 5px;
+}
+
+.form {
+  font-size: 12px;
+  width: 100% !important;
+  padding: 3rem !important;
+}
+
+.form li {
+  padding: 8px 0;
+  clear: both;
+  display: flex;
+  position: relative;
+  gap: 5px;
+  align-items: center;
+}
+
+.li {
+  list-style: none;
+}
+
+.form li label {
+  display: block;
+  min-width: 80px;
+  text-align: right;
+  float: left;
+  color: #106bc8;
+}
+
+.form .txtInput,
+.form select {
+  float: left;
+}
+
+.select {
+  padding: 2px;
+  border: 1px solid #c2d5ee;
+  vertical-align: middle;
+}
+
+.txtInput {
+  padding: 4px 3px;
+  border: 1px solid #c2d5ee;
+  vertical-align: middle;
+  font-size: 12px;
+  outline: none;
+  resize: none;
+}
+
+.form li:after {
+  content: "\20";
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.form li.btnLi {
+  padding-left: 80px;
+}
+
+.btn span {
+  display: inline-block;
+  height: 38px;
+  background: url(../public/images/user/btn.gif) right -38px no-repeat;
+  padding-right: 10px;
+  cursor: pointer;
+  text-shadow: 1px 0 #baa032, 0 1px #baa032;
+  text-align: center;
+  color: #fff;
+}
+
+/** User INfo **/
+.userInfoWrapper {
+  padding: 20px;
+  text-align: center;
+  background: #f8fbff;
+  border: 1px solid #aaafb0;
+}
+
+.userAvatarNameBox {
+  display: flex;
+  align-items: center;
+}
+
+.userAvatarBox {
+  display: flex;
+  margin-right: 1rem;
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.userAvatarBorder {
+  width: 60px;
+  height: 60px;
+  background-image: url("../public/images/user/avatar_border.png");
+  background-size: cover;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.userAvatar {
+  height: 53px;
+  width: 53px;
+  margin-left: 3px;
+  margin-top: 3px;
+  object-fit: cover;
+}
+
+.userInfoBox {
+  align-items: flex-start;
+  gap: 3px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.userNickName {
+  max-width: 100%;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  display: block;
+}
+
+.Label {
+  color: #403834;
+  font-size: 1.15rem 13.8px;
+}
+
+.vipExpirationText {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #454545;
+}
+
+.levelBox {
+  display: flex;
+  align-items: center;
+}
+
+.levelIcon {
+  height: 15px;
+  width: 15px;
+  margin-right: 0.3rem;
+}
+
+.vipIcon {
+  width: 55px;
+  height: 14px;
+  background-size: cover;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+
+.vipIconInactive {
+  filter: grayscale(100%);
+}
+
+.openVIPBtnBox {
+  margin-top: 15px;
+}
+
+.openVIPBtn {
+  width: 16rem;
+  font-size: 1.6rem;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebars {
+    width: 100%;
+  }
+
+  .Maincontent {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+  }
+
+  .main ul {
+    align-items: start;
+  }
+
+  .main ul li {
+    float: none !important;
+    width: 100% !important;
+    margin-bottom: 0px !important;
+  }
+
+  .form li label {
+    min-width: 60px;
+  }
+}
+
+.titleTextBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.titleText {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.titleText svg {
+  margin-right: 0.5rem;
+}
+
+.arrowUp {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.menuItem:not(:last-child) {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #aaafb05c;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+}

@@ -7,7 +7,8 @@
 }
 
 .main {
-  background: #358bff url(../public/images/bg2.jpg) center top no-repeat;
+  background: #358bff url(../public/images/agreement_bg.png) center top
+    no-repeat;
   background-size: 100% 100%;
   color: #fff;
   padding: 50px 0 70px 0;
@@ -133,8 +134,8 @@
 }
 
 .inp {
-  width: 247px;
-  height: 19px;
+  width: 100%;
+  height: 100%;
   padding: 10px 5px 8px 5px;
   border: 1px solid #c4ccdf;
   outline: none;
@@ -159,7 +160,7 @@
 }
 
 .innerBoxFB2 {
-  width: 268px;
+  width: 30rem;
   padding: 20px 30px 10px 30px;
   margin: 13px auto 30px auto;
 }
@@ -168,7 +169,7 @@
   color: #aaa;
   position: absolute;
   left: 10px;
-  top: 23px;
+  top: 1.5rem;
   z-index: 1000;
 }
 
@@ -207,6 +208,8 @@ span.error.tip {
   display: inline-block;
   padding-left: 10px;
   background: url(../public/images/signup/btn_reg.png) 0 0 no-repeat;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .btnSignup span {
@@ -219,6 +222,8 @@ span.error.tip {
   cursor: pointer;
   font-size: 14px;
   color: #fff;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .form .center {
@@ -289,6 +294,7 @@ span.error.tip {
   span.error {
     position: unset;
     transform: unset;
+    width: 100%;
   }
 
   .inp {
@@ -311,6 +317,7 @@ span.error.tip {
     position: unset;
     margin-bottom: 5px;
     color: #fff;
+    font-size: 1.2rem;
   }
 
   .dvl_focus {

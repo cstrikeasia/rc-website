@@ -103,11 +103,12 @@
   height: 39px;
   float: left;
   position: relative;
+  width: 22rem;
 }
 
 .inp {
-  width: 247px;
-  height: 19px;
+  width: 100%;
+  height: 100%;
   padding: 10px 5px 8px 5px;
   border: 1px solid #c4ccdf;
   outline: none;
@@ -147,6 +148,8 @@ span.error.tip {
   display: inline-block;
   padding-left: 10px;
   background: url(../public/images/signup/btn_reg.png) 0 0 no-repeat;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .btnSignup span {
@@ -159,6 +162,8 @@ span.error.tip {
   cursor: pointer;
   font-size: 14px;
   color: #fff;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .pdLeft {

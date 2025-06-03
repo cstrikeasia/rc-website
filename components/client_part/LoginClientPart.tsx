@@ -1,14 +1,16 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 // CSS
 import content from "@/styles/common/content.module.css";
 import main from "@/styles/login.module.css";
 import common from "@/styles/common/common.module.css";
 
-export default function RegisterPage() {
+export default function LoginClientPart() {
   const pathname = usePathname();
+  const { login } = useAuth();
   const meta = {
     title: "登入",
     description:
@@ -21,6 +23,7 @@ export default function RegisterPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState<Record<string, string>>({});
   const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const tips: Record<string, string> = {
     username: "例如：WHuang，Wei.Huang",
     nickname: "請填寫暱稱！",
@@ -30,10 +33,7 @@ export default function RegisterPage() {
   };
   const fields = [
     { label: "帳　　號", key: "username" },
-    { label: "暱　　稱", key: "nickname" },
     { label: "密　　碼", key: "password", type: "password" },
-    { label: "密碼確認", key: "confirm_password", type: "password" },
-    { label: "電子郵件", key: "email" },
   ];
   // Effect
   useEffect(() => {
@@ -43,12 +43,20 @@ export default function RegisterPage() {
     const passwordInput = document.querySelector<HTMLInputElement>(
       'input[name="password"]'
     );
-
     setFormData({
       username: usernameInput?.value || "",
       password: passwordInput?.value || "",
     });
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
+
   // Handler
   const handleInputChange = (key: string, value: string) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
@@ -68,89 +76,44 @@ export default function RegisterPage() {
   const handleBlur = (key: string) => {
     setFocusedField(null);
     const value = formData[key]?.trim() || "";
-    const username = formData["username"] || "";
-    const password = formData["password"] || "";
+    let errorMsg = "";
     if (!value) {
-      setErrors((prev) => ({ ...prev, [key]: "必填項" }));
-      return;
+      errorMsg = "必填項";
+    } else {
+      switch (key) {
+        case "username":
+          if (value.length < 4 || value.length > 20) {
+            setErrors((prev) => ({
+              ...prev,
+              [key]: "帳號必須為 4~20 字元之內。",
+            }));
+            return;
+          }
+          if (!/^[a-zA-Z0-9_.\-@]+$/.test(value)) {
+            setErrors((prev) => ({
+              ...prev,
+              [key]: "請填寫字母與數字或符號",
+            }));
+            return;
+          }
+          break;
+        case "password":
+          if (value.length < 6 || value.length > 20) {
+            setErrors((prev) => ({
+              ...prev,
+              [key]: "請輸入一個長度介於 6 和 20 之間的字元串。",
+            }));
+            return;
+          }
+          break;
+        default:
+          break;
+      }
     }
-    switch (key) {
-      case "username":
-        if (value.length < 4 || value.length > 20) {
-          setErrors((prev) => ({
-            ...prev,
-            [key]: "帳號必須為 4~20 字元之內。",
-          }));
-          return;
-        }
-        if (!/^[a-zA-Z0-9_.\-@]+$/.test(value)) {
-          setErrors((prev) => ({
-            ...prev,
-            [key]: "請填寫字母與數字或符號",
-          }));
-          return;
-        }
-        break;
-      case "nickname":
-        const chineseCharCount = Array.from(value).filter((char) =>
-          /[\u4e00-\u9fa5]/.test(char)
-        ).length;
-        if (chineseCharCount > 16) {
-          setErrors((prev) => ({
-            ...prev,
-            [key]: "暱稱不能超過16個中文字",
-          }));
-          return;
-        }
-        break;
-      case "password":
-        if (value.length < 6 || value.length > 20) {
-          setErrors((prev) => ({
-            ...prev,
-            [key]: "請輸入一個長度介於 6 和 20 之間的字元串。",
-          }));
-          return;
-        }
-        if (username && value.includes(username)) {
-          setErrors((prev) => ({
-            ...prev,
-            [key]: "密碼不能含有帳號訊息",
-          }));
-          return;
-        }
-        if (/^[a-zA-Z]+$/.test(value) || /^[0-9]+$/.test(value)) {
-          setErrors((prev) => ({
-            ...prev,
-            [key]: "密碼過於簡單",
-          }));
-          return;
-        }
-        break;
-      case "confirm_password":
-        if (value !== password) {
-          setErrors((prev) => ({
-            ...prev,
-            [key]: "您兩次輸入的密碼不符！",
-          }));
-          return;
-        }
-        break;
-      case "email":
-        if (!/^\S+@\S+\.\S+$/.test(value)) {
-          setErrors((prev) => ({
-            ...prev,
-            [key]: "請輸入正確格式的電子郵件",
-          }));
-          return;
-        }
-        break;
-
-      default:
-        break;
-    }
-    setErrors((prev) => ({ ...prev, [key]: "" }));
+    setErrors((prev) => ({ ...prev, [key]: errorMsg }));
   };
-  const handleSubmit = () => {
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
     const newErrors: Record<string, string> = {};
     const username = formData["username"] || "";
     const password = formData["password"] || "";
@@ -164,36 +127,27 @@ export default function RegisterPage() {
       switch (key) {
         case "username":
           if (value.length < 4 || value.length > 20) {
-            newErrors[key] = "帳號必須為 4~20 字元之內。";
-          } else if (!/^[a-zA-Z0-9_.\-@]+$/.test(value)) {
-            newErrors[key] = "請填寫字母與數字或符號";
+            setErrors((prev) => ({
+              ...prev,
+              [key]: "帳號必須為 4~20 字元之內。",
+            }));
+            return;
           }
-          break;
-        case "nickname":
-          const chineseCharCount = Array.from(value).filter((char) =>
-            /[\u4e00-\u9fa5]/.test(char)
-          ).length;
-          if (chineseCharCount > 16) {
-            newErrors[key] = "暱稱不能超過16個中文字";
+          if (!/^[a-zA-Z0-9_.\-@]+$/.test(value)) {
+            setErrors((prev) => ({
+              ...prev,
+              [key]: "請填寫字母與數字或符號",
+            }));
+            return;
           }
           break;
         case "password":
           if (value.length < 6 || value.length > 20) {
-            newErrors[key] = "請輸入一個長度介於 6 和 20 之間的字元串。";
-          } else if (value.includes(username)) {
-            newErrors[key] = "密碼不能含有帳號訊息";
-          } else if (/^[a-zA-Z]+$/.test(value) || /^[0-9]+$/.test(value)) {
-            newErrors[key] = "密碼過於簡單";
-          }
-          break;
-        case "confirm_password":
-          if (value !== password) {
-            newErrors[key] = "您兩次輸入的密碼不符！";
-          }
-          break;
-        case "email":
-          if (!/^\S+@\S+\.\S+$/.test(value)) {
-            newErrors[key] = "請輸入正確格式的電子郵件";
+            setErrors((prev) => ({
+              ...prev,
+              [key]: "請輸入一個長度介於 6 和 20 之間的字元串。",
+            }));
+            return;
           }
           break;
         default:
@@ -202,7 +156,32 @@ export default function RegisterPage() {
     });
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
-      alert("送出表單");
+      try {
+        const response = await fetch("https://test.ricecall.com.tw/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            account: username,
+            password: password,
+            rememberAccount: false,
+            autoLogin: false,
+          }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          login(data.token);
+          alert("登入成功！");
+          window.location.href = "/";
+        } else {
+          const errorData = await response.json();
+          alert(errorData?.error?.message || "登入失敗");
+        }
+      } catch (error) {
+        alert(`登入請求失敗，請稍後再試，錯誤訊息：${error}`);
+      }
     }
   };
   return (
@@ -225,7 +204,7 @@ export default function RegisterPage() {
                           className={`${main["dvl"]} ${
                             focusedField === "username" ? main["dvl_focus"] : ""
                           } ${
-                            formData["username"]?.trim()
+                            !isMobile && formData["username"]?.trim()
                               ? main["dvl_hidden"]
                               : ""
                           }`}
@@ -238,21 +217,27 @@ export default function RegisterPage() {
                           name="username"
                           value={formData["username"] || ""}
                           onChange={(e) =>
-                            setFormData((prev) => ({
-                              ...prev,
-                              username: e.target.value,
-                            }))
+                            handleInputChange("username", e.target.value)
                           }
-                          onFocus={() => setFocusedField("username")}
-                          onBlur={() => setFocusedField(null)}
+                          onFocus={() => handleFocus("username")}
+                          onBlur={() => handleBlur("username")}
                         />
+                        {errors["username"] && (
+                          <span
+                            className={`${main["error"]} ${
+                              focusedField === "username" ? main["tip"] : ""
+                            }`}
+                          >
+                            {errors["username"]} <i></i>
+                          </span>
+                        )}
                       </li>
                       <li>
                         <span
                           className={`${main["dvl"]} ${
                             focusedField === "password" ? main["dvl_focus"] : ""
                           } ${
-                            formData["password"]?.trim()
+                            !isMobile && formData["password"]?.trim()
                               ? main["dvl_hidden"]
                               : ""
                           }`}
@@ -265,14 +250,20 @@ export default function RegisterPage() {
                           name="password"
                           value={formData["password"] || ""}
                           onChange={(e) =>
-                            setFormData((prev) => ({
-                              ...prev,
-                              password: e.target.value,
-                            }))
+                            handleInputChange("password", e.target.value)
                           }
-                          onFocus={() => setFocusedField("password")}
-                          onBlur={() => setFocusedField(null)}
+                          onFocus={() => handleFocus("password")}
+                          onBlur={() => handleBlur("password")}
                         />
+                        {errors["password"] && (
+                          <span
+                            className={`${main["error"]} ${
+                              focusedField === "password" ? main["tip"] : ""
+                            }`}
+                          >
+                            {errors["password"]} <i></i>
+                          </span>
+                        )}
                       </li>
                       <li className={main["forgetPassword"]}>
                         <a href="/forget" target="_blank">
@@ -284,7 +275,7 @@ export default function RegisterPage() {
                   <div className={main["center"]}>
                     <a
                       className={`${main["btnSignup"]} ${main["submit"]}`}
-                      href="javascript:;"
+                      onClick={handleSubmit}
                     >
                       <span>登　入</span>
                     </a>

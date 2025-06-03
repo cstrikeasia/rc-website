@@ -65,8 +65,17 @@
   position: absolute;
   top: 0;
   right: 0;
-  height: 30px;
+  height: 100%;
   margin-right: 5rem;
+  display: flex;
+  align-items: center;
+}
+
+.loginGroup,
+.loginInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pay {
@@ -99,23 +108,24 @@
   align-items: center;
 }
 
-.loginGroup .loginInfo {
+/* .loginGroup .loginInfo {
   display: none;
-}
+} */
 
-.loginGroup.logged .loginBtns {
+/* .loginGroup.logged .loginBtns {
   display: none;
 }
 
 .loginGroup.logged .loginInfo {
   display: block;
-}
+} */
 
 .loginGroup div a {
   display: inline-block;
   padding: 0 6px 0 5px;
   color: #5d84c3;
-  background: url(../../public/images/line.png?v=0924d959) right center no-repeat;
+  background: url(../../public/images/line.png?v=0924d959) right center
+    no-repeat;
 }
 
 .loginGroup div a:last-child {

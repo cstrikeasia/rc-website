@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import Script from "next/script";
+import { AuthProvider } from "@/context/AuthContext";
 
 // CSS
 import "@/styles/global.css";
@@ -31,7 +32,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        {children}
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

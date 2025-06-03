@@ -1,0 +1,39 @@
+.vip-1-big {
+  background-image: url("../../public/images/vip/icon_vip1.gif");
+}
+
+.vip-1-big-inactive {
+  background-image: url("../../public/images/vip/icon_vip1_inactive.png");
+}
+
+.vip-2-big {
+  background-image: url("../../public/images/vip/icon_vip2.gif");
+}
+
+.vip-2-big-inactive {
+  background-image: url("../../public/images/vip/icon_vip2_inactive.png");
+}
+
+.vip-3-big {
+  background-image: url("../../public/images/vip/icon_vip3.gif");
+}
+
+.vip-3-big-inactive {
+  background-image: url("../../public/images/vip/icon_vip3_inactive.png");
+}
+
+.vip-4-big {
+  background-image: url("../../public/images/vip/icon_vip4.gif");
+}
+
+.vip-4-big-inactive {
+  background-image: url("../../public/images/vip/icon_vip4_inactive.png");
+}
+
+.vip-5-big {
+  background-image: url("../../public/images/vip/icon_vip5.gif");
+}
+
+.vip-5-big-inactive {
+  background-image: url("../../public/images/vip/icon_vip5_inactive.png");
+}
