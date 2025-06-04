@@ -35,8 +35,7 @@ export default async function ProfilePage() {
   let userData = null;
   if (userId && token) {
     try {
-      console.log('process.env.NEXT_PUBLIC_BASE_URL',process.env.NEXT_PUBLIC_BASE_URL);
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/api/user`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}api/user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,12 +44,11 @@ export default async function ProfilePage() {
         body: JSON.stringify({ userId }),
         cache: 'no-store',
       });
-      console.log(response);
       if (response.ok) {
         userData = await response.json();
       }
     } catch (error: any) {
-      console.error("發生錯誤:", error);
+      console.error("2發生錯誤:", error);
     }
   }
 
