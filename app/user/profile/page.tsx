@@ -35,7 +35,8 @@ export default async function ProfilePage() {
   let userData = null;
   if (userId && token) {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user`, {
+      console.log('process.env.NEXT_PUBLIC_BASE_URL',process.env.NEXT_PUBLIC_BASE_URL);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/api/user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,6 +45,7 @@ export default async function ProfilePage() {
         body: JSON.stringify({ userId }),
         cache: 'no-store',
       });
+      console.log(response);
       if (response.ok) {
         userData = await response.json();
       }
