@@ -34,6 +34,8 @@ export default function UserProfilePage({ userData }: ProfileClientPartProps) {
     signature: userData?.signature || "",
   });
 
+  console.log('userData',userData);
+
   // Effect
   useEffect(() => {
     if (userData) {

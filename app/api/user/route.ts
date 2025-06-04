@@ -16,6 +16,7 @@ export async function POST(request: Request) {
       body: JSON.stringify({ userId }),
     });
     const externalApiData = await externalApiResponse.json();
+    console.log('externalApiData',externalApiData);
     if (externalApiResponse.ok) {
       return NextResponse.json(externalApiData, { status: externalApiResponse.status });
     } else {
