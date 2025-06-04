@@ -91,7 +91,7 @@ export default function UserProfilePage({ userData }: ProfileClientPartProps) {
                       </p>
                       <div className={`${main["levelBox"]}`}>
                         <div
-                          className={`${main["levelIcon"]} ${level[`lv-${Math.min(Math.max(1, userData?.level || 1), 55)}`]}`}
+                          className={`${level["levelIcon"]} ${level[`lv-${Math.min(Math.max(1, userData?.level || 1), 55)}`]}`}
                         ></div>
                         <p>LV.{userData?.level || 0}</p>
                       </div>

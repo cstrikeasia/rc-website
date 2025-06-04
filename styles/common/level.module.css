@@ -1,3 +1,13 @@
+.levelIcon {
+  height: 15px;
+  width: auto;
+  min-width: 15px;
+  margin-right: 0.3rem;
+  background-repeat: no-repeat;
+  display: flex;
+  background-position: center;
+}
+
 .lv-1 {
   background-image: url("../../public/images/level/1.png");
 }
