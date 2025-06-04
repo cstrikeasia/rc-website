@@ -111,7 +111,7 @@ export default function UserProfilePage({ userData }: ProfileClientPartProps) {
                     >
                       <span className={main["Label"]}>VIP類型：</span>
                       <div
-                        className={`${main["vipIcon"]} ${vip[`vip-${userData?.vip ?? 0}-big-inactive`]} ${!userData?.vip ? main["vipIconInactive"] : ""}`}
+                        className={`${main["vipIcon"]} ${vip[`vip-${userData?.vip || 1}-big-inactive`]} ${!userData?.vip ? main["vipIconInactive"] : ""}`}
                       ></div>
                     </div>
                     <div
