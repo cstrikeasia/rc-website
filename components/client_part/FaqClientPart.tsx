@@ -2,7 +2,6 @@
 import React, { useState, useEffect, JSX } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 
 // Components
 import { parseLine } from "@/components/parseHtmlLine";
@@ -47,9 +46,9 @@ export default function FAQClientPart() {
           <span>
             ◎
             測試檢查您的網路連接速度，如果是因為網路問題，請自行對網路連接速度進行改善，或詢問您的ISP業者。推薦一個測試網速的連結：
-            <Link href="https://fast.com/zh/tw/">
+            <a href="https://fast.com/zh/tw/">
               <span>https://fast.com/zh/tw/</span>
-            </Link>
+            </a>
             。
           </span>,
           "◎ 如網路無問題，請檢測電腦中是否安裝了防火牆，如果安裝了防火牆，請更改相應的阻擋設置或將防火牆關閉。根據大多數使用者的反應，主要問題是由於Nvidia主控台的防火牆Network Access Manager所引起的。若電腦中有Network Access Manager這個程式的話，請將它移除，重啟電腦后問題即可解決。",
@@ -118,9 +117,9 @@ export default function FAQClientPart() {
         answer: [
           <span>
             如果你的電腦上已安裝其它舊版的RC語音客戶端，打開程式後，系統會自動更新為最新版本。如果你的電腦上沒有RC語音程式，請到
-            <Link href="https://github.com/NerdyHomeReOpen/RiceCall/releases">
+            <a href="https://github.com/NerdyHomeReOpen/RiceCall/releases">
               <span>下載頁面</span>
-            </Link>
+            </a>
             下載安裝最新版本。
           </span>,
         ],
@@ -138,9 +137,9 @@ export default function FAQClientPart() {
           />,
           // <span>
           //   ◆ 你也可以直接訪問
-          //   <Link href="/signup">
+          //   <a href="/signup">
           //     <span>申請頁面</span>
-          //   </Link>
+          //   </a>
           //   註冊帳號
           // </span>,
         ],
@@ -170,9 +169,9 @@ export default function FAQClientPart() {
           />,
           // <span>
           //   ◎ 直接訪問
-          //   <Link href="/forget">
+          //   <a href="/forget">
           //     <span>找回密碼</span>
-          //   </Link>
+          //   </a>
           //   連結，按照提示重設您的密碼。
           // </span>,
         ],
@@ -206,9 +205,9 @@ export default function FAQClientPart() {
       //   answer: [
       //     <span>
       //       有些信箱系統會自動過濾一些未知的E-mail，如果垃圾信箱裡也沒有找到RC系統發送的密碼重設信件，請使用您注冊帳號時所填寫的信箱發送一封E-mail到
-      //       <Link href="mailto:jasper888@ricecall.com">
+      //       <a href="mailto:jasper888@ricecall.com">
       //         <span>jasper888@ricecall.com</span>
-      //       </Link>
+      //       </a>
       //       ，並附上您的帳號、新的信箱地址和更改申請，我們會第一時間為你處理。
       //     </span>,
       //   ],
@@ -418,9 +417,9 @@ export default function FAQClientPart() {
             ◎
             在您使用RC語音群前，請務必先閱讀RC語音群使用規範，避免在使用過程中造成不必要的困擾。
             相關的語音群規範，請點擊：
-            <Link href="/serverpolicy">
+            <a href="/serverpolicy">
               <span>語音群規範</span>
-            </Link>
+            </a>
             。
           </span>,
           "◎  語音群的創建方法：打開RC視窗，點擊右上方的‘創建語音群’，出現創建視窗後按步驟即可創建。",
@@ -1111,9 +1110,9 @@ export default function FAQClientPart() {
         answer: [
           <span>
             登入RC官方
-            <Link href="/pay">
+            <a href="/pay">
               <span>儲值中心</span>
-            </Link>
+            </a>
             ，點開通VIP進入開通頁面，選擇開通時長進行開通。標準價格每月（30天）需要200RC幣。
           </span>,
         ],

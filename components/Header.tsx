@@ -1,12 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 
 // CSS
 import header from "@/styles/common/header.module.css";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
+  const { token, handleLogout } = useAuth();
   const navLinks = [
     { label: "首頁", href: "/" },
     {
@@ -48,9 +49,9 @@ export const Header = () => {
     <div className={header["header"]}>
       <div className={header["wrapper"]}>
         <div className={header["logo"]}>
-          <Link href="/">
+          <a href="/">
             <img src="/images/logo.png" alt="logo" />
-          </Link>
+          </a>
         </div>
         <div className={header["hamburger"]} onClick={() => setOpen(!open)}>
           <span />
@@ -62,7 +63,7 @@ export const Header = () => {
         >
           <div className={header["navBar"]}>
             {navLinks.map(({ label, href, target }) => (
-              <Link
+              <a
                 key={label}
                 className={header["navBtn"]}
                 href={href}
@@ -70,30 +71,35 @@ export const Header = () => {
                 rel={target === "_blank" ? "noreferrer" : undefined}
               >
                 {label}
-              </Link>
+              </a>
             ))}
           </div>
-          {/* <div className={header["buttons"]}>
-            <div className={header["pay"]}>
-              <Link href="/rcpay" target="_blank" rel="noreferrer">
-                儲值
-              </Link>
-            </div>
+          <div className={header["buttons"]}>
+            {/* <div className={header["pay"]}>
+              <a href="/rcpay" target="_blank" rel="noreferrer">儲值</a>
+            </div> */}
             <div className={header["loginGroup"]}>
-              <div className={header["loginBtns"]}>
-                <Link href="/login">登入</Link>
-                <Link href="/register">註冊</Link>
-              </div>
-              <div className={header["loginInfo"]}>
-                <span></span>
-                <div>
-                  <Link href="/profile">個人中心</Link>
-                  <Link href="/show">個人秀</Link>
-                  <Link href="/logout">登出</Link>
+              {token ? (
+                <div className={header["loginInfo"]}>
+                  <span></span>
+                  <div>
+                    <a href="/user/profile">個人中心</a>
+                    <a onClick={() => {
+                      handleLogout();
+                      window.location.href = '/login';
+                    }}
+                      style={{ cursor: 'pointer' }}
+                    >登出</a>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className={header["loginBtns"]}>
+                  <a href="/login">登入</a>
+                  {/* <a href="/register">註冊</a> */}
+                </div>
+              )}
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

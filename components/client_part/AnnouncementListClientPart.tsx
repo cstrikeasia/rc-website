@@ -1,13 +1,11 @@
 "use client";
 import React, { memo, useState, useEffect } from "react";
-import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 
 // Lib
 import type { Announcement } from '@/lib/announcements/apiFetch';
 
 // CSS
-import content from "@/styles/common/content.module.css";
 import main from "@/styles/announcement.module.css";
 
 interface AnnouncementListProps {
@@ -98,14 +96,14 @@ const AnnouncementListClient = memo(function AnnouncementListClient({
                             const categorySlug = categoryDisplayNameToSlugMap[announcement.category] || 'unknown';
                             return (
                                 <li key={`${announcement.id}-${announcement.date}`} className={main["announcementItem"]}>
-                                    <Link href={`/announcement/${categorySlug}/${announcement.id}`} className={main["itemLink"]}>
+                                    <a href={`/announcement/${categorySlug}/${announcement.id}`} className={main["itemLink"]}>
                                         <div className={main["itemTitleBlock"]}>
                                             <span className={`${main["itemCategory"]} ${main[`category${announcement.category}`] || ''}`}>
                                                 {announcement.category}
                                             </span>
                                             <span className={main["itemTitle"]}>{announcement.title}</span>
                                         </div>
-                                    </Link>
+                                    </a>
                                     <span className={main["itemDate"]}>
                                         {new Date(announcement.date).toLocaleString('zh-TW', {
                                             year: 'numeric',

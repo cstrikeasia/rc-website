@@ -6,24 +6,27 @@ import content from "@/styles/common/content.module.css";
 import main from "@/styles/register.module.css";
 import common from "@/styles/common/common.module.css";
 
+const tips: Record<string, string> = {
+  username: "例如：WHuang，Wei.Huang",
+  nickname: "請填寫暱稱！",
+  password: "最少 6 個字元",
+  confirm_password: "請再次輸入相同的密碼",
+  email: "請填寫電子信箱",
+};
+const fields = [
+  { label: "帳　　號", key: "username" },
+  { label: "暱　　稱", key: "nickname" },
+  { label: "密　　碼", key: "password", type: "password" },
+  { label: "密碼確認", key: "confirm_password", type: "password" },
+  { label: "電子郵件", key: "email" },
+];
+
 export default function RegisterPage() {
+  // State
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState<Record<string, string>>({});
   const [focusedField, setFocusedField] = useState<string | null>(null);
-  const tips: Record<string, string> = {
-    username: "例如：WHuang，Wei.Huang",
-    nickname: "請填寫暱稱！",
-    password: "最少 6 個字元",
-    confirm_password: "請再次輸入相同的密碼",
-    email: "請填寫電子信箱",
-  };
-  const fields = [
-    { label: "帳　　號", key: "username" },
-    { label: "暱　　稱", key: "nickname" },
-    { label: "密　　碼", key: "password", type: "password" },
-    { label: "密碼確認", key: "confirm_password", type: "password" },
-    { label: "電子郵件", key: "email" },
-  ];
+  
   // Handler
   const handleInputChange = (key: string, value: string) => {
     setFormData((prev) => ({ ...prev, [key]: value }));

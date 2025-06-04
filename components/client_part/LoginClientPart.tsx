@@ -9,32 +9,13 @@ import main from "@/styles/login.module.css";
 import common from "@/styles/common/common.module.css";
 
 export default function LoginClientPart() {
-  const pathname = usePathname();
-  const { login } = useAuth();
-  const meta = {
-    title: "登入",
-    description:
-      "登入 RC 語音帳號，立即管理您的語音群組、好友列表與個人設定，隨時隨地暢享高品質語音聊天體驗！",
-    keywords:
-      "RC語音登入, RiceCall帳號, RC會員登入, 語音群管理, RC好友列表, 米飯語音, RC個人設定",
-    url: pathname,
-  };
+  const { handleLogin } = useAuth();
   // State
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState<Record<string, string>>({});
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const tips: Record<string, string> = {
-    username: "例如：WHuang，Wei.Huang",
-    nickname: "請填寫暱稱！",
-    password: "最少 6 個字元",
-    confirm_password: "請再次輸入相同的密碼",
-    email: "請填寫電子信箱",
-  };
-  const fields = [
-    { label: "帳　　號", key: "username" },
-    { label: "密　　碼", key: "password", type: "password" },
-  ];
+
   // Effect
   useEffect(() => {
     const usernameInput = document.querySelector<HTMLInputElement>(
@@ -69,95 +50,34 @@ export default function LoginClientPart() {
   };
   const handleFocus = (key: string) => {
     setFocusedField(key);
-    if (!formData[key]?.trim()) {
-      setErrors((prev) => ({ ...prev, [key]: tips[key] }));
-    }
   };
   const handleBlur = (key: string) => {
     setFocusedField(null);
     const value = formData[key]?.trim() || "";
-    let errorMsg = "";
-    if (!value) {
-      errorMsg = "必填項";
-    } else {
-      switch (key) {
-        case "username":
-          if (value.length < 4 || value.length > 20) {
-            setErrors((prev) => ({
-              ...prev,
-              [key]: "帳號必須為 4~20 字元之內。",
-            }));
-            return;
-          }
-          if (!/^[a-zA-Z0-9_.\-@]+$/.test(value)) {
-            setErrors((prev) => ({
-              ...prev,
-              [key]: "請填寫字母與數字或符號",
-            }));
-            return;
-          }
-          break;
-        case "password":
-          if (value.length < 6 || value.length > 20) {
-            setErrors((prev) => ({
-              ...prev,
-              [key]: "請輸入一個長度介於 6 和 20 之間的字元串。",
-            }));
-            return;
-          }
-          break;
-        default:
-          break;
-      }
-    }
-    setErrors((prev) => ({ ...prev, [key]: errorMsg }));
+    const errorMsg = handleValidateField(key, value);
+    setErrors(prev => ({ ...prev, [key]: errorMsg }));
   };
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     const newErrors: Record<string, string> = {};
     const username = formData["username"] || "";
     const password = formData["password"] || "";
+    const fields = [
+      { label: "帳　　號", key: "username" },
+      { label: "密　　碼", key: "password", type: "password" },
+    ];
     fields.forEach((field) => {
       const { key } = field;
       const value = formData[key]?.trim() || "";
-      if (!value) {
-        newErrors[key] = "必填項";
-        return;
-      }
-      switch (key) {
-        case "username":
-          if (value.length < 4 || value.length > 20) {
-            setErrors((prev) => ({
-              ...prev,
-              [key]: "帳號必須為 4~20 字元之內。",
-            }));
-            return;
-          }
-          if (!/^[a-zA-Z0-9_.\-@]+$/.test(value)) {
-            setErrors((prev) => ({
-              ...prev,
-              [key]: "請填寫字母與數字或符號",
-            }));
-            return;
-          }
-          break;
-        case "password":
-          if (value.length < 6 || value.length > 20) {
-            setErrors((prev) => ({
-              ...prev,
-              [key]: "請輸入一個長度介於 6 和 20 之間的字元串。",
-            }));
-            return;
-          }
-          break;
-        default:
-          break;
+      const errorMsg = handleValidateField(key, value);
+      if (errorMsg) {
+        newErrors[key] = errorMsg;
       }
     });
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
       try {
-        const response = await fetch("https://test.ricecall.com.tw/login", {
+        const response = await fetch("/api/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -169,21 +89,45 @@ export default function LoginClientPart() {
             autoLogin: false,
           }),
         });
-
+        const data = await response.json();
+        console.log(data);
         if (response.ok) {
-          const data = await response.json();
-          login(data.token);
-          alert("登入成功！");
-          window.location.href = "/";
+          if (data.token && data.userId) {
+            handleLogin(data.token, data.userId);
+            window.location.href = "/user/profile";
+          }
         } else {
-          const errorData = await response.json();
-          alert(errorData?.error?.message || "登入失敗");
+          alert(data?.error?.message || "登入失敗");
         }
-      } catch (error) {
-        alert(`登入請求失敗，請稍後再試，錯誤訊息：${error}`);
+      } catch (error: any) {
+        alert(`登入失敗，請稍後再試，錯誤訊息：${error}`);
       }
     }
   };
+  const handleValidateField = (key: string, value: string): string => {
+    if (!value) {
+      return "必填項";
+    }
+    switch (key) {
+      case "username":
+        if (value.length < 4 || value.length > 20) {
+          return "帳號必須為 4~20 字元之內。";
+        }
+        if (!/^[a-zA-Z0-9_.\-@]+$/.test(value)) {
+          return "請填寫字母與數字或符號";
+        }
+        break;
+      case "password":
+        if (value.length < 6 || value.length > 20) {
+          return "請輸入一個長度介於 6 和 20 之間的字元串。";
+        }
+        break;
+      default:
+        break;
+    }
+    return "";
+  };
+
   return (
     <>
       <div className={main["main"]}>
@@ -221,6 +165,11 @@ export default function LoginClientPart() {
                           }
                           onFocus={() => handleFocus("username")}
                           onBlur={() => handleBlur("username")}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                              handleSubmit(e);
+                            }
+                          }}
                         />
                         {errors["username"] && (
                           <span
@@ -254,6 +203,11 @@ export default function LoginClientPart() {
                           }
                           onFocus={() => handleFocus("password")}
                           onBlur={() => handleBlur("password")}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                              handleSubmit(e);
+                            }
+                          }}
                         />
                         {errors["password"] && (
                           <span

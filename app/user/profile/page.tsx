@@ -1,3 +1,6 @@
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+
 // Components
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -22,11 +25,37 @@ const { metadata: pageMetadata, jsonLd: pageJsonLd } =
 
 export const metadata = pageMetadata;
 
-export default function ProfilePage() {
+export default async function ProfilePage() {
+  const cookieStore = cookies();
+  const token = cookieStore.get('authToken')?.value;
+  const userId = cookieStore.get('userId')?.value;
+  if (!userId || !token) {
+    redirect('/login');
+  }
+  let userData = null;
+  if (userId && token) {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({ userId }),
+        cache: 'no-store',
+      });
+      if (response.ok) {
+        userData = await response.json();
+      }
+    } catch (error: any) {
+      console.error("發生錯誤:", error);
+    }
+  }
+
   return (
     <>
       <Header />
-      <ProfileClientPart />
+      <ProfileClientPart userData={userData} />
       <JsonLdInjector jsonLd={pageJsonLd} />
       <Footer />
     </>

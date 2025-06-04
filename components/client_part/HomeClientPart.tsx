@@ -13,10 +13,6 @@ interface ReleaseData {
   version: string | null;
 }
 
-interface ReturnedReleaseData {
-  files: ReleaseData[];
-}
-
 export default function HomePage() {
   // State
   const [data, setData] = useState<ReleaseData[] | null>(null);

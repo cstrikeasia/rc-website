@@ -1,5 +1,8 @@
 import { ReactNode } from "react";
 import Script from "next/script";
+import { cookies } from 'next/headers';
+
+// Context
 import { AuthProvider } from "@/context/AuthContext";
 
 // CSS
@@ -7,6 +10,10 @@ import "@/styles/global.css";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const token = "GTM-PTPD9MPK";
+  const cookieStore = cookies();
+  const initialToken = cookieStore.get('authToken')?.value;
+  const initialUserId = cookieStore.get('userId')?.value;
+
   return (
     <html lang="zh-Hant">
       <head>
@@ -32,7 +39,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider initialToken={initialToken} initialUserId={initialUserId}>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

@@ -1,7 +1,5 @@
 "use client";
-import React, { useEffect, memo } from "react";
-import Link from 'next/link';
-import { useRouter, useSearchParams, usePathname } from 'next/navigation';
+import React, {  memo } from "react";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
@@ -81,7 +79,7 @@ const AnnouncementContentClientPart = memo(function AnnouncementContentClientPar
                         </div>
                     )}
                     <div className={main["backButtonContainer"]}>
-                        <Link href="/announcement">返回公告列表</Link>
+                        <a href="/announcement">返回公告列表</a>
                     </div>
                 </div>
             </div>
